@@ -1,0 +1,102 @@
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container .footer-info img {
+  width: 6vw;
+}
+
+.logo-contato img {
+  width: 30px;
+  height: 30px;
+}
+
+.caixa{
+  width: 1200px;
+  margin-right: 200px;
+}
+
+
+.footer-info {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 280px;
+}
+
+.footer-links ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 0px;
+}
+
+.footer-links ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 21px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.footer-links h2 {
+  color: white;
+  margin-bottom: 8px;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: white;
+  align-self: flex-start;
+}
+
+.svg {
+  color: white;
+}
+
+.footer-svgs {
+  display: flex;
+}
+
+.footer-contato {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 16px;
+  width: 1200px;
+}
+
+.footer-contato .footer-contato-small {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.footer-contato .footer-box-contato {
+  margin: 0 20px;
+}
+
+.footer-contato .footer-box-contato i {
+  color: white;
+  margin-right: 4px;
+  cursor: pointer;
+}

@@ -12,7 +12,7 @@ export default function SelectAutoWidth({props}) {
   };
   
 
-  return (
+  return ( 
     <div>
       <FormControl sx={{ m: 1, minWidth: 200, maxWidth: 200 }}>
         <InputLabel id="demo-simple-select-autowidth-label">{props.titulo}</InputLabel>

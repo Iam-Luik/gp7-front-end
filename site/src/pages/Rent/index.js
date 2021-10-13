@@ -1,7 +1,4 @@
 import Navbar from "../../components/Navbar";
-import GeolocationIcon from "../../assets/geolocation-icon.png";
-import GeneralCarousel from "../../components/GeneralCarousel";
-import { SimpleSlider } from "../../components/GeneralCarousel/SimpleSlider";
 
 import { RowBlockLeft, RowBlockRight, ColBlocks } from "./style";
 
@@ -17,12 +14,12 @@ const SignIn = () => {
           <h1>R$ 00,00</h1>
         </RowBlockLeft>
         <RowBlockRight>
-          <SimpleSlider />
+          {/* <SimpleSlider /> */}
         </RowBlockRight>
       </ColBlocks>
       <ColBlocks>
         <RowBlockLeft>
-          <SimpleSlider />
+          {/* <SimpleSlider /> */}
         </RowBlockLeft>
         <RowBlockRight>
           <h2>Vitória</h2>

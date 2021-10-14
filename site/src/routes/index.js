@@ -11,6 +11,7 @@ import SignUpBike from '../pages/SignUpBike';
 import ComprovanteLocador from '../pages/ComprovanteLocador';
 import ComprovanteLocatario from '../pages/ComprovanteLocatario';
 import BicicletaFiltro from '../pages/BicicletaFiltro';
+import Locatario from '../pages/Locatario';
 
 
 const Routes = () => {
@@ -29,6 +30,7 @@ const Routes = () => {
         <Route path="/direcionamento" component={Direcionamento} />
         <Route path="/bike" component={SignUpBike} />
         <Route path="/bicicleta-filtro" component={BicicletaFiltro} />
+        <Route path="/card" component={Locatario} />
       </Switch>
     </BrowserRouter>
   )

@@ -5,7 +5,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 13vh;
+  height: 7vh;
   padding: 1vh;
 
   a {
@@ -34,7 +34,7 @@ export const Header = styled.header`
     }
   }
 
-  ul li {
+  ul a {
     color: white;
     text-transform: uppercase;
     list-style-type: none;

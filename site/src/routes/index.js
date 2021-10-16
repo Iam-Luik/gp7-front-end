@@ -11,7 +11,7 @@ import SignUpBike from '../pages/SignUpBike';
 import ComprovanteLocador from '../pages/ComprovanteLocador';
 import ComprovanteLocatario from '../pages/ComprovanteLocatario';
 import BicicletaFiltro from '../pages/BicicletaFiltro';
-import Locatario from '../pages/Locatario';
+import Locatario from '../pages/Locador';
 
 
 const Routes = () => {

@@ -1,5 +1,4 @@
 import { Divisona } from "./style";
-import bike from "../../assets/bibi.png";
 import { ButtonStyle } from "./style";
 
 function CardStatusBicicleta({props}) {
@@ -18,7 +17,7 @@ function CardStatusBicicleta({props}) {
               <b>Horario de entrega</b>
               <b>{item.hora}</b>
       <ButtonStyle>
-        <button>{button}</button>
+        <button></button>
       </ButtonStyle>
             </span>
           </Divisona>

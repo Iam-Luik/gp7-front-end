@@ -169,6 +169,8 @@ const BicicletaFiltro = () => {
           <BicicletaCard props={bicicleta}></BicicletaCard>
           <BicicletaCard props={bicicleta}></BicicletaCard>
           <BicicletaCard props={bicicleta}></BicicletaCard>
+          <BicicletaCard props={bicicleta}></BicicletaCard>
+          <BicicletaCard props={bicicleta}></BicicletaCard>
         </Section>
     </>
   );

@@ -40,7 +40,7 @@ export const RowBlockLeft = styled.div`
       margin: auto;
       letter-spacing: 0.07em;
       margin: 0;
-      padding-bottom 50px;
+      padding-bottom: 50px;
     }
 
     p {

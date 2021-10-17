@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import CardStatusBicicleta from "../../components/CardStatusBicicleta";
 import { DivCards} from "./style";
 import GeneralButton from "../../components/GeneralButton";
-
+import { Link } from "react-router-dom";
 
 const retornoApi = [
     {
@@ -37,7 +37,13 @@ const Locatario = () => {
             <CardStatusBicicleta props={retornoApi}></CardStatusBicicleta>
              
         </DivCards>
+        <Link to="/bicicleta-filtro">
         <GeneralButton button="ADICIONAR" />
+        </Link>
+
+        <Link to="/bike">
+        <GeneralButton button="ADICIONAR" />
+        </Link>
              <Footer />  
         </>
         );

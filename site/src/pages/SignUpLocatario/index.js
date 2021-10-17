@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import GeneralInput from "../../components/GeneralInput";
 import GeneralInputPssw from "../../components/GeneralInputPssw";
 import GeneralButton from "../../components/GeneralButton";
-
+import { Link } from "react-router-dom";
 import { RowBlocks, RowBlock, InputContainer } from "./style";
 
 const SignUpLocatario = () => {
@@ -41,7 +41,9 @@ const SignUpLocatario = () => {
           <GeneralInput label="Rua *" />
           <GeneralInput label="Numero *" />
           </InputContainer>
+          <Link to="/login">
           <GeneralButton button="Cadastrar" />
+          </Link>
       </RowBlock>
 
 

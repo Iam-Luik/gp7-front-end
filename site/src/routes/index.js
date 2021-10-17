@@ -12,6 +12,7 @@ import ComprovanteLocador from '../pages/ComprovanteLocador';
 import ComprovanteLocatario from '../pages/ComprovanteLocatario';
 import BicicletaFiltro from '../pages/BicicletaFiltro';
 import Locatario from '../pages/Locador';
+import NotFound from '../pages/NotFound';
 
 
 const Routes = () => {
@@ -19,18 +20,19 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/locador" component={SignUpLocador} />
-        <Route path="/locatario" component={SignUpLocatario} />
-        <Route path="/login" component={SignIn} />
-        <Route path="/rent" component={Rent} />
-        <Route path="/localization" component={Localization} />
-        <Route path="/comprovanteLocador" component={ComprovanteLocador} />
-        <Route path="/comprovanteLocatario" component={ComprovanteLocatario} />
-        <Route path="/direcionamento" component={Direcionamento} />
-        <Route path="/bike" component={SignUpBike} />
-        <Route path="/bicicleta-filtro" component={BicicletaFiltro} />
-        <Route path="/card" component={Locatario} />
+        <Route exact path="/" exact component={Home} />
+        <Route path="/locador" exact component={SignUpLocador} />
+        <Route path="/locatario" exact component={SignUpLocatario} />
+        <Route path="/login" exact component={SignIn} />
+        <Route path="/rent" exact component={Rent} />
+        <Route path="/localization" exact component={Localization} />
+        <Route path="/comprovanteLocador" exact component={ComprovanteLocador} />
+        <Route path="/comprovanteLocatario" exact component={ComprovanteLocatario} />
+        <Route path="/direcionamento" exact component={Direcionamento} />
+        <Route path="/bike" exact component={SignUpBike} />
+        <Route path="/bicicleta-filtro" exact component={BicicletaFiltro} />
+        <Route path="/card" exact component={Locatario} />
+        <Route path="/*" exact component={NotFound} />
       </Switch>
     </BrowserRouter>
   )

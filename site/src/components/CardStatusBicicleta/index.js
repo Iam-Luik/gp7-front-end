@@ -1,5 +1,6 @@
 import { Divisona } from "./style";
 import { ButtonStyle, ButtonEdit, ButtonDel } from "./style";
+import { Link } from "react-router-dom";
 
 function CardStatusBicicleta({props}) {
   function ValidarStatus(item){
@@ -10,7 +11,9 @@ function CardStatusBicicleta({props}) {
       <b>Dia: {item.dia}</b>
       <b>Horário: {item.hora}</b>
       <ButtonStyle>
+      <Link to="/comprovanteLocador">
       <button>Comprovante</button>
+      </Link>
       </ButtonStyle>
      </span>
     } else if(item.locador){
@@ -19,7 +22,9 @@ function CardStatusBicicleta({props}) {
       <b>Dia: {item.dia}</b>
       <b>Horário: {item.hora}</b>
       <ButtonStyle>
+      <Link to="/comprovanteLocatario">
       <button>Devolver</button>
+      </Link>
       </ButtonStyle>
      </span>
     }
@@ -29,7 +34,9 @@ function CardStatusBicicleta({props}) {
       <button>Deletar</button>
       </ButtonDel>
       <ButtonEdit>
+      <Link to="/bike">
       <button>Editar</button>
+      </Link>
       </ButtonEdit>
     </span>
   }
@@ -43,7 +50,6 @@ function CardStatusBicicleta({props}) {
               <img src={item.imagem} alt="" />
               <h1>{item.status?'STATUS: ' + item.status: null}</h1>
              {ValidarStatus(item)}
-
             </span>
           </Divisona>
       )}

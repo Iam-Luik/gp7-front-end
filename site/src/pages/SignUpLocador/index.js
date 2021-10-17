@@ -41,7 +41,9 @@ const SignUpLocador = () => {
           <GeneralInput label="Rua *" />
           <GeneralInput label="Numero *" />
           </InputContainer>
+          <Link to="/login">
           <GeneralButton button="Cadastrar" />
+          </Link>
       </RowBlock>
 
 

@@ -11,7 +11,9 @@ export const CardStyle = styled.div`
     border-radius: 16px;
     box-sizing: border-box;
     cursor: pointer;
-    
+    text-decoration: none;
+
+
     img{
         width: 250px;
         height: 150px; 
@@ -34,4 +36,5 @@ export const CardStyle = styled.div`
         background-color: green;
     }
 
-`;
+    
+`;  

@@ -20,5 +20,12 @@ export const Section = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     grid-row-gap: 30px;
-`;
+
+
+    a{
+        text-decoration:none;
+    }
+    `
+
+;
     

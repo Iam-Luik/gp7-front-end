@@ -92,6 +92,10 @@ export const RowBlockLeft = styled.div`
       letter-spacing: 0.07em;
       font-style: italic;
     }
+    a{
+      text-decoration: none;
+    }
+
   }
 `;
 

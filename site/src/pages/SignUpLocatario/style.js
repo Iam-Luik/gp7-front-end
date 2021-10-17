@@ -33,6 +33,10 @@ export const RowBlock = styled.div`
       font-size: 20px;
       letter-spacing: 0.07em;
     }
+
+    a{
+      text-decoration: none;
+    }
 `;
 
 

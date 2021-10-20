@@ -1,0 +1,33 @@
+/* Card first block */
+.css-1ri6ub7-MuiPaper-root-MuiCard-root {
+  background-color: #00ab30 !important;
+  border-radius: 50px 15px 50px 15px !important;
+  width: 337px;
+  height: 350px;
+  margin: 30px;
+  box-shadow: 8px 4px 10px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Card first block texts */
+.css-46bh2p-MuiCardContent-root {
+  padding: 30px 40px;
+}
+
+.css-h93ljk-MuiTypography-root {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.css-r40f8v-MuiTypography-root {
+  font-weight: 500;
+}
+
+.css-1t6e9jv-MuiCardActions-root {
+  background-color: #008625;
+  height: 200px;
+  padding: 5px 40px !important;
+}
+
+.css-46bh2p-MuiCardContent-root {
+  padding: 40px !important;
+}

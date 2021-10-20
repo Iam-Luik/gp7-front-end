@@ -11,22 +11,16 @@ export const SimpleSlider = () => {
   return (
     <Slider {...settings} style={{ width: '80%', height: '100%' }}>
       <div>
-        <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} />
+        <h1>teste 1</h1>
+        {/* <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} /> */}
       </div>
       <div>
-      <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} />
+      <h1>teste 2</h1>
+      {/* <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} /> */}
       </div>
       <div>
-      <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} />
-      </div>
-      <div>
-      <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} />
-      </div>
-      <div>
-      <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} />
-      </div>
-      <div>
-      <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} />
+      <h1>teste 3</h1>
+      {/* <img src={'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg'} /> */}
       </div>
     </Slider>
   );

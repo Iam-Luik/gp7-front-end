@@ -4,8 +4,9 @@ import RentIcon from "../../assets/rent-icon.png";
 import SecurityIcon from "../../assets/security-icon.png";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import Cards from "../../components/Cards";
 import Api from "../../services/api";
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 
 import {
   Banner,
@@ -14,15 +15,16 @@ import {
   RowItens,
   ColItens,
   RowBlocks,
+  CardsStyle,
 } from "./style";
 
 const Home = () => {
   useEffect(() => {
-   Api.get("usuario/todos")
-    .then((response) => console.log(response.data))
-    .catch((err) => {
-      console.error("ops! ocorreu um erro" + err);
-    });
+    Api.get("usuario/todos")
+      .then((response) => console.log(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
   }, []);
   return (
     <>
@@ -89,6 +91,27 @@ const Home = () => {
         </p>
       </RowBlocks2>
 
+      <CardsStyle>
+        <Cards
+          title="Mensal"
+          label="A partir de
+          R$ 209,90, por R$ 7,90 o dia"
+          link="29 dias sem preocupação na devolução
+          Use o quanto necessario por 30 dias
+          Preço acessivel e vantajoso
+          Menos de R$ 8,00 por dia "
+        />
+
+        <Cards
+          title="Semanal"
+          label="A partir de
+          R$ 62,90, por R$ 8,99 o dia"
+          link="06 dias sem preocupação na devolução
+          Use o quanto necessario por 7 dias
+          Preço acessivel e vantajoso
+          Menos de R$ 9,90 por dia"
+        />
+      </CardsStyle>
       <Footer />
     </>
   );

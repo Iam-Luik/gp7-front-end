@@ -35,7 +35,7 @@ export const RowBlock = styled.div`
     margin: auto;
     letter-spacing: 0.07em;
     margin-top: 20px;
-    color: #3AA33E;
+    color: #054107;
   }
   p {
     width: 80%;

@@ -125,6 +125,8 @@ export const InputContainer = styled.div`
   display: flex;
   margin: auto;
   width: 90%;
+  /* margin-left: 65px;
+  width: 60%; */
   justify-content: space-between;
 `;
 

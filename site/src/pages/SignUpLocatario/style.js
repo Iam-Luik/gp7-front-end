@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const RowBlocks = styled.div`
-border: 1px solid #000000;
-margin-top: 50px;
-margin-bottom: 10px;   
-width: 80%;
-margin-left: auto;
+/* border: 1px solid #000000; */
+    margin-top: 50px;
+    margin-bottom: 10px;   
+    width: 80%;
+    margin-left: auto;
     margin-right: auto; 
-  }
 `;
 
 export const RowBlock = styled.div`
@@ -45,5 +44,4 @@ export const InputContainer = styled.div`
   margin: auto;
   width: 80%;
   justify-content: space-between;
-  
 `;

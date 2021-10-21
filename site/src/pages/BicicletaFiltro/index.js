@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import Select from "../../components/Select";
 import {SelectFilter} from './style';
 import BicicletaCard from "../../components/BicicletaCard";
@@ -172,6 +173,7 @@ const BicicletaFiltro = () => {
           <BicicletaCard props={bicicleta}></BicicletaCard>
           <BicicletaCard props={bicicleta}></BicicletaCard>
         </Section>
+        <Footer />
     </>
   );
 };

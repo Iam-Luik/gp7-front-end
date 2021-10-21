@@ -73,7 +73,7 @@ export const BlockTitle2 = styled.div`
     margin: auto;
     letter-spacing: 0.07em;
     font-size: 30px;
-    margin: 40px 0px;
+    margin: 23px 0px;
   }
 `;
 

@@ -1,6 +1,8 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import TabLayout from "../../components/TabLayout/index";
+import Bibi from "../../assets/bibi.png";
+import Proprietaria from "../../assets/proprietaria.png";
 import { SimpleSlider } from "../../components/GeneralCarousel/SimpleSlider";
 import Select from "../../components/Select";
 import GeneralInput from "../../components/GeneralInput";
@@ -14,7 +16,7 @@ import {
   RowBlockRight,
   ColBlocks,
   InputContainer,
-  ButtonStyle
+  ButtonStyle,
 } from "./style";
 
 const tempo = {
@@ -49,12 +51,12 @@ const SignIn = () => {
           <TabLayout />
         </RowBlockLeft>
         <RowBlockRight>
-          {/* <SimpleSlider /> */}
+          <img src={Bibi} alt="" />
         </RowBlockRight>
       </ColBlocks>
       <ColBlocks>
         <RowBlockLeft>
-          {/* <SimpleSlider /> */}
+          <img src={Proprietaria} alt="" />
         </RowBlockLeft>
         <RowBlockRight>
           <h2>Vitória</h2>
@@ -64,14 +66,10 @@ const SignIn = () => {
         </RowBlockRight>
       </ColBlocks>
       <BlockTitle2>
-        <h1>
-          Tempo que irá alugar: <Select props={tempo} />
-        </h1>
+        <h1>Tempo que irá alugar: 00:00</h1>
       </BlockTitle2>
       <BlockTitle2>
-        <h1>
-          Tempo de reserva: <Select props={tempo} />
-        </h1>
+        <h1>Tempo de reserva: 00:00</h1>
       </BlockTitle2>
       <BlockTitle2>
         <h1>Pagamento</h1>
@@ -89,8 +87,8 @@ const SignIn = () => {
       </InputContainer>
       <Terms />
       <ButtonStyle>
-      <GeneralButton button="Reservar" />
-      <GeneralButton button="Voltar" />
+        <GeneralButton button="Reservar" />
+        <GeneralButton button="Voltar" />
       </ButtonStyle>
       <Footer />
     </>

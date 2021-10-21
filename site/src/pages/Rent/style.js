@@ -31,6 +31,10 @@ export const RowBlockLeft = styled.div`
       letter-spacing: 0.07em;
       font-style: italic;
     }
+
+    img {
+      width: 39%;
+    }
   }
 `;
 
@@ -72,7 +76,6 @@ export const BlockTitle2 = styled.div`
     margin: 40px 0px;
   }
 `;
-
 
 export const RowBlockRight = styled.div`
   display: block;

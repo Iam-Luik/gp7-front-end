@@ -113,13 +113,13 @@ const Home = () => {
           Menos de R$ 9,90 por dia"
         />
       </CardsStyle>
-      <RowBlocks2>
+      {/* <RowBlocks2>
         <p>
           Quer algo mais pratico e rapido ? Conheça nosso plano avulso
         </p>
         <HomeButton />
-      </RowBlocks2>
-      {/* <Footer /> */}
+      </RowBlocks2> */}
+      <Footer />
     </>
   );
 };

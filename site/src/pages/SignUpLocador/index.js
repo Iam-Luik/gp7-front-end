@@ -16,11 +16,11 @@ const SignUpLocador = () => {
       <h1>CADASTRO LOCADOR</h1>
         <p>Digite aqui seus dados cadastrais para gerar um acesso no nosso site</p>
         <InputContainer>
-          <GeneralInput label="Email *" />
+          <GeneralInput label="Email *" placeholder="teste" />
           <GeneralInput label="Senha *" />
         </InputContainer>
         <InputContainer>
-          <GeneralInput label="Nome *" />
+          <GeneralInput label="Nome *" placeholder="teste" />
           <GeneralInputPssw label="Sobrenome *" />
         </InputContainer>
         <InputContainer>

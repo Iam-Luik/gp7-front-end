@@ -35,7 +35,7 @@ export const RowBlock = styled.div`
         letter-spacing: 0.07em;
         font-size: 15px;
         margin-top: -40px;
-
+        font-weight: 500;
       }
     p {
       width: 80%;

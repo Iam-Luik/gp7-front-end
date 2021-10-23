@@ -21,8 +21,8 @@ footer {
 }
 
 .caixa{
-  width: 1200px;
-  margin-right: 200px;
+  /* width: 1200px; */
+  /* margin-right: 200px; */
 }
 
 
@@ -82,7 +82,7 @@ footer {
   align-items: center;
   justify-content: space-around;
   margin-bottom: 16px;
-  width: 1200px;
+  /* width: 1200px; */
 }
 
 .footer-contato .footer-contato-small {

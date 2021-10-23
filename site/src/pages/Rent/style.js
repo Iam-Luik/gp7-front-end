@@ -31,6 +31,10 @@ export const RowBlockLeft = styled.div`
       letter-spacing: 0.07em;
       font-style: italic;
     }
+
+    img {
+      width: 39%;
+    }
   }
 `;
 
@@ -69,10 +73,9 @@ export const BlockTitle2 = styled.div`
     margin: auto;
     letter-spacing: 0.07em;
     font-size: 30px;
-    margin: 40px 0px;
+    margin: 23px 0px;
   }
 `;
-
 
 export const RowBlockRight = styled.div`
   display: block;
@@ -122,6 +125,8 @@ export const InputContainer = styled.div`
   display: flex;
   margin: auto;
   width: 90%;
+  /* margin-left: 65px;
+  width: 60%; */
   justify-content: space-between;
 `;
 

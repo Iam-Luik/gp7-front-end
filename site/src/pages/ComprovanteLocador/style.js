@@ -6,20 +6,19 @@ export const RowBlockLeft = styled.div`
   
 
   @media (min-width: 1025px) {
-    /* background-color: tomato; */
     display: flex;
     align-items: center;
     flex-direction: column;
 
     border-right: 1px solid black;
-    /* border-right: 5px solid purple; */
     width: 50%;
+    align-items: flex-start;
 
 
     h1 {
-      align-items: center;
+      /* align-items: center;
       width: 80%;
-      margin: auto;
+      margin: auto; */
       letter-spacing: 0.07em;
       margin-bottom: 50px;
       font-size: 39px;
@@ -57,7 +56,7 @@ export const RowBlockLeft = styled.div`
       margin: auto;
       letter-spacing: 0.07em;
       margin: 0;
-      padding-bottom: 50px;
+      padding-bottom 50px;
       margin-top: -50px;
     }
 
@@ -132,15 +131,17 @@ export const ColBlocks = styled.div`
     /* background-color: turquoise; */
     display: flex;
     flex-direction: initial;
-    padding: 5% 0;
+    padding: 5%;
     margin-bottom: 70px;
   }
 `;
 
 export const TitleComprovante = styled.div`
     h1{
+      text-transform: capitalize;
+      padding-top: 30px;
        text-align: center;
-       font-size: 50px;
+       font-size: 40px;
     }
 `;
 

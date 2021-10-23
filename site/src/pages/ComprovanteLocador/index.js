@@ -14,7 +14,7 @@ const ComprovanteLocador = () => {
     <>
       <Navbar />
       <TitleComprovante>
-        <h1>COMPROVANTE</h1>
+        <h1>Comprovante</h1>
       </TitleComprovante>
       <ColBlocks>
         <RowBlockLeft>

@@ -41,9 +41,9 @@ const Locatario = () => {
         <GeneralButton button="ADICIONAR" />
         </Link>
 
-        <Link to="/bike">
+        {/* <Link to="/bike">
         <GeneralButton button="ADICIONAR" />
-        </Link>
+        </Link> */}
              <Footer />  
         </>
         );

@@ -11,7 +11,7 @@ import SignUpBike from '../pages/SignUpBike';
 import ComprovanteLocador from '../pages/ComprovanteLocador';
 import ComprovanteLocatario from '../pages/ComprovanteLocatario';
 import BicicletaFiltro from '../pages/BicicletaFiltro';
-import Locatario from '../pages/Locador';
+import Locador from '../pages/Locador';
 import NotFound from '../pages/NotFound';
 
 
@@ -31,7 +31,7 @@ const Routes = () => {
         <Route path="/direcionamento" exact component={Direcionamento} />
         <Route path="/bike" exact component={SignUpBike} />
         <Route path="/bicicleta-filtro" exact component={BicicletaFiltro} />
-        <Route path="/card" exact component={Locatario} />
+        <Route path="/card" exact component={Locador} />
         <Route path="/*" exact component={NotFound} />
       </Switch>
     </BrowserRouter>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.div`
-    background-color: white;
+    /* background-color: white; */
     width: 350px;
     height: 450px;
     padding: 24px;
@@ -12,7 +12,6 @@ export const CardStyle = styled.div`
     box-sizing: border-box;
     cursor: pointer;
     text-decoration: none;
-
 
     img{
         width: 250px;
@@ -25,6 +24,19 @@ export const CardStyle = styled.div`
         justify-content: center;
     }
 
+    /* :hover .divisor{
+        width: 100%;
+        transition: 0.8s;
+    }
+
+    .divisor{
+        height: 3px;
+        width: 0%;
+        background-color: green;
+    } */
+`;  
+
+export const CardStyleTxt = styled.div`
     :hover .divisor{
         width: 100%;
         transition: 0.8s;
@@ -35,6 +47,4 @@ export const CardStyle = styled.div`
         width: 0%;
         background-color: green;
     }
-
-    
 `;  

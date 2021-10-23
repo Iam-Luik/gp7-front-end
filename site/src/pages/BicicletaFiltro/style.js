@@ -21,11 +21,8 @@ export const Section = styled.div`
     justify-items: center;
     grid-row-gap: 30px;
 
-
     a{
         text-decoration:none;
     }
     `
-
 ;
-    

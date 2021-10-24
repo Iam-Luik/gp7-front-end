@@ -1,21 +1,18 @@
 import styled from "styled-components";
 
-
 export const RowBlock = styled.div`
   margin: 100px auto 100px auto;
   width: 500px;
-  -webkit-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
   border-radius: 40px;
   padding: 80px;
 
-  a{
+  a {
     text-decoration: none;
   }
-
 `;
-
 
 export const InputContainer = styled.div`
   display: grid;

@@ -5,7 +5,7 @@ export const ButtonStyle = styled.div`
   justify-content: center;
   padding: 5%;
   text-decoration: none;
-  
+
   button {
     border-radius: 5px;
     font-family: inherit;
@@ -25,10 +25,6 @@ export const ButtonStyle = styled.div`
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     text-decoration: none;
-
-    text{
-      text-decoration: none;
-    }
 
     &:after {
       content: "";

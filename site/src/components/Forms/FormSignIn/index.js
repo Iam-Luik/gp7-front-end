@@ -9,10 +9,8 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import GeneralButton from "../../../components/GeneralButton/index";
-import { Link } from "react-router-dom";
 import Api from "../../../services/api";
-
-import "./style.css";
+import { InputContainer } from "./style";
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingIn() {
@@ -37,7 +35,7 @@ export default function FormSingIn() {
     });
   };
 
-  /** Serve para de */
+  /** Verifica o evento de quando o mouse sai de cima do input */
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -71,39 +69,41 @@ export default function FormSingIn() {
       <div>
         <h1>Entrar</h1>
         <p>Utilize seus dados cadastrais para entrar no aplicativo</p>
-        <TextField
-          fullWidth
-          id="filled-textarea"
-          label="Email"
-          placeholder="email@email.com.br"
-          multiline
-          variant="filled"
-          type="text"
-          value={values.email}
-          onChange={handleChange("email")}
-        />
-
-        <FormControl sx={{ mt: 2, mb: 2 }} variant="filled">
-          <InputLabel htmlFor="filled-adornment-password">Senha</InputLabel>
-          <FilledInput
-            id="filled-adornment-password"
-            type={values.showPassword ? "text" : "password"}
-            value={values.password}
-            onChange={handleChange("password")}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
+        <InputContainer>
+          <TextField
+            fullWidth
+            id="filled-textarea"
+            label="Email"
+            placeholder="email@email.com.br"
+            multiline
+            variant="filled"
+            type="text"
+            value={values.email}
+            onChange={handleChange("email")}
           />
-        </FormControl>
+
+          <FormControl sx={{ mt: 2, mb: 2 }} variant="filled">
+            <InputLabel htmlFor="filled-adornment-password">Senha</InputLabel>
+            <FilledInput
+              id="filled-adornment-password"
+              type={values.showPassword ? "text" : "password"}
+              value={values.password}
+              onChange={handleChange("password")}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+        </InputContainer>
         <h3>Esqueceu a senha?</h3>
 
         <GeneralButton type="submit" button="Entrar" />

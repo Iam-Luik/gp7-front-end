@@ -6,7 +6,7 @@ import SignUpLocatario from '../pages/SignUpLocatario';
 import SignIn from '../pages/SignIn';
 import Rent from '../pages/Rent';
 import Localization from '../pages/Localization';
-import Direcionamento from '../pages/direcionamento';
+import Direcionamento from '../pages/Direcionamento';
 import SignUpBike from '../pages/SignUpBike';
 import ComprovanteLocador from '../pages/ComprovanteLocador';
 import ComprovanteLocatario from '../pages/ComprovanteLocatario';

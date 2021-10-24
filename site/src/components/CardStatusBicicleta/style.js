@@ -4,7 +4,7 @@ export const Divisona = styled.header`
 
 margin: 2vh;
   overflow: hidden;
-  height: 58vh;
+  height: 66vh;
     width: 22vw;
     border: 1px solid black;
     border-radius: 40px;
@@ -23,64 +23,66 @@ span{
   align-items: center;
   font-size:1.3rem;
 }
+
+#spanButton{
+display: flex;
+flex-direction: row;
+margin-top: 110px;
+}
       img{
         width: 100%
        }
-}
  `;
 
  export const ButtonStyle = styled.div`
   display: flex;
   justify-content: center;
-  padding: 5%;
+  outline: none;
   button {
     border-radius: 5px;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-    background: none;
-    cursor: pointer;
-    padding: 15px 65px;
-    display: inline-block;
-    margin: 15px 30px;
+    color: white;
+    background: #3AA33E;
+    padding: 10px 25px;
+    margin: 15px;
     text-transform: uppercase;
-    letter-spacing: 1px;
     font-weight: 700;
     outline: none;
-    position: relative;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-
-    &:after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
-    }
+    border: none;
   }
 
+  
+`;
+
+export const ButtonEdit = styled.div`
+   display: flex;
+  justify-content: center;
+  outline: none;
   button {
-    border: 1px solid #054107;
-    color: #054107;
-    &:after {
-      width: 0%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: #054107;
-    }
+    border-radius: 5px;
+    color: white;
+    background: #0094FF;
+    padding: 10px 25px;
+    margin: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    outline: none;
+    border: none;
+  }
+`;
 
-    &:hover,
-    &:active {
-      color: white;
-    }
-
-    &:hover:after,
-    &:active:after {
-      width: 100%;
-    }
+export const ButtonDel = styled.div`
+   display: flex;
+  justify-content: center;
+  outline: none;
+  button {
+    border-radius: 5px;
+    color: white;
+    background: red;
+    padding: 10px 25px;
+    margin: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    outline: none;
+    border: none;
   }
 `;

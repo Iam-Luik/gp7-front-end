@@ -1,7 +1,6 @@
 import { Header } from "./style";
-
-
 import imoveLogo from "../../assets/imove-logo.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -9,21 +8,25 @@ function Navbar() {
       <nav>
         <Header>
           <div>
-            {/* <Link to="/"> */}
+            <Link to="/">
               <img src={imoveLogo} alt="BigCo Inc. logo" />
-            {/* </Link> */}
+            </Link>
           </div>
           <ul>
-            {/* <Link to="/"> */}
-            <a href="home">Home</a>
-            {/* </Link> */}
-            <a href="ajuda">Ajuda</a>
-            {/* <Link to="/login"> */}
-            <a href="Login">Login</a>
-            {/* </Link> */}
-            {/* <Link to="/locatario"> */}
-            <a href="SignUpLocador"><button>Cadastre-se</button></a>
-            {/* </Link> */}
+            <Link to="/">
+            Home
+            </Link>
+            <Link to="/ajuda">
+            Ajuda
+            </Link>
+            <span>|</span>
+            <Link to="/direcionamento">
+            Cadastre-se
+            </Link>
+            <Link to="/login">
+            Entrar
+            </Link>
+            
           </ul>
         </Header>
       </nav>

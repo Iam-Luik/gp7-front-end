@@ -4,6 +4,8 @@ export const ButtonStyle = styled.div`
   display: flex;
   justify-content: center;
   padding: 5%;
+  text-decoration: none;
+  
   button {
     border-radius: 5px;
     font-family: inherit;
@@ -22,6 +24,11 @@ export const ButtonStyle = styled.div`
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
+    text-decoration: none;
+
+    text{
+      text-decoration: none;
+    }
 
     &:after {
       content: "";
@@ -36,6 +43,7 @@ export const ButtonStyle = styled.div`
   button {
     border: 1px solid #054107;
     color: #054107;
+    text-decoration: none;
     &:after {
       width: 0%;
       height: 100%;

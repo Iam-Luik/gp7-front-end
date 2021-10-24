@@ -4,20 +4,14 @@ import styled from "styled-components";
 export const RowBlockLeft = styled.div`
   display: block;
   @media (min-width: 1025px) {
-    /* background-color: tomato; */
     display: flex;
-    align-items: center;
     flex-direction: column;
-
     border-right: 1px solid black;
-    /* border-right: 5px solid purple; */
     width: 50%;
+    align-items: flex-start;
 
 
     h1 {
-      align-items: center;
-      width: 80%;
-      margin: auto;
       letter-spacing: 0.07em;
       margin: 0;
 
@@ -40,7 +34,7 @@ export const RowBlockLeft = styled.div`
       margin: auto;
       letter-spacing: 0.07em;
       margin: 0;
-      padding-bottom 50px;
+      padding-bottom: 50px;
     }
 
     p {
@@ -57,7 +51,6 @@ export const RowBlockLeft = styled.div`
 export const RowBlockRight = styled.div`
   display: block;
   @media (min-width: 1025px) {
-    /* background-color: tomato; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -93,15 +86,16 @@ export const RowBlockRight = styled.div`
 export const ColBlocks = styled.div`
   display: block;
   @media (min-width: 1025px) {
-    /* background-color: turquoise; */
     display: flex;
     flex-direction: initial;
-    padding: 5% 0;
+    padding: 5%;
   }
 `;
 
 export const TitleLocalization = styled.div`
     h1{
+      font-size: 40px;
+       padding-top: 30px;
        text-align: center;
     }
 `;

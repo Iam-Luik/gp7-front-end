@@ -14,42 +14,28 @@ export const RowBlocks = styled.div`
 `;
 
 export const RowBlock = styled.div`
-  margin-top: 6%;
-  margin-left: auto;
-    margin-right: auto; 
-    width: 40%;
-    border: 1px solid black;
-    border-radius: 40px;
-    margin-bottom: 100px;
-
-  h1 {
-    width: 80%;
-    margin: auto;
-    letter-spacing: 0.07em;
-    font-size: 40px;
-    margin-top: 60px;
-  }
-
-  h3 {
-    width: 80%;
-    margin: auto;
-    letter-spacing: 0.07em;
-    margin-top: 20px;
-    color: #3AA33E;
-  }
-  p {
-    width: 80%;
-    margin: auto;
-    line-height: 35px;
-    font-size: 20px;
-    letter-spacing: 0.07em;
-  }
-`;
-
-
-export const InputContainer = styled.div`
   display: flex;
-  margin: auto;
-  width: 80%;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto; 
+  width: 300px;
+  -webkit-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+  border-radius: 40px;
+  margin-bottom: 100px;
+  padding: 80px;
+  
+  a{
+    text-decoration: none;
+  }
+
+  h3{
+    color: #054107;
+  }
+
+  
 `;
+

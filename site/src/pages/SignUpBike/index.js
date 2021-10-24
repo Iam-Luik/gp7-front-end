@@ -30,8 +30,10 @@ const SignUpBike = () => {
         </InputContainer>
 <RowBlocks>
         <img src={clips} alt="" /><h2>Anexe aqui algumas fotos de sua <br></br>bicicleta.</h2>
-        </RowBlocks>        
+        </RowBlocks>     
+        <Link to="/card">   
           <GeneralButton button="Cadastrar bicicleta" />
+          </Link>
       </RowBlock>
 
 

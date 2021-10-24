@@ -1,8 +1,8 @@
 import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import './style.css'
 
 export default function SelectAutoWidth({props}) {
   const [option, setOption] = React.useState('');
@@ -15,14 +15,11 @@ export default function SelectAutoWidth({props}) {
   return ( 
     <div>
       <FormControl sx={{ m: 1, minWidth: 200, maxWidth: 200 }}>
-        <InputLabel id="demo-simple-select-autowidth-label">{props.titulo}</InputLabel>
         <Select
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth"
+          
           value={option}
           onChange={handleChange}
-          autoWidth
-          label={props.titulo}
+          displayEmpty
         >
           <MenuItem value="">
             <em>Nenhum</em>
@@ -35,3 +32,20 @@ export default function SelectAutoWidth({props}) {
     </div>
   );
 }
+
+{/* <FormControl sx={{ m: 1, minWidth: 120 }}>
+<Select
+  value={age}
+  onChange={handleChange}
+  displayEmpty
+  inputProps={{ 'aria-label': 'Without label' }}
+>
+  <MenuItem value="">
+    <em>None</em>
+  </MenuItem>
+  <MenuItem value={10}>Ten</MenuItem>
+  <MenuItem value={20}>Twenty</MenuItem>
+  <MenuItem value={30}>Thirty</MenuItem>
+</Select>
+<FormHelperText>Without label</FormHelperText>
+</FormControl> */}

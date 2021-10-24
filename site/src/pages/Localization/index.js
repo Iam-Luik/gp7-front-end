@@ -4,7 +4,7 @@ import Bibi from "../../assets/bibi.png";
 import GeneralInput from "../../components/GeneralInput";
 import GeneralInputPssw from "../../components/GeneralInputPssw";
 import GeneralButton from "../../components/GeneralButton";
-
+import { Link } from "react-router-dom";
 
 import { RowBlockLeft, RowBlockRight, ColBlocks, TitleLocalization } from "./style";
 
@@ -29,8 +29,10 @@ const Localization = () => {
           <img src={Bibi} alt="" />
         </RowBlockRight>
       </ColBlocks>
-      <GeneralButton button="Ver Informações" />
 
+      <Link to="/rent">
+      <GeneralButton button="Ver Informações" />
+      </Link>
       <Footer />  
     </>
   );

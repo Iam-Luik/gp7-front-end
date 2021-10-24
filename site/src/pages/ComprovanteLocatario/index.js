@@ -4,6 +4,7 @@ import Bibi from "../../assets/bibi.png";
 import GeneralInput from "../../components/GeneralInput";
 import GeneralInputPssw from "../../components/GeneralInputPssw";
 import GeneralButton from "../../components/GeneralButton";
+import { Link } from "react-router-dom";
 
 
 import { RowBlockLeft, RowBlockRight, ColBlocks, TitleComprovante } from "./style";
@@ -13,7 +14,7 @@ const ComprovanteLocatario = () => {
     <>
       <Navbar />
       <TitleComprovante>
-        <h1>COMPROVANTE</h1>
+        <h1>Comprovante</h1>
       </TitleComprovante>
       <ColBlocks>
         <RowBlockLeft>
@@ -31,7 +32,9 @@ const ComprovanteLocatario = () => {
         <RowBlockRight>
           <img src={Bibi} alt="" />
           <h2>00:00</h2>
+          <Link to="/card">
           <GeneralButton button="Devolver" />
+          </Link>
         </RowBlockRight>
       </ColBlocks>
 

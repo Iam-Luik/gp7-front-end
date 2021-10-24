@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
+
 export const Header = styled.header`
+  padding: 0px 150px 0px 150px;
   background-color: #000;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 7vh;
-  padding: 1vh;
+  height: 11vh;
+  
+
+  span {
+    color: white;
+  }
 
   a {
   text-decoration: none; 
@@ -22,7 +28,7 @@ export const Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 30%;
+    width: 600px;
 
     @media only screen and (max-width: 900px) {
       width: 55%;
@@ -36,11 +42,15 @@ export const Header = styled.header`
 
   ul a {
     color: white;
-    text-transform: uppercase;
+    text-transform: none;
     list-style-type: none;
     cursor: pointer;
     text-decoration: none;
-
+    font-family: "Circular Black";
+    :hover{
+      color: #00ab30;
+    }
+    
     :after {
       content: "";
       width: 0;
@@ -54,6 +64,7 @@ export const Header = styled.header`
     :hover:after {
       width: 100%;
       background: #00ab30;
+      
     }
 
     @media only screen and (max-width: 600px) {

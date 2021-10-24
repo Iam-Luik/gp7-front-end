@@ -21,6 +21,7 @@ export default function FormSingUpLocador() {
     bairro: "",
     rua: "",
     numero: "",
+    tipoUsuario: "locador",
   });
 
   /** Se caso algum item do campo for alterado, os valores do input são setados */

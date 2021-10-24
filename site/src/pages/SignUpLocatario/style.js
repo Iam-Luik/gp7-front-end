@@ -1,47 +1,26 @@
 import styled from "styled-components";
 
-export const RowBlocks = styled.div`
-/* border: 1px solid #000000; */
-    margin-top: 50px;
-    margin-bottom: 10px;   
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto; 
-`;
 
 export const RowBlock = styled.div`
-  margin-top: 6%;
-  margin-left: auto;
-    margin-right: auto; 
-    width: 74%;
-    border: 1px solid black;
-    border-radius: 40px;
-    margin-bottom: 100px;
+  margin: 100px auto 100px auto;
+  width: 500px;
+  -webkit-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 51px -20px rgba(0,0,0,0.75);
+  border-radius: 40px;
+  padding: 80px;
 
-    h1 {
-      width: 80%;
-      margin: auto;
-      letter-spacing: 0.07em;
-      font-size: 40px;
-      margin-top: 60px;
-    }
-    p {
-      width: 80%;
-      margin: auto;
-      line-height: 35px;
-      font-size: 20px;
-      letter-spacing: 0.07em;
-    }
+  a{
+    text-decoration: none;
+  }
 
-    a{
-      text-decoration: none;
-    }
 `;
 
 
 export const InputContainer = styled.div`
-  display: flex;
-  margin: auto;
-  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 28px;
+  width: 100%;
   justify-content: space-between;
 `;

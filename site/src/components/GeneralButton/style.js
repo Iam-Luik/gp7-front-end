@@ -26,6 +26,10 @@ export const ButtonStyle = styled.div`
     transition: all 0.3s;
     text-decoration: none;
 
+    text{
+      text-decoration: none;
+    }
+
     &:after {
       content: "";
       position: absolute;

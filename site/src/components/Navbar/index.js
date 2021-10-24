@@ -19,12 +19,14 @@ function Navbar() {
             <Link to="/ajuda">
             Ajuda
             </Link>
-            <Link to="/login">
-            Login
-            </Link>
+            <span>|</span>
             <Link to="/direcionamento">
-            <button>Cadastre-se</button>
+            Cadastre-se
             </Link>
+            <Link to="/login">
+            Entrar
+            </Link>
+            
           </ul>
         </Header>
       </nav>

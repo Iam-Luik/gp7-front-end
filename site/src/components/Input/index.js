@@ -4,11 +4,7 @@ import TextField from '@mui/material/TextField';
 import './style.css';
 
 export default function Input({placeholder, label}) {
-  const [value, setValue] = React.useState('Controlled');
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  
 
   return (
     <Box

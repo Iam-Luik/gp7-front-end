@@ -22,7 +22,7 @@ export default function SelectAutoWidth({props}) {
           displayEmpty
         >
           <MenuItem value="">
-            <em>Nenhum</em>
+            <em>{props.titulo}</em>
           </MenuItem>
           {
             props.valores.map(item => <MenuItem value={item.value}> {item.label} </MenuItem>)

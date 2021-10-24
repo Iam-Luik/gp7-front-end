@@ -5,7 +5,6 @@ import SecurityIcon from "../../assets/security-icon.png";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Cards from "../../components/Cards";
-import HomeButton from "../../components/HomeButton";
 import Api from "../../services/api";
 import React, { useEffect } from "react";
 

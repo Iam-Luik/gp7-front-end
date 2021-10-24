@@ -90,7 +90,7 @@ export default function FormSingIn() {
             }
           />
         </FormControl>
-          <h3>Esqueceu a senha?</h3>
+          <h3>Esqueceu a senha??</h3>
           <Link to="/card">
             <GeneralButton button="Entrar" />
           </Link>

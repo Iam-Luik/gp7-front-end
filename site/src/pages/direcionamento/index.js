@@ -23,7 +23,7 @@ const Direcionamento = () => {
             <GeneralButton id="Arrentar" button="Arrentar bicicleta" />
             </Link>
             <span></span>
-          </RowBlock> 
+          </RowBlock>    
       <Footer />
     </>
   );

@@ -24,16 +24,17 @@ export const CardStyle = styled.div`
         justify-content: center;
     }
 
-    /* :hover .divisor{
+     :hover .divisor{
         width: 100%;
         transition: 0.8s;
     }
 
     .divisor{
+        margin-top: 10px;
         height: 3px;
         width: 0%;
         background-color: green;
-    } */
+    } 
 `;  
 
 export const CardStyleTxt = styled.div`

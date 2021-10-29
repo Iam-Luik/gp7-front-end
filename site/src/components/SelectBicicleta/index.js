@@ -1,14 +1,9 @@
-import BicicletaCard from "../../components/BicicletaCard";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
-import SelectBicicleta from "../../components/SelectBicicleta";
-import { Section, SelectFilter } from './style';
-
-const bicicleta = {
-  imagem: "https://caloi.com/wp-content/uploads/2021/05/Caloi-City-Tour-Comp-lateral-1500x900.jpg",
-  titulo: "E-VIBE ELITE FS PRO",
-  preco: "R$ 5,00 por hora",
-};
+import * as React from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Box from '@mui/material/Box';
 
 const categoria = 
   {
@@ -154,23 +149,36 @@ const preco =
   } 
 ;
 
-const BicicletaFiltro = () => {
-  return (
-    <>
-      <Navbar />
-        <SelectFilter>
-          <SelectBicicleta></SelectBicicleta>
-        </SelectFilter>
-        <Section>
-          <BicicletaCard props={bicicleta}></BicicletaCard>
-          <BicicletaCard props={bicicleta}></BicicletaCard>
-          <BicicletaCard props={bicicleta}></BicicletaCard>
-          <BicicletaCard props={bicicleta}></BicicletaCard>
-          <BicicletaCard props={bicicleta}></BicicletaCard>
-        </Section>
-        <Footer />
-    </>
-  );
-};
+export default function SelectBicicleta() {
+  const [values, setValues] = React.useState({
+    categoria: ""
+  });
 
-export default BicicletaFiltro;
+  /** Se caso algum item do campo for alterado, os valores do input são setados */
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+    console.log(values);
+  };
+
+
+  return (
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <Select
+          value={values.categoria}
+          onChange={handleChange()}
+          displayEmpty
+          inputProps={{ 'aria-label': 'Without label' }}
+        >
+          <MenuItem value="0">
+            <em>None</em>
+          </MenuItem>
+          {
+            categoria.valores.map(item => <MenuItem value={item.value}> {item.label} </MenuItem>)
+          } 
+        </Select>
+      </FormControl>
+    </Box>
+  );
+}
+

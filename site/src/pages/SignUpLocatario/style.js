@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  min-height: 63vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const RowBlock = styled.div`
   margin: 14px auto 14px auto;
@@ -10,12 +16,10 @@ export const RowBlock = styled.div`
   border-radius: 40px;
   padding: 40px 60px;
 
-  a{
+  a {
     text-decoration: none;
   }
-
 `;
-
 
 export const InputContainer = styled.div`
   display: grid;

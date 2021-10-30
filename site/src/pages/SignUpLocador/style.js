@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  min-height: 63vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const RowBlock = styled.div`
   margin: 14px auto 14px auto;
   width: 500px;

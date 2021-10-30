@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Header = styled.header`
   padding: 0px 150px 0px 150px;
   background-color: #000;
@@ -8,17 +7,16 @@ export const Header = styled.header`
   justify-content: space-around;
   align-items: center;
   height: 11vh;
-  
 
   span {
     color: white;
   }
 
   a {
-  text-decoration: none; 
-  color: white;
-  font-size: 13.33333px
-  }  
+    text-decoration: none;
+    color: white;
+    font-size: 13.33333px;
+  }
 
   ul {
     font-weight: 500;
@@ -47,10 +45,10 @@ export const Header = styled.header`
     cursor: pointer;
     text-decoration: none;
     font-family: "Circular Black";
-    :hover{
+    :hover {
       color: #00ab30;
     }
-    
+
     :after {
       content: "";
       width: 0;
@@ -64,7 +62,6 @@ export const Header = styled.header`
     :hover:after {
       width: 100%;
       background: #00ab30;
-      
     }
 
     @media only screen and (max-width: 600px) {
@@ -106,13 +103,13 @@ export const Header = styled.header`
     @media only screen and (max-width: 768px) {
       padding: 2px;
       font-size: 5px;
-    }  
+    }
   }
 `;
 
 export const HeaderSubscriber = styled.div`
   @media only screen and (max-width: 768px) {
-  background: red;
-  width: 400px !important;
+    background: red;
+    width: 400px !important;
   }
 `;

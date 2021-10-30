@@ -1,3 +1,4 @@
+import * as React from "react";
 import BicicletaCard from "../../components/BicicletaCard";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
@@ -11,7 +12,7 @@ const bicicleta = {
   preco: "R$ 5,00 por hora",
 };
 
-const categoria = {
+const categorias = {
   titulo: "categoria",
   valores: [
     {
@@ -44,7 +45,7 @@ const categoria = {
     },
   ],
 };
-const aro = {
+const aros = {
   titulo: "tamanho aro",
   valores: [
     {
@@ -61,7 +62,7 @@ const aro = {
     },
   ],
 };
-const cor = {
+const cores = {
   titulo: "cor",
   valores: [
     {
@@ -90,7 +91,7 @@ const cor = {
     },
   ],
 };
-const velocidade = {
+const velocidades = {
   titulo: "velocidade",
   valores: [
     {
@@ -115,7 +116,7 @@ const velocidade = {
     },
   ],
 };
-const preco = {
+const precos = {
   titulo: "preço por hora",
   valores: [
     {
@@ -141,15 +142,69 @@ const preco = {
   ],
 };
 const BicicletaFiltro = () => {
+  const [categoria, setCategoria] = React.useState("");
+
+  const handleChangeCategoria = (event) => {
+    setCategoria(event.target.value);
+  };
+
+  const [aro, setAro] = React.useState("");
+
+  const handleChangeAro = (event) => {
+    setAro(event.target.value);
+  };
+
+  const [cor, setCor] = React.useState("");
+
+  const handleChangeCor = (event) => {
+    setCor(event.target.value);
+  };
+
+  const [velocidade, setVelocidade] = React.useState("");
+
+  const handleChangeVelocidade = (event) => {
+    setVelocidade(event.target.value);
+  };
+
+  const [preco, setPreco] = React.useState("");
+
+  const handleChangePreco = (event) => {
+    setPreco(event.target.value);
+  };
+
   return (
     <>
       <Navbar />
       <SelectFilter>
-        <Select props={categoria}></Select>
-        <Select props={aro}></Select>
-        <Select props={cor}></Select>
-        <Select props={velocidade}></Select>
-        <Select props={preco}></Select>
+        <Select
+          props={categorias}
+          handleChange={handleChangeCategoria}
+          value={categoria}
+        ></Select>
+
+        <Select
+          props={aros}
+          handleChange={handleChangeAro}
+          value={aro}
+        ></Select>
+
+        <Select
+          props={cores}
+          handleChange={handleChangeCor}
+          value={cor}
+        ></Select>
+
+        <Select
+          props={velocidades}
+          handleChange={handleChangeVelocidade}
+          value={velocidade}
+        ></Select>
+
+        <Select
+          props={precos}
+          handleChange={handleChangePreco}
+          value={preco}
+        ></Select>
       </SelectFilter>
       <Section>
         <BicicletaCard props={bicicleta}></BicicletaCard>

@@ -4,6 +4,7 @@ footer {
   width: 100%;
   background-color: black;
   color: white;
+  height: 26vh;
 }
 
 .footer-container {
@@ -20,11 +21,10 @@ footer {
   height: 30px;
 }
 
-.caixa{
+.caixa {
   /* width: 1200px; */
   /* margin-right: 200px; */
 }
-
 
 .footer-info {
   padding: 20px 0;

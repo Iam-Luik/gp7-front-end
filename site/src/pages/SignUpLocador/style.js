@@ -1,13 +1,20 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  min-height: 63vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const RowBlock = styled.div`
-  margin: 100px auto 100px auto;
+  margin: 24px auto 24px auto;
   width: 500px;
   -webkit-box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
   border-radius: 40px;
-  padding: 80px;
+  padding: 40px 60px;
 
   a {
     text-decoration: none;

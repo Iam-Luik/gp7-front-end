@@ -11,6 +11,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import GeneralButton from "../../../components/GeneralButton/index";
 import Api from "../../../services/api";
 import { InputContainer } from "./style";
+import { Link } from "react-router-dom";
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingIn() {
@@ -49,6 +50,15 @@ export default function FormSingIn() {
     })
       .then((response) => {
         console.log("autenticado com sucesso: ", response);
+        sessionStorage.setItem("usuario", response.data);
+        if (response.data.tipoUsuario === "Locador") {
+          console.log("redirecionamento tela locador");
+          <Link to="/card"></Link>;
+        } else if (response.data.tipoUsuario === "Locatario") {
+          <Link to="/card"></Link>;
+        } else {
+          alert("Ocorreu um erro ao autenticar usuário, tente novamente!");
+        }
         console.log("aqui direciona para a tela de card");
       })
       .catch((err) => {

@@ -24,15 +24,35 @@ export const CardStyle = styled.div`
     justify-content: center;
   }
 
-  :hover .divisor {
+  :hover .divisor-sucess {
     width: 100%;
     transition: 0.4s;
   }
 
-  .divisor {
+  .divisor-sucess {
     margin-top: 10px;
+    margin-bottom: 50px;
     height: 3px;
     width: 0%;
     background-color: green;
+  }
+
+  :hover .divisor-error {
+    width: 100%;
+    transition: 0.4s;
+  }
+
+  .divisor-error {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    height: 3px;
+    width: 0%;
+    background-color: #d32f2f;
+  }
+
+  .botoes {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
   }
 `;

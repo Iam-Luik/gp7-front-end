@@ -8,6 +8,7 @@ export const Container = styled.div`
 `;
 
 export const RowBlock = styled.div`
+  margin: 24px auto 24px auto;
   display: flex;
   justify-content: center;
   align-items: center;

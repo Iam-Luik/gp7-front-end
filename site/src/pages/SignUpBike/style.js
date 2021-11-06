@@ -2,14 +2,22 @@ import styled from "styled-components";
 
 export const RowBlocks = styled.div`
 
-margin-top: 50px;
+margin-top: 30px;
 margin-bottom: 10px;   
 width: 80%;
 margin-left: auto;
     margin-right: auto;
     img{
+      margin-top: 30px;
         width:5%;
     }
+    h3 {
+    
+    letter-spacing: 0.07em;
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 0px;
+  }
   
 `;
 
@@ -29,13 +37,14 @@ export const RowBlock = styled.div`
       font-size: 40px;
       margin-top: 60px;
     }
+
     h2 {
         width: 80%;
         margin: auto;
         letter-spacing: 0.07em;
-        font-size: 15px;
+        font-size: 20px;
         margin-top: -40px;
-        font-weight: 500;
+        font-weight: 400;
       }
     p {
       width: 80%;
@@ -54,4 +63,25 @@ export const InputContainer = styled.div`
   width: 80%;
   justify-content: space-between;
   
+`;
+
+export const TxtContainer = styled.div`
+  display: flex;
+  width: 100%;
+  h3 {
+    
+      margin: auto;
+      letter-spacing: 0.07em;
+      font-size: 20px;
+      margin-top: 50px;
+      font-weight: 400;
+      margin-left: 0px;
+    }
+
+    img{
+      margin-top: 2vw;
+      margin-right: 8vh;
+      margin-bottom: 2vw;
+        width:10%;
+    }
 `;

@@ -13,6 +13,7 @@ import ComprovanteLocatario from '../pages/ComprovanteLocatario';
 import BicicletaFiltro from '../pages/BicicletaFiltro';
 import Locador from '../pages/Locador';
 import NotFound from '../pages/NotFound';
+import Senha from '../pages/Senha';
 
 
 const Routes = () => {
@@ -32,6 +33,7 @@ const Routes = () => {
         <Route path="/bike" exact component={SignUpBike} />
         <Route path="/bicicleta-filtro" exact component={BicicletaFiltro} />
         <Route path="/card" exact component={Locador} />
+        <Route path="/senha" exact component={Senha} />
         <Route path="/*" exact component={NotFound} />
       </Switch>
     </BrowserRouter>

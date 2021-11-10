@@ -11,6 +11,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import GeneralButton from "../../../components/GeneralButton/index";
 import Api from "../../../services/api";
 import { InputContainer } from "./style";
+import { Link } from "react-router-dom";  
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingIn() {
@@ -104,7 +105,9 @@ export default function FormSingIn() {
             />
           </FormControl>
         </InputContainer>
+        <Link to="/senha">
         <h3>Esqueceu a senha?</h3>
+        </Link>
 
         <GeneralButton type="submit" button="Entrar" />
       </div>

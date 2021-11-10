@@ -25,7 +25,7 @@ export const RowBlock = styled.div`
   margin-top: 6%;
   margin-left: auto;
     margin-right: auto; 
-    width: 74%;
+    width: 45%;
     border: 1px solid black;
     border-radius: 40px;
     margin-bottom: 100px;
@@ -34,7 +34,7 @@ export const RowBlock = styled.div`
       width: 80%;
       margin: auto;
       letter-spacing: 0.07em;
-      font-size: 40px;
+      font-size: 35px;
       margin-top: 60px;
     }
 
@@ -62,6 +62,7 @@ export const InputContainer = styled.div`
   margin: auto;
   width: 80%;
   justify-content: space-between;
+  margin-left: 130px;
 
 
   button{

@@ -6,7 +6,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 11vh;
+  height: 10vh;
 
   span {
     color: white;

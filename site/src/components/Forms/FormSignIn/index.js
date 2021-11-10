@@ -11,7 +11,12 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import GeneralButton from "../../../components/GeneralButton/index";
 import Api from "../../../services/api";
 import { InputContainer } from "./style";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";  
+=======
+import OutlinedInput from "@mui/material/OutlinedInput";
+import { FormHelperText } from "@mui/material";
+>>>>>>> 55b1348cf8dcf6471171067bad9e7ac12c574189
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingIn() {
@@ -20,6 +25,7 @@ export default function FormSingIn() {
     email: "",
     password: "",
     showPassword: false,
+    error: false,
   });
 
   /** Se caso algum item do campo for alterado, os valores do input são setados */
@@ -53,7 +59,8 @@ export default function FormSingIn() {
         console.log("aqui direciona para a tela de card");
       })
       .catch((err) => {
-        alert(err);
+        setValues({ ...values, error: true, password: "" });
+        console.log("Ocorreu um erro ao obter dados de usuário", err);
       });
   };
 
@@ -73,20 +80,25 @@ export default function FormSingIn() {
         <InputContainer>
           <TextField
             fullWidth
-            id="filled-textarea"
+            id="outlined-password-input"
             label="Email"
-            placeholder="email@email.com.br"
-            multiline
-            variant="filled"
             type="text"
             value={values.email}
+            color="success"
+            error={values.error}
             onChange={handleChange("email")}
           />
 
-          <FormControl sx={{ mt: 2, mb: 2 }} variant="filled">
-            <InputLabel htmlFor="filled-adornment-password">Senha</InputLabel>
-            <FilledInput
-              id="filled-adornment-password"
+          <FormControl sx={{ mt: 2, mb: 2 }} variant="outlined">
+            <InputLabel
+              htmlFor="outlined-adornment-password"
+              color="success"
+              error={values.error}
+            >
+              Senha
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
               type={values.showPassword ? "text" : "password"}
               value={values.password}
               onChange={handleChange("password")}
@@ -97,17 +109,30 @@ export default function FormSingIn() {
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
+                    color={values.error ? "error" : "default"}
                   >
                     {values.showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               }
+              error={values.error}
+              label="Senha"
+              color="success"
             />
           </FormControl>
+          {values.error === true ? (
+            <p>Login e/ou senha incorreto(s)</p>
+          ) : (
+            <p></p>
+          )}
+          <h3>Esqueceu a senha?</h3>
         </InputContainer>
+<<<<<<< HEAD
         <Link to="/senha">
         <h3>Esqueceu a senha?</h3>
         </Link>
+=======
+>>>>>>> 55b1348cf8dcf6471171067bad9e7ac12c574189
 
         <GeneralButton type="submit" button="Entrar" />
       </div>

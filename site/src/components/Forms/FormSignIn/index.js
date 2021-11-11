@@ -10,8 +10,12 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import GeneralButton from "../../../components/GeneralButton/index";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import LoadingButton from '@mui/lab/LoadingButton';
+
+import Button from '@mui/material/Button';
 import Api from "../../../services/api";
 import { InputContainer } from "./style";
+import { ButtonWrapper } from "./style";
 import { Link } from "react-router-dom";  
 
 /** Padrão de formulários a ser seguidos no projeto */
@@ -22,6 +26,7 @@ export default function FormSingIn() {
     password: "",
     showPassword: false,
     error: false,
+    loading: false,
   });
 
   /** Se caso algum item do campo for alterado, os valores do input são setados */
@@ -45,6 +50,7 @@ export default function FormSingIn() {
 
   /** Chama o endpoint do backend de autenticação*/
   const handleSubmit = (event) => {
+    setValues({ ...values, loading: true});
     event.preventDefault();
     Api.post("http://localhost:8080/usuario/autenticar", {
       email: values.email,
@@ -53,10 +59,12 @@ export default function FormSingIn() {
       .then((response) => {
         console.log("autenticado com sucesso: ", response);
         console.log("aqui direciona para a tela de card");
+        setValues({ ...values, loading: false});
+
       })
       .catch((err) => {
-        setValues({ ...values, error: true, password: "" });
         console.log("Ocorreu um erro ao obter dados de usuário", err);
+        setValues({ ...values, error: true, password: "", loading: false });
       });
   };
 
@@ -125,8 +133,15 @@ export default function FormSingIn() {
         <Link to="/email">
         <h3>Esqueceu a senha?</h3>
         </Link>
-
-        <GeneralButton type="submit" button="Entrar" />
+        <ButtonWrapper>
+          {values.loading === true ? (
+          <LoadingButton loading variant="contained">
+            Submit
+          </LoadingButton>  
+        ) : (<Button variant="contained" type="submit">Entrar</Button>)}
+        </ButtonWrapper>
+        
+        
       </div>
     </Box>
   );

@@ -14,26 +14,25 @@ import { RowBlocks, RowBlock, InputContainer, TxtContainer } from "./style";
 import { Link } from "react-router-dom";
 
 /** Padrão de formulários a ser seguidos no projeto */
-const Senha = () => {
+const Email = () => {
     /** Define os get e set dos valores */
     return (
         <>
             <Navbar />
             <RowBlock>
                 <h1>ATUALIZAÇÃO DE SENHA</h1>
-                <p>Digite sua nova senha para finalizar</p>
+                <p>Digite seu email cadastrado para criar uma nova senha</p>
 
                
         
                     <InputContainer>
-                    <GeneralInput label="Digite sua nova senha *" onChange={""} />
+                    <GeneralInput label="Digite seu email *" onChange={""} />
                     </InputContainer>
-                    <InputContainer>
-                    <GeneralInput label="Confirme sua senha *" onChange={""} />
-                    </InputContainer>
-                    <Link to="/login">
+
+                    <Link to="/codigo">
                 <GeneralButton type="submit" button="Continuar" />
                 </Link>
+
             </RowBlock>
 
 
@@ -43,4 +42,4 @@ const Senha = () => {
 }
 
 
-export default Senha;
+export default Email;

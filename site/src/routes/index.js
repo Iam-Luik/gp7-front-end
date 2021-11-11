@@ -14,6 +14,8 @@ import BicicletaFiltro from '../pages/BicicletaFiltro';
 import Locador from '../pages/Locador';
 import NotFound from '../pages/NotFound';
 import Senha from '../pages/Senha';
+import Email from '../pages/Email';
+import Codigo from '../pages/Codigo';
 
 
 const Routes = () => {
@@ -34,6 +36,8 @@ const Routes = () => {
         <Route path="/bicicleta-filtro" exact component={BicicletaFiltro} />
         <Route path="/card" exact component={Locador} />
         <Route path="/senha" exact component={Senha} />
+        <Route path="/email" exact component={Email} />
+        <Route path="/codigo" exact component={Codigo} />
         <Route path="/*" exact component={NotFound} />
       </Switch>
     </BrowserRouter>

@@ -9,14 +9,10 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import GeneralButton from "../../../components/GeneralButton/index";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import Api from "../../../services/api";
 import { InputContainer } from "./style";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";  
-=======
-import OutlinedInput from "@mui/material/OutlinedInput";
-import { FormHelperText } from "@mui/material";
->>>>>>> 55b1348cf8dcf6471171067bad9e7ac12c574189
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingIn() {
@@ -125,14 +121,10 @@ export default function FormSingIn() {
           ) : (
             <p></p>
           )}
-          <h3>Esqueceu a senha?</h3>
         </InputContainer>
-<<<<<<< HEAD
-        <Link to="/senha">
+        <Link to="/email">
         <h3>Esqueceu a senha?</h3>
         </Link>
-=======
->>>>>>> 55b1348cf8dcf6471171067bad9e7ac12c574189
 
         <GeneralButton type="submit" button="Entrar" />
       </div>

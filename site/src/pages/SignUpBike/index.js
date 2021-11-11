@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import GeneralInput from "../../components/GeneralInput";
+import Upload from "../../components/Upload";
 import InputFile from "../../components/InputFile";
 import GeneralInputPssw from "../../components/GeneralInputPssw";
 import GeneralButton from "../../components/GeneralButton";
@@ -9,9 +10,22 @@ import ButtonFile from "../../components/ButtonFile";
 import clips from "../../assets/paper-clip.png";
 import txtIcone from "../../assets/txtIcone.png";
 import Api from "../../services/api"
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Stack from '@mui/material/Stack';
+
+
 
 import { RowBlocks, RowBlock, InputContainer, TxtContainer } from "./style";
 import { Link } from "react-router-dom";
+
+
+
+const Input = styled('input')({
+  display: 'none',
+});
 
 
 const SignUpBike = () => {
@@ -45,7 +59,6 @@ const SignUpBike = () => {
 
   function gravar(e) {
     e.preventDefault();
-      alert("Por favor preencha um valor válido");
     Api.post("http://localhost:8080/bicicleta/cadastrar", {
       "marca": marca,
       "modelo": modelo,
@@ -102,11 +115,17 @@ const SignUpBike = () => {
               <ButtonFile source={txtIcone} click={baixarArquivo} />
             </TxtContainer>
             
-            <form onSubmit={gravar}>
-              <input type="file" />
-            </form>
             
+              <div>
+         <label htmlFor="contained-button-file">
+        <Input accept="image/*" id="contained-button-file" multiple type="file" />
+        <Button variant="contained" component="span">
+          Upload
+        </Button>
+      </label>
+           </div> 
             <h3>Adicione o arquivo com os dados de suas bicicletas.</h3>
+            
             <img  src={clips} alt="" /><h2>Anexe aqui algumas fotos de sua bicicleta.</h2>
           </RowBlocks>
           <form onSubmit={gravar}>

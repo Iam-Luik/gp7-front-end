@@ -1,67 +1,99 @@
-import React, { useState } from 'react';
-import Navbar from "../../components/Navbar";
+import TextField from "@mui/material/TextField";
+import React from "react";
+import { useHistory } from "react-router";
 import Footer from "../../components/Footer";
-import GeneralInput from "../../components/GeneralInput";
-import InputFile from "../../components/InputFile";
-import GeneralInputPssw from "../../components/GeneralInputPssw";
-import GeneralButton from "../../components/GeneralButton";
-import ButtonFile from "../../components/ButtonFile";
-import clips from "../../assets/paper-clip.png";
-import txtIcone from "../../assets/txtIcone.png";
-import Api from "../../services/api"
-
-import { RowBlocks, RowBlock, InputContainer, TxtContainer } from "./style";
-import { Link } from "react-router-dom";
-import { useHistory } from 'react-router';
-
+import Navbar from "../../components/Navbar";
+import Api from "../../services/api";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { Container, RowBlock, ButtonWrapper, Error } from "./style";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 /** Padrão de formulários a ser seguidos no projeto */
-const Email = () => {
+export default function Email() {
+  const history = useHistory();
 
-const history = useHistory();
-  const [emailSolicitado, setEmailSolicitado] = useState("");
+  const [values, setValues] = React.useState({
+    email: "",
+    error: false,
+    loading: false,
+  });
 
- function enviarEmail(e) {
-    e.preventDefault();
-    Api.post("http://localhost:8080/usuario/enviar-email-senha/"+ emailSolicitado, {}).then((resposta) => {
-      if (resposta.status === 200) {
-        localStorage.setItem("cod", resposta.data);
-        localStorage.setItem("email", emailSolicitado);
-                history.push('/codigo');
-      }
-    }).catch((erro) => {
-      console.log(erro)
-    })
-  
-  }
+  /** Se caso algum item do campo for alterado, os valores do input são setados */
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+    console.log(values);
+  };
 
+  /** Chama o endpoint do backend de autenticação*/
+  const handleSubmit = (event) => {
+    setValues({ ...values, loading: true });
+    event.preventDefault();
+    Api.post("http://localhost:8080/usuario/enviar-email-senha/" + values.email)
+      .then((response) => {
+        console.log("código de recuperação enviado com sucesso: ", response);
+        sessionStorage.setItem("cod", response.data);
+        sessionStorage.setItem("email", values.email);
+        setValues({ ...values, loading: false });
+        history.push("/codigo");
+      })
+      .catch((err) => {
+        console.log("Ocorreu um erro ao obter dados de usuário", err);
+        setValues({ ...values, error: true, password: "", loading: false });
+      });
+  };
 
-    /** Define os get e set dos valores */
-    return (
-        <>
-            <Navbar />
-            <RowBlock>
-                <h1>ATUALIZAÇÃO DE SENHA</h1>
-                <p>Digite seu email cadastrado para criar uma nova senha</p>
+  return (
+    <>
+      <Navbar />
+      <Box
+        onSubmit={handleSubmit}
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { mt: 2, mb: 2 },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <Container>
+          <RowBlock>
+            <h1>Recuperação de senha</h1>
+            <p>Digite seu email cadastrado para solicitar sua nova senha</p>
 
-               
-             <form onSubmit={enviarEmail}>
-                    <InputContainer>
-                    <GeneralInput label="Digite seu email *"  onChange={e => setEmailSolicitado(e.target.value)} />
-                    </InputContainer>
+            <TextField
+              fullWidth
+              id="outlined-password-input"
+              label="Email"
+              type="text"
+              value={values.email}
+              color="success"
+              error={values.error}
+              onChange={handleChange("email")}
+            />
+            <Error>
+              {values.error === true ? (
+                <p>Email informado não foi encontrado.</p>
+              ) : (
+                <span></span>
+              )}
+            </Error>
 
-                    
-                <GeneralButton type="submit" button="Continuar" />
-              
-                </form>
+            <ButtonWrapper>
+              {values.loading === true ? (
+                <LoadingButton loading variant="contained">
+                  Submit
+                </LoadingButton>
+              ) : (
+                <Button variant="contained" type="submit">
+                  Solicitar nova senha
+                </Button>
+              )}
+            </ButtonWrapper>
+          </RowBlock>
+        </Container>
+      </Box>
 
-            </RowBlock>
-
-
-            <Footer />
-        </>
-    );
+      <Footer />
+    </>
+  );
 }
-
-
-export default Email;

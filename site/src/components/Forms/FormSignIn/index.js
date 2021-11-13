@@ -1,22 +1,18 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
-import FilledInput from "@mui/material/FilledInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import GeneralButton from "../../../components/GeneralButton/index";
+import LoadingButton from "@mui/lab/LoadingButton";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import LoadingButton from '@mui/lab/LoadingButton';
-
-import Button from '@mui/material/Button';
+import TextField from "@mui/material/TextField";
+import * as React from "react";
+import { Link } from "react-router-dom";
 import Api from "../../../services/api";
-import { InputContainer } from "./style";
-import { ButtonWrapper } from "./style";
-import { Link } from "react-router-dom";  
+import { ButtonWrapper, InputContainer } from "./style";
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingIn() {
@@ -50,7 +46,7 @@ export default function FormSingIn() {
 
   /** Chama o endpoint do backend de autenticação*/
   const handleSubmit = (event) => {
-    setValues({ ...values, loading: true});
+    setValues({ ...values, loading: true });
     event.preventDefault();
     Api.post("http://localhost:8080/usuario/autenticar", {
       email: values.email,
@@ -59,8 +55,7 @@ export default function FormSingIn() {
       .then((response) => {
         console.log("autenticado com sucesso: ", response);
         console.log("aqui direciona para a tela de card");
-        setValues({ ...values, loading: false});
-
+        setValues({ ...values, loading: false });
       })
       .catch((err) => {
         console.log("Ocorreu um erro ao obter dados de usuário", err);
@@ -131,17 +126,19 @@ export default function FormSingIn() {
           )}
         </InputContainer>
         <Link to="/email">
-        <h3>Esqueceu a senha?</h3>
+          <h3>Esqueceu a senha?</h3>
         </Link>
         <ButtonWrapper>
           {values.loading === true ? (
-          <LoadingButton loading variant="contained">
-            Submit
-          </LoadingButton>  
-        ) : (<Button variant="contained" type="submit">Entrar</Button>)}
+            <LoadingButton loading variant="contained">
+              Submit
+            </LoadingButton>
+          ) : (
+            <Button variant="contained" type="submit">
+              Entrar
+            </Button>
+          )}
         </ButtonWrapper>
-        
-        
       </div>
     </Box>
   );

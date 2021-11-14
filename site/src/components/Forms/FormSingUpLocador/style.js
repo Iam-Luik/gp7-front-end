@@ -14,6 +14,18 @@ export const InputContainer = styled.div`
   .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
     color: #054107 !important;
   }
-  
-  
+`;
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    width: 100%;
+    background-color: #054107;
+    :hover {
+      background-color: #054107;
+    }
+  }
 `;

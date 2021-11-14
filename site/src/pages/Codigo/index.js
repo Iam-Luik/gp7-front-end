@@ -1,48 +1,95 @@
+import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import Footer from "../../components/Footer";
-import GeneralButton from "../../components/GeneralButton";
-import GeneralInput from "../../components/GeneralInput";
 import Navbar from "../../components/Navbar";
-import { InputContainer, RowBlock } from "./style";
+import LoadingButton from "@mui/lab/LoadingButton";
+import Button from "@mui/material/Button";
+import Api from "../../services/api";
+import { ButtonWrapper, Container, Error, RowBlock } from "./style";
+import Box from "@mui/material/Box";
 
 /** Padrão de formulários a ser seguidos no projeto */
 const Codigo = () => {
   /** Define os get e set dos valores */
   const history = useHistory();
-  const [codigoDigitado, setCodigoDigitado] = useState("");
+  const [values, setValues] = React.useState({
+    codigo: "",
+    error: false,
+    loading: false,
+  });
 
-  function validar(e) {
-    e.preventDefault();
-    if (codigoDigitado === sessionStorage.getItem("cod")) {
-      sessionStorage.setItem("cod", Math.random() * (1000000 - 10000) + 10000);
-      history.push("/senha");
-    } else {
-      alert("código incorreto!");
-    }
-    sessionStorage.setItem("cod", Math.random() * (1000000 - 10000) + 10000);
-  }
+  /** Se caso algum item do campo for alterado, os valores do input são setados */
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+    console.log(values);
+  };
+
+  /** Chama o endpoint do backend de autenticação*/
+  const handleSubmit = (event) => {
+    setValues({ ...values, loading: true });
+    event.preventDefault();
+    Api.post("http://localhost:8080/usuario/verificar-codigo/" + values.codigo)
+      .then((response) => {
+        console.log("Código validado com sucesso: ", response);
+        setValues({ ...values, loading: false });
+        history.push("/senha");
+      })
+      .catch((err) => {
+        console.log("Ocorreu um erro ao validar o código", err);
+        setValues({ ...values, error: true, codigo: "", loading: false });
+      });
+  };
 
   return (
     <>
       <Navbar />
-      <RowBlock>
-        <h1>ATUALIZAÇÃO DE SENHA</h1>
-        <p>
-          Digite o código enviado para seu email para validarmos sua nova senha
-        </p>
+      <Box
+        onSubmit={handleSubmit}
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { mt: 2, mb: 2 },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <Container>
+          <RowBlock>
+            <h1>Recuperação de senha</h1>
 
-        <form onSubmit={validar}>
-          <InputContainer>
-            <GeneralInput
-              label="Digite o código *"
-              onChange={(e) => setCodigoDigitado(e.target.value)}
+            <p>
+              Digite o código enviado para seu email para validarmos sua nova
+              senha
+            </p>
+
+            <TextField
+              fullWidth
+              id="outlined-password-input"
+              label="Código"
+              type="text"
+              value={values.codigo}
+              color="success"
+              error={values.error}
+              onChange={handleChange("codigo")}
             />
-          </InputContainer>
+            <Error>
+              {values.error === true ? <p>Código inválido.</p> : <span></span>}
+            </Error>
 
-          <GeneralButton type="submit" button="Continuar" />
-        </form>
-      </RowBlock>
+            <ButtonWrapper>
+              {values.loading === true ? (
+                <LoadingButton loading variant="contained">
+                  Submit
+                </LoadingButton>
+              ) : (
+                <Button variant="contained" type="submit">
+                  Enviar código
+                </Button>
+              )}
+            </ButtonWrapper>
+          </RowBlock>
+        </Container>
+      </Box>
 
       <Footer />
     </>

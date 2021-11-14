@@ -13,9 +13,12 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import Api from "../../../services/api";
 import { ButtonWrapper, InputContainer } from "./style";
+import { useHistory } from "react-router";
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingIn() {
+
+  const history = useHistory();
   /** Define os get e set dos valores */
   const [values, setValues] = React.useState({
     email: "",
@@ -54,7 +57,7 @@ export default function FormSingIn() {
     })
       .then((response) => {
         console.log("autenticado com sucesso: ", response);
-        console.log("aqui direciona para a tela de card");
+        history.push("/card");
         setValues({ ...values, loading: false });
       })
       .catch((err) => {

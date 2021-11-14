@@ -5,8 +5,8 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Api from "../../services/api";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { Container, RowBlock, ButtonWrapper, Error } from "./style";
 import Button from "@mui/material/Button";
+import { Container, RowBlock, ButtonWrapper, Error } from "./style";
 import Box from "@mui/material/Box";
 
 /** Padrão de formulários a ser seguidos no projeto */
@@ -32,14 +32,13 @@ export default function Email() {
     Api.post("http://localhost:8080/usuario/enviar-email-senha/" + values.email)
       .then((response) => {
         console.log("código de recuperação enviado com sucesso: ", response);
-        sessionStorage.setItem("cod", response.data);
         sessionStorage.setItem("email", values.email);
         setValues({ ...values, loading: false });
         history.push("/codigo");
       })
       .catch((err) => {
-        console.log("Ocorreu um erro ao obter dados de usuário", err);
-        setValues({ ...values, error: true, password: "", loading: false });
+        console.log("Ocorreu um erro ao enviar código de recuperação", err);
+        setValues({ ...values, error: true, email: "", loading: false });
       });
   };
 

@@ -1,62 +1,120 @@
-import React, { useState } from "react";
+import LoadingButton from "@mui/lab/LoadingButton";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import React from "react";
 import { useHistory } from "react-router";
 import Footer from "../../components/Footer";
-import GeneralButton from "../../components/GeneralButton";
-import GeneralInput from "../../components/GeneralInput";
 import Navbar from "../../components/Navbar";
 import Api from "../../services/api";
-import { InputContainer, RowBlock } from "./style";
+import { ButtonWrapper, Container, Error, RowBlock } from "./style";
 
 /** Padrão de formulários a ser seguidos no projeto */
 const Senha = () => {
   const history = useHistory();
-  const [senha, setSenha] = useState("");
 
-  function alterarSenha(e) {
-    e.preventDefault();
-    Api.put(
-      "http://localhost:8080/usuario/alterar-senha/" +
-        sessionStorage.getItem("email") +
-        "/" +
-        senha,
-      {}
-    )
-      .then((resposta) => {
-        if (resposta.status === 200) {
-          sessionStorage.setItem("cod", resposta.data);
+  const [values, setValues] = React.useState({
+    novaSenha: "",
+    confirmarNovaSenha: "",
+    error: false,
+    loading: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+    console.log(values);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (values.novaSenha === values.confirmarNovaSenha) {
+      setValues({ ...values, loading: true });
+      Api.post(
+        "http://localhost:8080/usuario/alterar-senha/" +
+          sessionStorage.getItem("email") +
+          "/" +
+          values.confirmarNovaSenha
+      )
+        .then((response) => {
+          console.log("código de recuperação enviado com sucesso: ", response);
+          setValues({ ...values, loading: false });
           history.push("/login");
-        } else {
-          alert("Senha não foi alterada");
-        }
-      })
-      .catch((erro) => {
-        console.log(erro);
-      });
-  }
+        })
+        .catch((err) => {
+          console.log("Ocorreu um erro ao enviar código de recuperação", err);
+          setValues({
+            ...values,
+            novaSenha: "",
+            confirmarNovaSenha: "",
+            loading: false,
+          });
+        });
+    } else {
+      setValues({ ...values, error: true });
+    }
+  };
 
   /** Define os get e set dos valores */
   return (
     <>
       <Navbar />
-      <RowBlock>
-        <h1>ATUALIZAÇÃO DE SENHA</h1>
-        <p>Digite sua nova senha para finalizar</p>
+      <Box
+        onSubmit={handleSubmit}
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { mt: 2 },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <Container>
+          <RowBlock>
+            <h1>Recuperação de senha</h1>
+            <p>Digite sua nova senha para finalizar</p>
 
-        <form onSubmit={alterarSenha}>
-          <InputContainer>
-            <GeneralInput
-              label="Digite sua nova senha *"
-              onChange={(e) => setSenha(e.target.value)}
+            <TextField
+              fullWidth
+              id="outlined-password-input"
+              label="Nova senha"
+              type="text"
+              value={values.novaSenha}
+              color="success"
+              error={values.error}
+              onChange={handleChange("novaSenha")}
             />
-          </InputContainer>
-          <InputContainer>
-            <GeneralInput label="Confirme sua senha *" onChange={""} />
-          </InputContainer>
+            <TextField
+              fullWidth
+              id="outlined-password-input"
+              label="Confirmar nova senha"
+              type="text"
+              value={values.confirmarNovaSenha}
+              color="success"
+              error={values.error}
+              onChange={handleChange("confirmarNovaSenha")}
+            />
 
-          <GeneralButton type="submit" button="Continuar" />
-        </form>
-      </RowBlock>
+            <Error>
+              {values.error === true ? (
+                <p>Senhas não estão iguais.</p>
+              ) : (
+                <span></span>
+              )}
+            </Error>
 
+            <ButtonWrapper>
+              {values.loading === true ? (
+                <LoadingButton loading variant="contained">
+                  Submit
+                </LoadingButton>
+              ) : (
+                <Button variant="contained" type="submit">
+                  Criar nova senha
+                </Button>
+              )}
+            </ButtonWrapper>
+          </RowBlock>
+        </Container>
+      </Box>
       <Footer />
     </>
   );

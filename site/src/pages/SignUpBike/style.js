@@ -1,101 +1,30 @@
 import styled from "styled-components";
 
-export const RowBlocks = styled.div`
-
-margin-top: 30px;
-margin-bottom: 10px;   
-width: 80%;
-margin-left: auto;
-    margin-right: auto;
-    img{
-      margin-top: 30px;
-        width:5%;
-    }
-    h3 {
-    
-    letter-spacing: 0.07em;
-    font-size: 20px;
-    font-weight: 400;
-    margin-left: 0px;
-  }
-  
+export const Container = styled.div`
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const RowBlock = styled.div`
-  margin-top: 6%;
-  margin-left: auto;
-    margin-right: auto; 
-    width: 74%;
-    border: 1px solid black;
-    border-radius: 40px;
-    margin-bottom: 100px;
+  margin: 14px auto 14px auto;
+  width: 500px;
+  -webkit-box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 51px -20px rgba(0, 0, 0, 0.75);
+  border-radius: 40px;
+  padding: 40px 60px;
 
-    h1 {
-      width: 80%;
-      margin: auto;
-      letter-spacing: 0.07em;
-      font-size: 40px;
-      margin-top: 60px;
-    }
-
-    h2 {
-        width: 80%;
-        margin: auto;
-        letter-spacing: 0.07em;
-        font-size: 20px;
-        margin-top: -40px;
-        font-weight: 400;
-      }
-    p {
-      width: 80%;
-      margin: auto;
-      line-height: 35px;
-      font-size: 20px;
-      letter-spacing: 0.07em;
-    }
-  
+  a {
+    text-decoration: none;
+  }
 `;
-
 
 export const InputContainer = styled.div`
-  display: flex;
-  margin: auto;
-  width: 80%;
-  justify-content: space-between;
-
-
-  button{
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 130px;
-    }
-
-
-  form {
-    display: flex;
-
-  }
-  
-`;
-
-export const TxtContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 28px;
   width: 100%;
-  h3 {
-    
-      margin: auto;
-      letter-spacing: 0.07em;
-      font-size: 20px;
-      margin-top: 50px;
-      font-weight: 400;
-      margin-left: 0px;
-    }
-
-    img{
-      margin-top: 2vw;
-      margin-right: 8vh;
-      margin-bottom: 2vw;
-        width:10%;
-    }
+  justify-content: space-between;
 `;

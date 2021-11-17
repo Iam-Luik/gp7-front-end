@@ -7,15 +7,13 @@ import Api from "../../../services/api";
 import { ButtonWrapper, InputContainer } from "./style";
 import { useHistory } from "react-router";
 
-
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpLocatario() {
-
   const history = useHistory();
   /** Define os get e set dos valores */
   const [values, setValues] = React.useState({
     email: "",
-    password: "",
+    senha: "",
     nome: "",
     sobrenome: "",
     cpf: "",
@@ -47,27 +45,26 @@ export default function FormSingUpLocatario() {
       rua: values.rua,
       numero: values.numero,
     })
-
       .then((response) => {
-
         Api.post("http://localhost:8080/usuario/cadastrar", {
           email: values.email,
-          senha: values.password,
+          senha: values.senha,
           nome: values.nome,
           sobrenome: values.sobrenome,
           cpf: values.cpf,
           telefone: values.telefone,
           tipoUsuario: values.tipoUsuario,
           endereco: { id: response.data },
-        }
-        ).then((response) => {
-          console.log("cadastrado com sucesso: ", response);
-          history.push("/login");
-          setValues({ ...values, loading: false });
-        }).catch((err) => {
-          console.log("Ocorreu um erro ao cadastrar o usuário", err);
-          setValues({ ...values, error: true, password: "", loading: false });
-        });
+        })
+          .then((response) => {
+            console.log("cadastrado com sucesso: ", response);
+            history.push("/login");
+            setValues({ ...values, loading: false });
+          })
+          .catch((err) => {
+            console.log("Ocorreu um erro ao cadastrar o usuário", err);
+            setValues({ ...values, error: true, password: "", loading: false });
+          });
       })
       .catch((err) => {
         console.log("Ocorreu um erro ao cadastrar o usuário", err);
@@ -89,7 +86,8 @@ export default function FormSingUpLocatario() {
         <h1>Cadastro locatario</h1>
         <p>Digite aqui seus dados cadastrais para entrar em nosso site</p>
         <InputContainer>
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Email"
             variant="outlined"
             placeholder="email@email.com.br"
@@ -97,9 +95,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.email}
             color="success"
-            onChange={handleChange("email")} />
+            onChange={handleChange("email")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Senha"
             variant="outlined"
             placeholder="digite sua senha aqui"
@@ -107,9 +107,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.senha}
             color="success"
-            onChange={handleChange("senha")} />
+            onChange={handleChange("senha")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Nome"
             variant="outlined"
             placeholder="José"
@@ -117,9 +119,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.nome}
             color="success"
-            onChange={handleChange("nome")} />
+            onChange={handleChange("nome")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Sobrenome"
             variant="outlined"
             placeholder="Alves Santos"
@@ -127,9 +131,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.sobrenome}
             color="success"
-            onChange={handleChange("sobrenome")} />
+            onChange={handleChange("sobrenome")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Cpf"
             variant="outlined"
             placeholder="000.000.000-00"
@@ -137,9 +143,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.cpf}
             color="success"
-            onChange={handleChange("cpf")} />
+            onChange={handleChange("cpf")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Telefone"
             variant="outlined"
             placeholder="(00)0000-0000"
@@ -147,9 +155,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.telefone}
             color="success"
-            onChange={handleChange("telefone")} />
+            onChange={handleChange("telefone")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Cep"
             variant="outlined"
             placeholder="00000-00"
@@ -157,9 +167,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.cep}
             color="success"
-            onChange={handleChange("cep")} />
+            onChange={handleChange("cep")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Estado"
             variant="outlined"
             placeholder="São Paulo"
@@ -167,9 +179,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.estado}
             color="success"
-            onChange={handleChange("estado")} />
+            onChange={handleChange("estado")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Cidade"
             variant="outlined"
             placeholder="São Paulo"
@@ -177,9 +191,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.cidade}
             color="success"
-            onChange={handleChange("cidade")} />
+            onChange={handleChange("cidade")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Bairro"
             variant="outlined"
             placeholder="Consolação"
@@ -187,9 +203,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.bairro}
             color="success"
-            onChange={handleChange("bairro")} />
+            onChange={handleChange("bairro")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Rua"
             variant="outlined"
             placeholder="Haddock Lobo"
@@ -197,9 +215,11 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.rua}
             color="success"
-            onChange={handleChange("rua")} />
+            onChange={handleChange("rua")}
+          />
 
-          <TextField id="outlined-basic"
+          <TextField
+            id="outlined-basic"
             label="Número"
             variant="outlined"
             placeholder="4001"
@@ -207,7 +227,8 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.numero}
             color="success"
-            onChange={handleChange("numero")} />
+            onChange={handleChange("numero")}
+          />
         </InputContainer>
 
         <ButtonWrapper>

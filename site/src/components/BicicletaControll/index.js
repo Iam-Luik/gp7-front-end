@@ -1,24 +1,42 @@
-import {CardStyle, CardStyleTxt} from './style';
-import GeneralButton from '../GeneralButton/index'
-import { Link } from "react-router-dom";
+import { CardStyle, Adicionar } from "./style";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from "@mui/icons-material/Add";
 
-function BicicletaControll({props}) {
-    return (
-      <>
-        <CardStyle>
+function BicicletaControll({ props }) {
+  return (
+    <>
+      {props.map((item) => {
+        return (
+          <CardStyle>
             <div class="imagem">
-                <img src={props.imagem}></img>
+              <img src={item.imagem}></img>
             </div>
-            <h1>{props.titulo}</h1>
-            <CardStyleTxt></CardStyleTxt>
-            <p>{props.preco}</p>
-            <div class="divisor"></div>
-            <Link to="/localization">
-            </Link>
-        </CardStyle>
-      </>
-    );
-  }
-  
-  export default BicicletaControll;
-  
+            <div>
+              <h1>{item.titulo}</h1>
+              <p>{item.preco}</p>
+            </div>
+
+            <div class="botoes">
+              <Button variant="contained">Editar</Button>
+              <Button
+                variant="outlined"
+                color="error"
+                startIcon={<DeleteIcon />}
+              >
+                Remover
+              </Button>
+            </div>
+          </CardStyle>
+        );
+      })}
+      <Adicionar>
+        <Button variant="contained" color="success" endIcon={<AddIcon />}>
+          Adicionar bicicleta
+        </Button>
+      </Adicionar>
+    </>
+  );
+}
+
+export default BicicletaControll;

@@ -12,6 +12,8 @@ import {
 } from "./style";
 
 const ComprovanteLocador = () => {
+
+  
   return (
     <>
       <Navbar />

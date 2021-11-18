@@ -35,22 +35,30 @@ const tempo = {
   ],
 };
 const SignIn = () => {
+  const history = useHistory();
   const [timeAlugar, setTimeAlugar] = useState("");
   const [timeReserva, setTimeReserva] = useState("");
+  const [dataValor, setDataValor] = useState("");
 
   console.log("timeAlugar :", timeAlugar);
   console.log("timeReserva :", timeReserva);
 
   function cadastrarHora(e) {
-    let valorHora = "";
-    let valorMinuto = "";
+
+    var data = new Date(Date.now());
+    //  new Date(data).setMinutes(Number(timeAlugar.substring(3, 5)) + 30);
+    data.setHours(timeAlugar.substring(0, 2));
+    data.setMinutes(Number(timeAlugar.substring(3, 5))+30);
+
     Api.post("http://localhost:8080/locacao/cadastrar-locacao", {
       formaPagamento: "",
-      dataHoraLocacao: new Date().toISOString(),
-      dataHoraDevolucao: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours() + valorHora, new Date().getMinutes() + valorMinuto, 0, 0).toISOString()
+      dataHoraLocacao: new Date(Date.now()),
+      dataHoraDevolucao: data
     })
       .then((response) => {
+        history.push("/comprovanteLocador");
         console.log("Cadastrado com sucesso: ", response);
+        sessionStorage.setItem("idLocacao", response.data);
       })
       .catch((err) => {
         alert(err);

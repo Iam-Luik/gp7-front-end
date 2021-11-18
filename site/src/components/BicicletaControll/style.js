@@ -18,6 +18,18 @@ export const CardStyle = styled.div`
     width: 250px;
     height: 150px;
   }
+  .upload {
+    width: 250px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    svg {
+      height: 75px;
+      width: 75px;
+    }
+  }
 
   .imagem {
     width: 100%;
@@ -34,9 +46,4 @@ export const CardStyle = styled.div`
       margin-bottom: 12px;
     }
   }
-  .plus {
-    font-size: 80px;
-  }
 `;
-
-export const Adicionar = styled.div``;

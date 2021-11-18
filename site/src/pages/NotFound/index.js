@@ -1,30 +1,24 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import NaoEncontrado from "../../assets/4041.png";
-
-import {
-    ColBlocks,
-  RowBlockLeft,
-  RowBlockRight,
-} from "./style";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
+import { Container } from "./style";
 
 const NotFound = () => {
   return (
     <>
       <Navbar />
-<ColBlocks>
-        <RowBlockLeft>
-        <span>
-            <h1>404</h1>
-            </span>
-            <b>
-            <h2>PÁGINA NÃO ENCONTRADA</h2>
-            </b>
-        </RowBlockLeft>
-        <RowBlockRight>
+      <Container>
+        <div>
+          <h2>
+            Error 404
+            <br />
+            Página não encontrada
+          </h2>
+        </div>
+
         <img src={NaoEncontrado} alt="" />
-        </RowBlockRight>
-        </ColBlocks>
+      </Container>
+
       <Footer />
     </>
   );

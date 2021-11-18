@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "../pages/Home";
 import SignUpLocador from "../pages/SignUpLocador";
@@ -16,38 +16,55 @@ import NotFound from "../pages/NotFound";
 import Senha from "../pages/Senha";
 import Email from "../pages/Email";
 import Codigo from "../pages/Codigo";
+import { isAuthenticated } from "./auth";
 
-const Routes = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" exact component={Home} />
-        <Route path="/locador" exact component={SignUpLocador} />
-        <Route path="/locatario" exact component={SignUpLocatario} />
-        <Route path="/login" exact component={SignIn} />
-        <Route path="/rent" exact component={Rent} />
-        <Route path="/localization" exact component={Localization} />
-        <Route
-          path="/comprovanteLocador"
-          exact
-          component={ComprovanteLocador}
-        />
-        <Route
-          path="/comprovanteLocatario"
-          exact
-          component={ComprovanteLocatario}
-        />
-        <Route path="/direcionamento" exact component={Direcionamento} />
-        <Route path="/bike" exact component={SignUpBike} />
-        <Route path="/bicicleta-filtro" exact component={BicicletaFiltro} />
-        <Route path="/card" exact component={Locador} />
-        <Route path="/senha" exact component={Senha} />
-        <Route path="/email" exact component={Email} />
-        <Route path="/codigo" exact component={Codigo} />
-        <Route path="/*" exact component={NotFound} />
-      </Switch>
-    </BrowserRouter>
-  );
-};
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ pathName: "/", state: { from: props.location } }} />
+      )
+    }
+  />
+);
+
+const Routes = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" exact component={Home} />
+      <Route path="/senha" exact component={Senha} />
+      <Route path="/email" exact component={Email} />
+      <Route path="/codigo" exact component={Codigo} />
+      <Route path="/login" exact component={SignIn} />
+
+      <PrivateRoute path="/locador" exact component={SignUpLocador} />
+      <PrivateRoute path="/locatario" exact component={SignUpLocatario} />
+      <PrivateRoute path="/rent" exact component={Rent} />
+      <PrivateRoute path="/localization" exact component={Localization} />
+      <PrivateRoute
+        path="/comprovanteLocador"
+        exact
+        component={ComprovanteLocador}
+      />
+      <PrivateRoute
+        path="/comprovanteLocatario"
+        exact
+        component={ComprovanteLocatario}
+      />
+      <PrivateRoute path="/direcionamento" exact component={Direcionamento} />
+      <PrivateRoute path="/bike" exact component={SignUpBike} />
+      <PrivateRoute
+        path="/bicicleta-filtro"
+        exact
+        component={BicicletaFiltro}
+      />
+      <PrivateRoute path="/card" exact component={Locador} />
+      <Route path="/*" exact component={NotFound} />
+    </Switch>
+  </BrowserRouter>
+);
 
 export default Routes;

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Bibi from "../../assets/bibi.png";
 import Proprietaria from "../../assets/proprietaria.png";
 import Footer from "../../components/Footer";
@@ -33,6 +34,13 @@ const tempo = {
   ],
 };
 const SignIn = () => {
+
+  const [ timeAlugar, setTimeAlugar ] = useState('');
+  const [ timeReserva, setTimeReserva ] = useState('');
+
+  console.log('timeAlugar :', timeAlugar);
+  console.log('timeReserva :', timeReserva);
+
   return (
     <>
       <Navbar />
@@ -62,10 +70,10 @@ const SignIn = () => {
         </RowBlockRight>
       </ColBlocks>
       <BlockTitle2>
-        <h1>Tempo que irá alugar:</h1> <TimePicker />
+        <h1>Tempo que irá alugar:</h1> <TimePicker setTime={setTimeAlugar} />
       </BlockTitle2>
       <BlockTitle2>
-        <h1>Tempo de reserva:</h1> <TimePicker />
+        <h1>Tempo de reserva:</h1> <TimePicker setTime={setTimeReserva} />
       </BlockTitle2>
 
       <Footer />

@@ -1,11 +1,12 @@
 import "./style.css";
 
-export default function TimePicker() {
-  // var form = document.querySelector("#texto");
-  // console.log(form.value);
+export default function TimePicker({ setTime }) {
+
   return (
     <>
-      <input type="time" id="texto" />
+      <form id="frmTime">
+        <input onChange={e => setTime(e.target.value)}  type="time" id="time" />
+      </form>
     </>
   );
 }

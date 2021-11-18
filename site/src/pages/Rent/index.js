@@ -3,6 +3,9 @@ import Proprietaria from "../../assets/proprietaria.png";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import TabLayout from "../../components/TabLayout/index";
+
+import TimePicker from "../../components/TimePicker";
+
 import {
   BlockTitle,
   BlockTitle2,
@@ -10,6 +13,7 @@ import {
   RowBlockLeft,
   RowBlockRight,
 } from "./style";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const tempo = {
   titulo: "categoria",
@@ -58,10 +62,10 @@ const SignIn = () => {
         </RowBlockRight>
       </ColBlocks>
       <BlockTitle2>
-        <h1>Tempo que irá alugar: 00:00</h1>
+        <h1>Tempo que irá alugar:</h1> <TimePicker />
       </BlockTitle2>
       <BlockTitle2>
-        <h1>Tempo de reserva: 00:00</h1>
+        <h1>Tempo de reserva:</h1> <TimePicker />
       </BlockTitle2>
 
       <Footer />

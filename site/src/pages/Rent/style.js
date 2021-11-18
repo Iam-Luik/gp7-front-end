@@ -62,7 +62,7 @@ export const BlockTitle2 = styled.div`
   @media (min-width: 1025px) {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
     /* width: 50%;  */
     height: 10%;
     margin: auto;

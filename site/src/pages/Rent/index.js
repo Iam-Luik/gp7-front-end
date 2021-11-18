@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import Bibi from "../../assets/bibi.png";
-import Proprietaria from "../../assets/proprietaria.png";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import TabLayout from "../../components/TabLayout/index";
+import Proprietaria from "../../assets/proprietaria.png";
+import Api from "../../services/api"
 
 import TimePicker from "../../components/TimePicker";
 
@@ -34,12 +35,27 @@ const tempo = {
   ],
 };
 const SignIn = () => {
+  const [timeAlugar, setTimeAlugar] = useState("");
+  const [timeReserva, setTimeReserva] = useState("");
 
-  const [ timeAlugar, setTimeAlugar ] = useState('');
-  const [ timeReserva, setTimeReserva ] = useState('');
+  console.log("timeAlugar :", timeAlugar);
+  console.log("timeReserva :", timeReserva);
 
-  console.log('timeAlugar :', timeAlugar);
-  console.log('timeReserva :', timeReserva);
+  function cadastrarHora(e) {
+    let valorHora = "";
+    let valorMinuto = "";
+    Api.post("http://localhost:8080/locacao/cadastrar-locacao", {
+      formaPagamento: "",
+      dataHoraLocacao: new Date().toISOString(),
+      dataHoraDevolucao: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours() + valorHora, new Date().getMinutes() + valorMinuto, 0, 0).toISOString()
+    })
+      .then((response) => {
+        console.log("Cadastrado com sucesso: ", response);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
 
   return (
     <>
@@ -75,7 +91,6 @@ const SignIn = () => {
       <BlockTitle2>
         <h1>Tempo de reserva:</h1> <TimePicker setTime={setTimeReserva} />
       </BlockTitle2>
-
       <Footer />
     </>
   );

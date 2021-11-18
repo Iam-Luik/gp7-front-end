@@ -62,7 +62,7 @@ export default function FormSingIn() {
           history.push("/bicicleta-filtro");
         }
 
-        sessionStorage.setItem("login", values.email);
+        sessionStorage.setItem("email", values.email);
         sessionStorage.setItem("senha", values.password);
         setValues({ ...values, loading: false });
       })

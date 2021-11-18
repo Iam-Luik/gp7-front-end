@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Bibi from "../../assets/bibi.png";
 import Footer from "../../components/Footer";
 import GeneralButton from "../../components/GeneralButton";
-<<<<<<< HEAD
 import Navbar from "../../components/Navbar";
 import {
   ColBlocks,
@@ -10,13 +9,7 @@ import {
   RowBlockRight,
   TitleComprovante,
 } from "./style";
-=======
-import Countdown from "../../components/Countdown";
-import { Link } from "react-router-dom";
-
-
-import { RowBlockLeft, RowBlockRight, ColBlocks, TitleComprovante } from "./style";
->>>>>>> dd78dce (fix: add countdown and value data picker at rent page)
+import Countdown from "../../components/Countdown/index"
 
 const ComprovanteLocatario = () => {
   return (

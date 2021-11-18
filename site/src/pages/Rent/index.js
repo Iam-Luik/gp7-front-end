@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react'
-import Bibi from "../../assets/bibi.png";
-import Footer from "../../components/Footer";
+import { useState } from "react";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import TabLayout from "../../components/TabLayout/index";
+import Bibi from "../../assets/bibi.png";
 import Proprietaria from "../../assets/proprietaria.png";
-import Api from "../../services/api"
+import GeneralButton from "../../components/GeneralButton";
+import Api from "../../services/api";
+import { useHistory } from "react-router";
 
 import TimePicker from "../../components/TimePicker";
 
 import {
   BlockTitle,
   BlockTitle2,
-  ColBlocks,
   RowBlockLeft,
   RowBlockRight,
+  ColBlocks,
+  ButtonStyle,
 } from "./style";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-
 const tempo = {
   titulo: "categoria",
   valores: [
@@ -99,6 +100,12 @@ const SignIn = () => {
       <BlockTitle2>
         <h1>Tempo de reserva:</h1> <TimePicker setTime={setTimeReserva} />
       </BlockTitle2>
+      <ButtonStyle>
+        {/* <form onSubmit={cadastrarHora}>
+      <GeneralButton type="submit" button="Reservar" />
+        </form> */}
+        <GeneralButton button="Cadastrar" click={cadastrarHora} />
+      </ButtonStyle>
       <Footer />
     </>
   );

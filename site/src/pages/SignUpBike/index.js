@@ -2,6 +2,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { RowBlock, Container } from "./style";
 import FormSingUpBike from "../../components/Forms/FormSignUpBike/index";
+import Api from "../../services/api";
 
 const SignUpBike = () => {
 

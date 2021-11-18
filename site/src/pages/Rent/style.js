@@ -8,7 +8,6 @@ export const RowBlockLeft = styled.div`
     flex-direction: column;
     width: 50%;
     height: 10%;
-
     h1 {
       width: 80%;
       margin: auto;
@@ -16,13 +15,11 @@ export const RowBlockLeft = styled.div`
       font-size: 40px;
       margin: 40px 0px;
     }
-
     h2 {
       width: 80%;
       margin: auto;
       letter-spacing: 0.07em;
     }
-
     p {
       width: 80%;
       margin: auto;
@@ -31,7 +28,6 @@ export const RowBlockLeft = styled.div`
       letter-spacing: 0.07em;
       font-style: italic;
     }
-
     img {
       width: 39%;
     }
@@ -47,7 +43,6 @@ export const BlockTitle = styled.div`
     width: 50%;
     height: 10%;
   }
-
   h1 {
     width: 80%;
     margin: auto;
@@ -62,12 +57,11 @@ export const BlockTitle2 = styled.div`
   @media (min-width: 1025px) {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
     /* width: 50%;  */
     height: 10%;
     margin: auto;
   }
-
   h1 {
     /* width: 80%; */
     margin: auto;
@@ -86,7 +80,6 @@ export const RowBlockRight = styled.div`
     flex-direction: column;
     width: 50%;
     height: 10%;
-
     h1 {
       width: 80%;
       margin: auto;
@@ -94,13 +87,11 @@ export const RowBlockRight = styled.div`
       font-size: 40px;
       margin: 40px 0px;
     }
-
     h2 {
       width: 80%;
       margin: auto;
       letter-spacing: 0.07em;
     }
-
     p {
       width: 80%;
       margin: auto;

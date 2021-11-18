@@ -9,6 +9,7 @@ import {
   RowBlockRight,
   TitleComprovante,
 } from "./style";
+import Countdown from "../../components/Countdown/index"
 
 const ComprovanteLocatario = () => {
   return (
@@ -46,7 +47,7 @@ const ComprovanteLocatario = () => {
         </RowBlockLeft>
         <RowBlockRight>
           <img src={Bibi} alt="" />
-          <h2>00:00</h2>
+          <Countdown />
           <Link to="/card">
             <GeneralButton button="Devolver" />
           </Link>

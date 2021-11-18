@@ -32,6 +32,7 @@ export const RowBlocks = styled.div`
   height: 350px;
   margin: 100px 0 100px 0;
 
+
   h1 {
     width: 80%;
     margin: auto;
@@ -45,6 +46,7 @@ export const RowBlocks = styled.div`
 export const RowBlocks2 = styled.div`
   background-color: #D8D8D8;
   padding-top: 70px;
+  padding-block: 15px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -52,8 +54,8 @@ export const RowBlocks2 = styled.div`
 
   h1 {
     margin: auto;
-    line-height: 0px;
-    letter-spacing: 0.07em;
+    color: #00ab30;
+    
   }
   p {
     padding-top: 20px;

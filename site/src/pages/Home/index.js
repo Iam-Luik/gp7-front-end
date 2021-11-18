@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import Cards from "../../components/Cards";
 import Api from "../../services/api";
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import {
   Banner,
@@ -113,7 +114,7 @@ const Home = () => {
           Menos de R$ 9,90 por dia"
         />
       </CardsStyle>
-
+      <Link to="/direcionamento"><h1>Cadastre-se</h1></Link>
       </RowBlocks2>
 
       

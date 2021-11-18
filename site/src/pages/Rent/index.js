@@ -1,22 +1,14 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-import TabLayout from "../../components/TabLayout/index";
 import Bibi from "../../assets/bibi.png";
 import Proprietaria from "../../assets/proprietaria.png";
-import { SimpleSlider } from "../../components/GeneralCarousel/SimpleSlider";
-import Select from "../../components/Select";
-import GeneralInput from "../../components/GeneralInput";
-import Terms from "../../components/Terms";
-import GeneralButton from "../../components/GeneralButton";
-
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
+import TabLayout from "../../components/TabLayout/index";
 import {
   BlockTitle,
   BlockTitle2,
+  ColBlocks,
   RowBlockLeft,
   RowBlockRight,
-  ColBlocks,
-  InputContainer,
-  ButtonStyle,
 } from "./style";
 
 const tempo = {
@@ -71,25 +63,7 @@ const SignIn = () => {
       <BlockTitle2>
         <h1>Tempo de reserva: 00:00</h1>
       </BlockTitle2>
-      <BlockTitle2>
-        <h1>Pagamento</h1>
-      </BlockTitle2>
-      <BlockTitle>
-        <h1>Cartão de Crédito</h1>
-      </BlockTitle>
-      <InputContainer>
-        <GeneralInput label="Numero *" />
-        <GeneralInput label="Vencimento *" />
-      </InputContainer>
-      <InputContainer>
-        <GeneralInput label="Nome do títular *" />
-        <GeneralInput label="CVV *" />
-      </InputContainer>
-      <Terms />
-      <ButtonStyle>
-        <GeneralButton button="Reservar" />
-        <GeneralButton button="Voltar" />
-      </ButtonStyle>
+
       <Footer />
     </>
   );

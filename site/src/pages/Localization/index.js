@@ -1,12 +1,14 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-import Bibi from "../../assets/bibi.png";
-import GeneralInput from "../../components/GeneralInput";
-import GeneralInputPssw from "../../components/GeneralInputPssw";
-import GeneralButton from "../../components/GeneralButton";
 import { Link } from "react-router-dom";
-
-import { RowBlockLeft, RowBlockRight, ColBlocks, TitleLocalization } from "./style";
+import Bibi from "../../assets/bibi.png";
+import Footer from "../../components/Footer";
+import GeneralButton from "../../components/GeneralButton";
+import Navbar from "../../components/Navbar";
+import {
+  ColBlocks,
+  RowBlockLeft,
+  RowBlockRight,
+  TitleLocalization,
+} from "./style";
 
 const Localization = () => {
   return (
@@ -25,15 +27,15 @@ const Localization = () => {
           <h2>02318-157</h2>
         </RowBlockLeft>
         <RowBlockRight>
-        <h2>Bicicleta Caloi Two Niner</h2>
+          <h2>Bicicleta Caloi Two Niner</h2>
           <img src={Bibi} alt="" />
         </RowBlockRight>
       </ColBlocks>
 
       <Link to="/rent">
-      <GeneralButton button="Ver Informações" />
+        <GeneralButton button="Ver Informações" />
       </Link>
-      <Footer />  
+      <Footer />
     </>
   );
 };

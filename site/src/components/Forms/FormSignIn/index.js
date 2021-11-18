@@ -17,7 +17,6 @@ import { useHistory } from "react-router";
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingIn() {
-
   const history = useHistory();
   /** Define os get e set dos valores */
   const [values, setValues] = React.useState({
@@ -57,7 +56,14 @@ export default function FormSingIn() {
     })
       .then((response) => {
         console.log("autenticado com sucesso: ", response);
-        history.push("/card");
+        if (response.data.tipoUsuario === "locador") {
+          history.push("/card");
+        } else if (response.data.tipoUsuario === "locatario") {
+          history.push("/bicicleta-filtro");
+        }
+
+        sessionStorage.setItem("login", values.email);
+        sessionStorage.setItem("senha", values.password);
         setValues({ ...values, loading: false });
       })
       .catch((err) => {

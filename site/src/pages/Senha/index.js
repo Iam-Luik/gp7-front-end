@@ -29,19 +29,19 @@ const Senha = () => {
     event.preventDefault();
     if (values.novaSenha === values.confirmarNovaSenha) {
       setValues({ ...values, loading: true });
-      Api.post(
+      Api.put(
         "http://localhost:8080/usuario/alterar-senha/" +
           sessionStorage.getItem("email") +
           "/" +
           values.confirmarNovaSenha
       )
         .then((response) => {
-          console.log("código de recuperação enviado com sucesso: ", response);
+          console.log("Senha alterada com sucesso: ", response);
           setValues({ ...values, loading: false });
           history.push("/login");
         })
         .catch((err) => {
-          console.log("Ocorreu um erro ao enviar código de recuperação", err);
+          console.log("Ocorreu um erro ao trocar senha", err);
           setValues({
             ...values,
             novaSenha: "",

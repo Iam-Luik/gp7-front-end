@@ -32,17 +32,17 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const RowBlocks = styled.div`
-margin-top: 30px;
-margin-bottom: 10px;   
-width: 100%;
-margin-left: auto;
-margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 
-    img{
-      margin-top: 30px;
-      width:10%;
-    }
-    h2 {
+  img {
+    margin-top: 30px;
+    width: 10%;
+  }
+  h2 {
     letter-spacing: 0.07em;
     font-size: 20px;
     font-weight: 400;
@@ -50,23 +50,28 @@ margin-right: auto;
   }
 `;
 
-
 export const TxtContainer = styled.div`
   display: flex;
   width: 100%;
-  h3 {
-    
-      margin: auto;
-      letter-spacing: 0.07em;
-      font-size: 20px;
-      margin-top: 50px;
-      font-weight: 400;
-      margin-left: 0px;
-    }
 
-    img{
-      margin-right: 8vh;
-      margin-bottom: 2vw;
-      width:15%;
+  h3 {
+    margin: auto;
+    font-size: 15px;
+
+    font-weight: 400;
+    margin-left: 16px;
+  }
+  button {
+    width: 100%;
+    background-color: #054107;
+    :hover {
+      background-color: #054107;
     }
+  }
+`;
+
+export const FileInput = styled.div`
+  input {
+    width: 100%;
+  }
 `;

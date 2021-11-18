@@ -5,8 +5,6 @@ import { Container } from "./style";
 
 const bicicletas = [
   {
-    imagem:
-      "https://caloi.com/wp-content/uploads/2021/05/Caloi-City-Tour-Comp-lateral-1500x900.jpg",
     titulo: "E-VIBE ELITE FS PRO",
     preco: "R$ 5,00 por hora",
   },

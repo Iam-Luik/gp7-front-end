@@ -1,4 +1,4 @@
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import Footer from "../../components/Footer";
 import GeneralButton from "../../components/GeneralButton";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { RowBlock, Container } from "./style";
 const Direcionamento = () => {
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
 
       <Container>
         <RowBlock>
@@ -27,5 +27,4 @@ const Direcionamento = () => {
     </>
   );
 };
-
 export default Direcionamento;

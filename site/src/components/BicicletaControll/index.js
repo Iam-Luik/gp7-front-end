@@ -1,13 +1,13 @@
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Button from "@mui/material/Button";
+import Fab from "@mui/material/Fab";
+import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
-
 import { useHistory } from "react-router";
 import { CardStyle } from "./style";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import Stack from "@mui/material/Stack";
+import Tooltip from "@mui/material/Tooltip";
 
 const Input = styled("input")({
   display: "none",
@@ -63,7 +63,7 @@ function BicicletaControll({ props }) {
         );
       })}
 
-      <Button
+      {/* <Button
         variant="contained"
         color="success"
         onClick={() => {
@@ -72,7 +72,18 @@ function BicicletaControll({ props }) {
         endIcon={<AddIcon />}
       >
         Adicionar bicicleta
-      </Button>
+      </Button> */}
+      <Tooltip title="Clique aqui para cadastrar uma nova bicicleta">
+        <Fab
+          color="primary"
+          aria-label="add"
+          onClick={() => {
+            history.push("/bike");
+          }}
+        >
+          <AddIcon />
+        </Fab>
+      </Tooltip>
     </>
   );
 }

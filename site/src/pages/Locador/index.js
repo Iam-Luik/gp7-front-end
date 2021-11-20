@@ -1,7 +1,9 @@
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import Footer from "../../components/Footer";
 import BicicletaControll from "../../components/BicicletaControll";
 import { Container } from "./style";
+import Api from "../../services/api";
+import React, { useState, useEffect } from "react";
 
 const bicicletas = [
   {
@@ -29,9 +31,13 @@ const bicicletas = [
 ];
 
 const Locador = () => {
+  const [bibicletas, setBicicletas] = React.useState();
+
+  useEffect(() => {});
+
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
 
       <Container>
         <BicicletaControll props={bicicletas}></BicicletaControll>

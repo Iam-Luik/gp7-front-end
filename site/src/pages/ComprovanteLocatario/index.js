@@ -2,19 +2,19 @@ import { Link } from "react-router-dom";
 import Bibi from "../../assets/bibi.png";
 import Footer from "../../components/Footer";
 import GeneralButton from "../../components/GeneralButton";
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import {
   ColBlocks,
   RowBlockLeft,
   RowBlockRight,
   TitleComprovante,
 } from "./style";
-import Countdown from "../../components/Countdown/index"
+import Countdown from "../../components/Countdown/index";
 
 const ComprovanteLocatario = () => {
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <TitleComprovante>
         <h1>Comprovante</h1>
       </TitleComprovante>

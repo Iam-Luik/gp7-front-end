@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Bibi from "../../assets/bibi.png";
 import Footer from "../../components/Footer";
 import GeneralButton from "../../components/GeneralButton";
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import {
   ColBlocks,
   RowBlockLeft,
@@ -13,7 +13,7 @@ import {
 const Localization = () => {
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <TitleLocalization>
         <h1>Localização</h1>
       </TitleLocalization>

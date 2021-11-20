@@ -1,12 +1,12 @@
-import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { RowBlock, Container } from "./style";
 import FormSingUpLocatario from "../../components/Forms/FormSingUpLocatario/index";
+import NavbarPadrao from "../../components/NavbarPadrao";
+import { Container, RowBlock } from "./style";
 
 const SignUpLocatario = () => {
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <Container>
         <RowBlock>
           <FormSingUpLocatario />

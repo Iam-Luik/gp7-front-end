@@ -1,7 +1,7 @@
 import * as React from "react";
 import BicicletaCard from "../../components/BicicletaCard";
 import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
+import NavbarLocatario from "../../components/NavbarLocatario";
 import Select from "../../components/Select";
 import { Section, SelectFilter } from "./style";
 
@@ -174,7 +174,7 @@ const BicicletaFiltro = () => {
 
   return (
     <>
-      <Navbar />
+      <NavbarLocatario />
       <SelectFilter>
         <Select
           props={categorias}

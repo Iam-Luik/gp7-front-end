@@ -1,12 +1,12 @@
 import NaoEncontrado from "../../assets/4041.png";
 import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import { Container } from "./style";
 
 const NotFound = () => {
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <Container>
         <div>
           <h2>

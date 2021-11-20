@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import Footer from "../../components/Footer";
 import TabLayout from "../../components/TabLayout/index";
 import Bibi from "../../assets/bibi.png";
@@ -45,16 +45,15 @@ const SignIn = () => {
   console.log("timeReserva :", timeReserva);
 
   function cadastrarHora(e) {
-
     var data = new Date(Date.now());
     //  new Date(data).setMinutes(Number(timeAlugar.substring(3, 5)) + 30);
     data.setHours(timeAlugar.substring(0, 2));
-    data.setMinutes(Number(timeAlugar.substring(3, 5))+30);
+    data.setMinutes(Number(timeAlugar.substring(3, 5)) + 30);
 
     Api.post("http://localhost:8080/locacao/cadastrar-locacao", {
       formaPagamento: "",
       dataHoraLocacao: new Date(Date.now()),
-      dataHoraDevolucao: data
+      dataHoraDevolucao: data,
     })
       .then((response) => {
         history.push("/comprovanteLocador");
@@ -68,7 +67,7 @@ const SignIn = () => {
 
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <BlockTitle>
         <h1>Contratação</h1>
       </BlockTitle>

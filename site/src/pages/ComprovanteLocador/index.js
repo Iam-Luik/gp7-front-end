@@ -3,7 +3,7 @@ import Bibi from "../../assets/bibi.png";
 import Footer from "../../components/Footer";
 import Countdown from "../../components/Countdown";
 import GeneralButton from "../../components/GeneralButton";
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import {
   ColBlocks,
   RowBlockLeft,
@@ -12,11 +12,9 @@ import {
 } from "./style";
 
 const ComprovanteLocador = () => {
-
-  
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <TitleComprovante>
         <h1>Comprovante</h1>
       </TitleComprovante>

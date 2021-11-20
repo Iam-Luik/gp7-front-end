@@ -52,8 +52,8 @@ const Routes = () => (
       <Route path="/codigo" exact component={Codigo} />
       <Route path="/login" exact component={SignIn} />
 
-      <PrivateRoute path="/locador" exact component={SignUpLocador} />
-      <PrivateRoute path="/locatario" exact component={SignUpLocatario} />
+      <Route path="/locador" exact component={SignUpLocador} />
+      <Route path="/locatario" exact component={SignUpLocatario} />
       <PrivateRoute path="/rent" exact component={Rent} />
       <PrivateRoute path="/localization" exact component={Localization} />
       <PrivateRoute
@@ -66,7 +66,7 @@ const Routes = () => (
         exact
         component={ComprovanteLocatario}
       />
-      <PrivateRoute path="/direcionamento" exact component={Direcionamento} />
+      <Route path="/direcionamento" exact component={Direcionamento} />
       <PrivateRoute path="/bike" exact component={SignUpBike} />
       <PrivateRoute
         path="/bicicleta-filtro"

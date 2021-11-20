@@ -1,14 +1,12 @@
-
-import './index.css';
-import Routes from './routes';
+import "./index.css";
+import Routes from "./routes";
 
 const App = () => {
   return (
     <>
-    <Routes/>
+      <Routes />
     </>
-  )
-
-}
+  );
+};
 
 export default App;

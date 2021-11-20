@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Bibi from "../../assets/bibi.png";
 import Footer from "../../components/Footer";
+import Countdown from "../../components/Countdown";
 import GeneralButton from "../../components/GeneralButton";
 import Navbar from "../../components/Navbar";
 import {
@@ -11,6 +12,8 @@ import {
 } from "./style";
 
 const ComprovanteLocador = () => {
+
+  
   return (
     <>
       <Navbar />
@@ -46,7 +49,7 @@ const ComprovanteLocador = () => {
         </RowBlockLeft>
         <RowBlockRight>
           <img src={Bibi} alt="" />
-          <h2>00:00</h2>
+          <Countdown />
           <Link to="/card">
             <GeneralButton button="CONFIRMAR DEVOLUÇÃO" />
           </Link>

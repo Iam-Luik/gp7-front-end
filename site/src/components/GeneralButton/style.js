@@ -5,7 +5,6 @@ export const ButtonStyle = styled.div`
   justify-content: center;
   padding: 5%;
   text-decoration: none;
-
   button {
     border-radius: 5px;
     font-family: inherit;
@@ -25,7 +24,6 @@ export const ButtonStyle = styled.div`
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     text-decoration: none;
-
     &:after {
       content: "";
       position: absolute;
@@ -35,7 +33,6 @@ export const ButtonStyle = styled.div`
       transition: all 0.3s;
     }
   }
-
   button {
     border: 1px solid #054107;
     color: #054107;
@@ -47,12 +44,10 @@ export const ButtonStyle = styled.div`
       left: 0;
       background: #054107;
     }
-
     &:hover,
     &:active {
       color: white;
     }
-
     &:hover:after,
     &:active:after {
       width: 100%;

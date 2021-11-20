@@ -1,4 +1,4 @@
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import Footer from "../../components/Footer";
 
 import FormSingIn from "../../components/Forms/FormSignIn/index";
@@ -8,7 +8,7 @@ import { RowBlock, Container } from "./style";
 const SignIn = () => {
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <Container>
         <RowBlock>
           <div>

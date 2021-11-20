@@ -2,27 +2,28 @@ import styled from "styled-components";
 import BannerImage from "../../assets/mountain-bike.jpg";
 
 export const Banner = styled.div`
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 550px;
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${BannerImage});
+  height: 100vh;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+    url(${BannerImage});
   background-size: cover;
+  background-position-y: bottom;
   h1 {
-    margin-top: 100px;
+    margin-top: 20%;
     color: white;
     line-height: 75px;
     letter-spacing: 0.1em;
     font-weight: bold;
     text-transform: uppercase;
-    span{
-      color: green;
-    }
+    font-family: courier, arial, helvetica;
   }
-  
 `;
 
 export const RowBlocks = styled.div`
@@ -32,19 +33,16 @@ export const RowBlocks = styled.div`
   height: 350px;
   margin: 100px 0 100px 0;
 
-
   h1 {
     width: 80%;
     margin: auto;
     line-height: 56px;
     letter-spacing: 0.07em;
-
   }
-
 `;
 
 export const RowBlocks2 = styled.div`
-  background-color: #D8D8D8;
+  background-color: #d8d8d8;
   padding-top: 70px;
   padding-block: 15px;
   display: flex;
@@ -55,14 +53,11 @@ export const RowBlocks2 = styled.div`
   h1 {
     margin: auto;
     color: #00ab30;
-    
   }
   p {
     padding-top: 20px;
   }
-  
 `;
-
 
 export const RowBlock = styled.div`
   display: flex;
@@ -80,13 +75,11 @@ export const Cards = styled.div`
   background-color: green;
 `;
 
-
 export const RowItens = styled.div`
   display: flex;
   align-items: center;
   width: 50%;
   height: 100%;
-
 
   img {
     width: 80px;
@@ -98,7 +91,7 @@ export const ColItens = styled.div`
 
   p {
     width: 80%;
-  } 
+  }
 `;
 
 export const CardsStyle = styled.div`

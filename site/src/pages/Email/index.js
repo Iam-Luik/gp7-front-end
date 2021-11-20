@@ -2,7 +2,7 @@ import TextField from "@mui/material/TextField";
 import React from "react";
 import { useHistory } from "react-router";
 import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import Api from "../../services/api";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
@@ -44,7 +44,7 @@ export default function Email() {
 
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <Box
         onSubmit={handleSubmit}
         component="form"

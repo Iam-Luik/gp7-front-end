@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import React from "react";
 import { useHistory } from "react-router";
 import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
+import NavbarPadrao from "../../components/NavbarPadrao";
 import Api from "../../services/api";
 import { ButtonWrapper, Container, Error, RowBlock } from "./style";
 
@@ -57,7 +57,7 @@ const Senha = () => {
   /** Define os get e set dos valores */
   return (
     <>
-      <Navbar />
+      <NavbarPadrao />
       <Box
         onSubmit={handleSubmit}
         component="form"

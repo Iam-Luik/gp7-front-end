@@ -6,6 +6,7 @@ import * as React from "react";
 import Api from "../../../services/api";
 import { ButtonWrapper, InputContainer } from "./style";
 import { useHistory } from "react-router";
+import { IMaskInput } from 'react-imask';
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpLocador() {
@@ -150,7 +151,11 @@ export default function FormSingUpLocador() {
             id="outlined-basic"
             label="Telefone"
             variant="outlined"
-            placeholder="(00)0000-0000"
+            placeholder="(+00) 0000-0000"
+            mask="(+00) 0000-0000"
+            definitions={{
+              '#': /[1-9]/,
+            }}
             multiline
             type="text"
             value={values.telefone}

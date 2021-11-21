@@ -1,26 +1,20 @@
+import DownloadIcon from "@mui/icons-material/Download";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
 import { useHistory } from "react-router";
-import txtIcone from "../../../assets/txtIcone.png";
-import ButtonFile from "../../../components/ButtonFile";
-import DownloadIcon from "@mui/icons-material/Download";
-import Api from "../../../services/api";
 import Select from "../../../components/Select";
-import { styled } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-
+import Api from "../../../services/api";
 import {
   ButtonWrapper,
   InputContainer,
   RowBlocks,
-  TxtContainer,
-  FileInput,
-  Section, SelectFilter
+  TxtContainer
 } from "./style";
+
 
 
 /** Padrão de formulários a ser seguidos no projeto */
@@ -34,6 +28,7 @@ export default function FormSingUpBike() {
   const onChangePicture = (e) => {
     setPicture(e.target.files[0]);
   };
+  var passou = false;
 
   const baixarArquivo = () => {
     Api.get("http://localhost:8080/bicicleta/obter-arquivo/10")
@@ -45,6 +40,7 @@ export default function FormSingUpBike() {
         link.download = "arquivo-bike.txt";
         link.click();
         window.URL.revokeObjectURL(link.href);
+        passou = true;
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
@@ -168,31 +164,7 @@ export default function FormSingUpBike() {
       },
     ],
   };
-  const precos = {
-    titulo: "preço por hora",
-    valores: [
-      {
-        value: "5,00R$",
-        label: "5,00R$",
-      },
-      {
-        value: "9,00R$",
-        label: "9,00R$",
-      },
-      {
-        value: "11,00R$",
-        label: "11,00R$",
-      },
-      {
-        value: "13,00R$",
-        label: "13,00R$",
-      },
-      {
-        value: "15,00R$",
-        label: "15,00R$",
-      },
-    ],
-  };
+
 
   /** Se caso algum item do campo for alterado, os valores do input são setados */
   const [categoria, setCategoria] = React.useState("");
@@ -236,46 +208,51 @@ export default function FormSingUpBike() {
     setValues({ ...values, loading: true });
     event.preventDefault();
 
-    Api.post("http://localhost:8080/bicicleta/cadastrar", {
-      marca: values.marca,
-      modelo: values.modelo,
-      categoria: categoria,
-      tamanhoAro: aro,
-      cor: cor,
-      velocidade: velocidade,
-      valorHora: "",
-      usuario: { id: 1 }
-    })
-      .then((response) => {
-        console.log("cadastrado com sucesso: ", response);
-        console.log(arquivo);
-        history.push("/card");
-        setValues({ ...values, loading: false });
+    if (document.getElementById('arquivo').files[0]) {
+      var data = new FormData();
+      data.append('file', document.getElementById('arquivo').files[0]);
+      //Configura a barra de progresso
+      var config = {
+        onUploadProgress: function (progressEvent) {
+          var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          console.log(percentCompleted);
+
+        }
+      };
+      Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/1", data, config)
+        .then(function (res) {
+          console.log(res.data); //Resposta HTTP
+          history.push("/card");
+        })
+        .catch(function (err) {
+          console.log(err.message); //Erro HTTP
+          alert("Arquivo txt não preenchido corretamente ou inválido")
+          window.location.href = "/bike"
+        });
+    }
+    else {
+      Api.post("http://localhost:8080/bicicleta/cadastrar", {
+        marca: values.marca,
+        modelo: values.modelo,
+        categoria: categoria,
+        tamanhoAro: aro,
+        cor: cor,
+        velocidade: velocidade,
+
+        usuario: { id: 1 }
       })
-      .catch((err) => {
-        console.log("Ocorreu um erro ao cadastrar o usuário", err);
-        setValues({ ...values, error: true, password: "", loading: false });
-      });
+        .then((response) => {
+          console.log("cadastrado com sucesso: ", response);
+          console.log(arquivo);
+          history.push("/card");
+        })
+        .catch((err) => {
+          console.log("Ocorreu um erro ao cadastrar o usuário", err);
+          alert("Verifique se os dados do cadastro estão preenchidos corretamente")
+          window.location.href = "/bike"
 
-    // var data = new FormData();
-    // data.append('file', document.getElementById('arquivo').files[0]);
-
-    // //Configura a barra de progresso
-    // var config = {
-    //   onUploadProgress: function (progressEvent) {
-    //     var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-    //     console.log(percentCompleted);
-    //   }
-    // };
-
-    // Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/1", data, config)
-    //   .then(function (res) {
-    //     console.log(res.data); //Resposta HTTP
-    //   })
-    //   .catch(function (err) {
-    //     console.log(err.message); //Erro HTTP
-    //   });
-
+        });
+    }
   };
 
   return (
@@ -384,10 +361,6 @@ export default function FormSingUpBike() {
             {/* <ButtonFile source={txtIcone} click={baixarArquivo} /> */}
           </TxtContainer>
         </RowBlocks>
-
-
-
-
         <ButtonWrapper>
           {values.loading === true ? (
             <LoadingButton loading variant="contained">

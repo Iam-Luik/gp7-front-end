@@ -47,8 +47,8 @@ const SignIn = () => {
   function cadastrarHora(e) {
     var data = new Date(Date.now());
     //  new Date(data).setMinutes(Number(timeAlugar.substring(3, 5)) + 30);
-    data.setHours(timeAlugar.substring(0, 2));
-    data.setMinutes(Number(timeAlugar.substring(3, 5)) + 30);
+    data.setHours(data.getHours() + Number(timeAlugar.substring(0, 2)));
+    data.setMinutes(data.getMinutes() + Number(timeAlugar.substring(3, 5)) + 30);
 
     Api.post("http://localhost:8080/locacao/cadastrar-locacao", {
       formaPagamento: "",

@@ -20,6 +20,7 @@ export const Banner = styled.div`
     color: white;
     line-height: 75px;
     letter-spacing: 0.1em;
+    font-size: 60px;
     font-weight: bold;
     text-transform: uppercase;
     font-family: courier, arial, helvetica;
@@ -27,35 +28,17 @@ export const Banner = styled.div`
 `;
 
 export const RowBlocks = styled.div`
+  background-color: #d8d8d8;
+  padding: 100px 150px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 350px;
-  margin: 100px 0 100px 0;
+  height: 70vh;
 
   h1 {
     width: 80%;
-    margin: auto;
     line-height: 56px;
     letter-spacing: 0.07em;
-  }
-`;
-
-export const RowBlocks2 = styled.div`
-  background-color: #d8d8d8;
-  padding-top: 70px;
-  padding-block: 15px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin: auto;
-
-  h1 {
-    margin: auto;
-    color: #00ab30;
-  }
-  p {
-    padding-top: 20px;
   }
 `;
 
@@ -65,6 +48,87 @@ export const RowBlock = styled.div`
   justify-content: space-around;
   width: 80%;
   height: 50%;
+`;
+
+export const RowBlocks2 = styled.div`
+  background-color: #92a98d;
+  padding: 100px 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+
+  h1 {
+    width: 80%;
+    line-height: 56px;
+    letter-spacing: 0.07em;
+    color: #ffffff;
+  }
+`;
+
+export const RowBlock2 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  height: 60%;
+  img {
+    width: 100%;
+    height: 100%;
+    margin-right: 40px;
+  }
+  h1 {
+    width: 80%;
+  }
+  div {
+    height: 100%;
+    p {
+      width: 100%;
+      color: white;
+    }
+  }
+`;
+
+export const RowBlocks3 = styled.div`
+  background-color: #ffffff;
+  padding: 100px 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+
+  h1 {
+    width: 80%;
+    line-height: 56px;
+    letter-spacing: 0.07em;
+    color: #ffffff;
+  }
+`;
+
+export const RowBlock3 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  height: 60%;
+  img {
+    width: 100%;
+    height: 100%;
+    margin-left: 40px;
+  }
+  h1 {
+    width: 80%;
+    color: black;
+  }
+  div {
+    height: 100%;
+    p {
+      width: 100%;
+      color: black;
+    }
+  }
 `;
 
 export const Cards = styled.div`

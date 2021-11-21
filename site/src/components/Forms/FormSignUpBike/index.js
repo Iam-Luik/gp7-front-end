@@ -9,6 +9,10 @@ import ButtonFile from "../../../components/ButtonFile";
 import DownloadIcon from "@mui/icons-material/Download";
 import Api from "../../../services/api";
 import Select from "../../../components/Select";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+
 import {
   ButtonWrapper,
   InputContainer,
@@ -18,8 +22,13 @@ import {
   Section, SelectFilter
 } from "./style";
 
+
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpBike() {
+
+  const Input = styled("input")({
+    display: "none",
+  });
   const [picture, setPicture] = React.useState(null);
 
   const onChangePicture = (e) => {
@@ -210,10 +219,10 @@ export default function FormSingUpBike() {
     setVelocidade(event.target.value);
   };
 
-  const [preco, setPreco] = React.useState("");
+  const [arquivo, setArquivo] = React.useState("");
 
-  const handleChangePreco = (event) => {
-    setPreco(event.target.value);
+  const handleChangeArquivo = (event) => {
+    setArquivo(event.target.value);
   };
 
 
@@ -230,14 +239,16 @@ export default function FormSingUpBike() {
     Api.post("http://localhost:8080/bicicleta/cadastrar", {
       marca: values.marca,
       modelo: values.modelo,
-      categoria: values.categoria,
-      tamanhoAro: values.tamanhoAro,
-      cor: values.cor,
-      velocidade: values.velocidade,
-      valorHora: values.valorHora,
+      categoria: categoria,
+      tamanhoAro: aro,
+      cor: cor,
+      velocidade: velocidade,
+      valorHora: "",
+      usuario: { id: 1 }
     })
       .then((response) => {
         console.log("cadastrado com sucesso: ", response);
+        console.log(arquivo);
         history.push("/card");
         setValues({ ...values, loading: false });
       })
@@ -245,6 +256,26 @@ export default function FormSingUpBike() {
         console.log("Ocorreu um erro ao cadastrar o usuário", err);
         setValues({ ...values, error: true, password: "", loading: false });
       });
+
+    // var data = new FormData();
+    // data.append('file', document.getElementById('arquivo').files[0]);
+
+    // //Configura a barra de progresso
+    // var config = {
+    //   onUploadProgress: function (progressEvent) {
+    //     var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+    //     console.log(percentCompleted);
+    //   }
+    // };
+
+    // Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/1", data, config)
+    //   .then(function (res) {
+    //     console.log(res.data); //Resposta HTTP
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err.message); //Erro HTTP
+    //   });
+
   };
 
   return (
@@ -330,6 +361,33 @@ export default function FormSingUpBike() {
           </TxtContainer>
         </RowBlocks>
 
+        <RowBlocks>
+          <TxtContainer>
+
+            <div class="upload" id="myForm" name="myForm">
+              <label htmlFor="arquivo">
+                <Input multiple type="file"
+                  name="arquivo" id="arquivo" />
+                <Button variant="contained" component="span" color="success">
+                  Upload
+                </Button>
+              </label>
+            </div>
+
+            <h3>
+              Agora envie o arquivo preenchido, <br />
+              clique no botão para fazer upload do arquivo.
+            </h3>
+
+
+
+            {/* <ButtonFile source={txtIcone} click={baixarArquivo} /> */}
+          </TxtContainer>
+        </RowBlocks>
+
+
+
+
         <ButtonWrapper>
           {values.loading === true ? (
             <LoadingButton loading variant="contained">
@@ -342,6 +400,6 @@ export default function FormSingUpBike() {
           )}
         </ButtonWrapper>
       </div>
-    </Box>
+    </Box >
   );
 }

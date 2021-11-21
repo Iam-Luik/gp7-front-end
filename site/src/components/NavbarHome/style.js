@@ -9,7 +9,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 7vh;
+  height: 10vh;
 
   .logo {
     span {

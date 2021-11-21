@@ -1,21 +1,23 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import Typist from "react-typist";
 import GeolocationIcon from "../../assets/geolocation-icon.png";
 import LoginIcon from "../../assets/login-icon.png";
 import RentIcon from "../../assets/rent-icon.png";
 import SecurityIcon from "../../assets/security-icon.png";
-import Cards from "../../components/Cards";
 import Footer from "../../components/Footer";
 import NavbarHome from "../../components/NavbarHome";
 import Api from "../../services/api";
-import Typist from "react-typist";
+import LocacatarioImg from "../../assets/bike-ilustracao-1.svg";
+import LocadorImg from "../../assets/bike-ilustracao-2.svg";
 import {
   Banner,
-  CardsStyle,
   ColItens,
   RowBlock,
+  RowBlock2,
+  RowBlock3,
   RowBlocks,
   RowBlocks2,
+  RowBlocks3,
   RowItens,
 } from "./style";
 
@@ -43,14 +45,15 @@ const Home = () => {
 
       {/* SECTION 1 */}
       <RowBlocks>
-        <h1>Conheça a Imove</h1>
+        <h1>Nosso diferencial</h1>
         <RowBlock>
           <RowItens>
             <img alt="Geolocation" src={GeolocationIcon} />
             <ColItens>
-              <h2>Geolocalização</h2>
+              <h2>Disponibilidade</h2>
               <p>
-                Localização em tempo real das bicicletas mais próximas a você.
+                Utilize nossas bicicletas, quando e onde quiser, basta procurar
+                a bicicleta e alocar.
               </p>
             </ColItens>
           </RowItens>
@@ -88,8 +91,39 @@ const Home = () => {
         </RowBlock>
       </RowBlocks>
 
-      {/* SECTION 2 */}
       <RowBlocks2>
+        <RowBlock2>
+          <img alt="Ilustração" src={LocacatarioImg} />
+          <div>
+            <h1>Alugar</h1>
+            <p>
+              A imove oferece para você que deseja alugar uma bicicleta para
+              passear, praticar esporte, viajar ou até mesmo trabalhar, uma
+              solução para seus problemas de não encontrar uma bicicleta fácil.
+              Você precisa realizar um cadastro no nosso site para conseguir ter
+              acesso a várias bicicletas e escolher a que mais te agradar.
+            </p>
+          </div>
+        </RowBlock2>
+      </RowBlocks2>
+
+      <RowBlocks3>
+        <RowBlock3>
+          <div>
+            <h1>Alocar</h1>
+            <p>
+              Se você tem uma bicicleta parada e deseja colocar ela para fazer
+              uma renda extra, aqui na imove você pode cadastrar quantas
+              bicicletas você quiser e expor elas ao público, sem precisar sair
+              de casa.
+            </p>
+          </div>
+          <img alt="Ilustração locador" src={LocadorImg} />
+        </RowBlock3>
+      </RowBlocks3>
+
+      {/* SECTION 2 */}
+      {/* <RowBlocks2>
         <h1>Escolha seu plano</h1>
         <p>
           Aproveite por mais tempo, adquira nosso plano mensal ou semanal com
@@ -120,7 +154,7 @@ const Home = () => {
         <Link to="/direcionamento">
           <h1>Cadastre-se</h1>
         </Link>
-      </RowBlocks2>
+      </RowBlocks2> */}
 
       {/* <RowBlocks2>
         <p>

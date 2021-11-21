@@ -8,16 +8,27 @@ import txtIcone from "../../../assets/txtIcone.png";
 import ButtonFile from "../../../components/ButtonFile";
 import DownloadIcon from "@mui/icons-material/Download";
 import Api from "../../../services/api";
+import Select from "../../../components/Select";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+
 import {
   ButtonWrapper,
   InputContainer,
   RowBlocks,
   TxtContainer,
   FileInput,
+  Section, SelectFilter
 } from "./style";
+
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpBike() {
+
+  const Input = styled("input")({
+    display: "none",
+  });
   const [picture, setPicture] = React.useState(null);
 
   const onChangePicture = (e) => {
@@ -52,8 +63,171 @@ export default function FormSingUpBike() {
     valorHora: "",
   });
 
+  const categorias = {
+    titulo: "categoria",
+    valores: [
+      {
+        value: "Clássicos",
+        label: "Clássicos",
+      },
+      {
+        value: "Elétrica",
+        label: "Elétrica",
+      },
+      {
+        value: "Estrada",
+        label: "Estrada",
+      },
+      {
+        value: "Infantil",
+        label: "Infantil",
+      },
+      {
+        value: "Lazer",
+        label: "Lazer",
+      },
+      {
+        value: "Mountain Bike",
+        label: "Mountain Bike",
+      },
+      {
+        value: "Urbana",
+        label: "Urbana",
+      },
+    ],
+  };
+
+  const aros = {
+    titulo: "tamanho aro",
+    valores: [
+      {
+        value: "Aro 26",
+        label: "Aro 26",
+      },
+      {
+        value: "Aro 700",
+        label: "Aro 700",
+      },
+      {
+        value: "Aro 27.5",
+        label: "Aro 27.5",
+      },
+    ],
+  };
+  const cores = {
+    titulo: "cor",
+    valores: [
+      {
+        value: "Preta",
+        label: "Preta",
+      },
+      {
+        value: "Cinza",
+        label: "Cinza",
+      },
+      {
+        value: "Vinho",
+        label: "Vinho",
+      },
+      {
+        value: "Verde",
+        label: "Verde",
+      },
+      {
+        value: "Azul",
+        label: "Azul",
+      },
+      {
+        value: "Grafite",
+        label: "Grafite",
+      },
+    ],
+  };
+  const velocidades = {
+    titulo: "velocidade",
+    valores: [
+      {
+        value: "7 velocidades",
+        label: "7 velocidades",
+      },
+      {
+        value: "9 velocidades",
+        label: "9 velocidades",
+      },
+      {
+        value: "21 velocidades",
+        label: "21 velocidades",
+      },
+      {
+        value: "24 velocidades",
+        label: "24 velocidades",
+      },
+      {
+        value: "18 velocidades",
+        label: "18 velocidades",
+      },
+    ],
+  };
+  const precos = {
+    titulo: "preço por hora",
+    valores: [
+      {
+        value: "5,00R$",
+        label: "5,00R$",
+      },
+      {
+        value: "9,00R$",
+        label: "9,00R$",
+      },
+      {
+        value: "11,00R$",
+        label: "11,00R$",
+      },
+      {
+        value: "13,00R$",
+        label: "13,00R$",
+      },
+      {
+        value: "15,00R$",
+        label: "15,00R$",
+      },
+    ],
+  };
+
   /** Se caso algum item do campo for alterado, os valores do input são setados */
+  const [categoria, setCategoria] = React.useState("");
+
+  const handleChangeCategoria = (event) => {
+    setCategoria(event.target.value);
+  };
+
+  const [aro, setAro] = React.useState("");
+
+  const handleChangeAro = (event) => {
+    setAro(event.target.value);
+  };
+
+  const [cor, setCor] = React.useState("");
+
+  const handleChangeCor = (event) => {
+    setCor(event.target.value);
+  };
+
+  const [velocidade, setVelocidade] = React.useState("");
+
+  const handleChangeVelocidade = (event) => {
+    setVelocidade(event.target.value);
+  };
+
+  const [arquivo, setArquivo] = React.useState("");
+
+  const handleChangeArquivo = (event) => {
+    setArquivo(event.target.value);
+  };
+
+
   const handleChange = (prop) => (event) => {
+
     setValues({ ...values, [prop]: event.target.value });
     console.log(values);
   };
@@ -65,14 +239,16 @@ export default function FormSingUpBike() {
     Api.post("http://localhost:8080/bicicleta/cadastrar", {
       marca: values.marca,
       modelo: values.modelo,
-      categoria: values.categoria,
-      tamanhoAro: values.tamanhoAro,
-      cor: values.cor,
-      velocidade: values.velocidade,
-      valorHora: values.valorHora,
+      categoria: categoria,
+      tamanhoAro: aro,
+      cor: cor,
+      velocidade: velocidade,
+      valorHora: "",
+      usuario: { id: 1 }
     })
       .then((response) => {
         console.log("cadastrado com sucesso: ", response);
+        console.log(arquivo);
         history.push("/card");
         setValues({ ...values, loading: false });
       })
@@ -80,6 +256,26 @@ export default function FormSingUpBike() {
         console.log("Ocorreu um erro ao cadastrar o usuário", err);
         setValues({ ...values, error: true, password: "", loading: false });
       });
+
+    // var data = new FormData();
+    // data.append('file', document.getElementById('arquivo').files[0]);
+
+    // //Configura a barra de progresso
+    // var config = {
+    //   onUploadProgress: function (progressEvent) {
+    //     var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+    //     console.log(percentCompleted);
+    //   }
+    // };
+
+    // Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/1", data, config)
+    //   .then(function (res) {
+    //     console.log(res.data); //Resposta HTTP
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err.message); //Erro HTTP
+    //   });
+
   };
 
   return (
@@ -96,18 +292,6 @@ export default function FormSingUpBike() {
         <h1>Cadastro bicicleta</h1>
         <p>Digite os dados de sua bicicleta</p>
         <InputContainer>
-          <TextField
-            id="outlined-basic"
-            label="Categoria"
-            variant="outlined"
-            placeholder="Elétrica"
-            multiline
-            type="text"
-            value={values.categoria}
-            color="success"
-            onChange={handleChange("categoria")}
-          />
-
           <TextField
             id="outlined-basic"
             label="Marca"
@@ -132,41 +316,29 @@ export default function FormSingUpBike() {
             onChange={handleChange("modelo")}
           />
 
-          <TextField
-            id="outlined-basic"
-            label="Tamanho aro"
-            variant="outlined"
-            placeholder="26"
-            multiline
-            type="text"
-            value={values.tamanhoAro}
-            color="success"
-            onChange={handleChange("tamanhoAro")}
-          />
+          <Select
+            props={categorias}
+            handleChange={handleChangeCategoria}
+            value={categoria}
+          ></Select>
 
-          <TextField
-            id="outlined-basic"
-            label="Cor"
-            variant="outlined"
-            placeholder="Vermelha"
-            multiline
-            type="text"
-            value={values.cor}
-            color="success"
-            onChange={handleChange("cor")}
-          />
+          <Select
+            props={aros}
+            handleChange={handleChangeAro}
+            value={aro}
+          ></Select>
 
-          <TextField
-            id="outlined-basic"
-            label="Velocidade marcha"
-            variant="outlined"
-            placeholder="12"
-            multiline
-            type="text"
-            value={values.velocidade}
-            color="success"
-            onChange={handleChange("velocidade")}
-          />
+          <Select
+            props={cores}
+            handleChange={handleChangeCor}
+            value={cor}
+          ></Select>
+
+          <Select
+            props={velocidades}
+            handleChange={handleChangeVelocidade}
+            value={velocidade}
+          ></Select>
         </InputContainer>
 
         <RowBlocks>
@@ -189,6 +361,33 @@ export default function FormSingUpBike() {
           </TxtContainer>
         </RowBlocks>
 
+        <RowBlocks>
+          <TxtContainer>
+
+            <div class="upload" id="myForm" name="myForm">
+              <label htmlFor="arquivo">
+                <Input multiple type="file"
+                  name="arquivo" id="arquivo" />
+                <Button variant="contained" component="span" color="success">
+                  Upload
+                </Button>
+              </label>
+            </div>
+
+            <h3>
+              Agora envie o arquivo preenchido, <br />
+              clique no botão para fazer upload do arquivo.
+            </h3>
+
+
+
+            {/* <ButtonFile source={txtIcone} click={baixarArquivo} /> */}
+          </TxtContainer>
+        </RowBlocks>
+
+
+
+
         <ButtonWrapper>
           {values.loading === true ? (
             <LoadingButton loading variant="contained">
@@ -201,6 +400,6 @@ export default function FormSingUpBike() {
           )}
         </ButtonWrapper>
       </div>
-    </Box>
+    </Box >
   );
 }

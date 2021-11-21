@@ -2,7 +2,7 @@ import NavbarPadrao from "../../components/NavbarPadrao";
 import Footer from "../../components/Footer";
 import { RowBlock, Container } from "./style";
 import FormSingUpBike from "../../components/Forms/FormSignUpBike/index";
-import Api from "../../services/api";
+import Api from "../../services/api"
 
 const SignUpBike = () => {
   const baixarArquivo = () => {

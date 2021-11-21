@@ -31,6 +31,21 @@ export const ButtonWrapper = styled.div`
   }
 `;
 
+export const Section = styled.div`
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    grid-row-gap: 30px;
+
+    a{
+        text-decoration:none;
+    }
+    `
+  ;
+
 export const RowBlocks = styled.div`
   margin-top: 30px;
   margin-bottom: 10px;
@@ -75,3 +90,8 @@ export const FileInput = styled.div`
     width: 100%;
   }
 `;
+
+export const Select = styled.div`
+width: 100%;
+`;
+

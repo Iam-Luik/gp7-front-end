@@ -4,8 +4,10 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
 import Api from "../../../services/api";
+import InputMask from "react-input-mask";
 import { ButtonWrapper, InputContainer } from "./style";
 import { useHistory } from "react-router";
+import { IMaskInput } from 'react-imask';
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpLocatario() {
@@ -60,6 +62,7 @@ export default function FormSingUpLocatario() {
             console.log("cadastrado com sucesso: ", response);
             history.push("/login");
             setValues({ ...values, loading: false });
+            sessionStorage.setItem("idLocatario", response.data.id);
           })
           .catch((err) => {
             console.log("Ocorreu um erro ao cadastrar o usuário", err);
@@ -70,6 +73,27 @@ export default function FormSingUpLocatario() {
         console.log("Ocorreu um erro ao cadastrar o usuário", err);
         setValues({ ...values, error: true, password: "", loading: false });
       });
+  };
+
+  const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
+    const { onChange, ...other } = props;
+    return (
+      <IMaskInput
+        {...other}
+        mask="(#00) 000-0000"
+        definitions={{
+          '#': /[1-9]/,
+        }}
+        inputRef={ref}
+        onAccept={(value) => onChange({ target: { name: props.name, value } })}
+        overwrite
+      />
+    );
+  });
+
+  TextMaskCustom.propTypes = {
+    name: "numero",
+    onChange: "numero"
   };
 
   return (
@@ -227,8 +251,12 @@ export default function FormSingUpLocatario() {
             type="text"
             value={values.numero}
             color="success"
+            name="numero"
             onChange={handleChange("numero")}
+            inputComponent={TextMaskCustom}
           />
+
+          <InputMask mask="99999-999" value={values.numero} onChange={handleChange("numero")} />
         </InputContainer>
 
         <ButtonWrapper>

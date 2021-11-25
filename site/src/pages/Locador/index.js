@@ -5,6 +5,8 @@ import { Container } from "./style";
 import Api from "../../services/api";
 import React, { useState, useEffect } from "react";
 
+
+const idBike = sessionStorage.getItem("idBike");
 const bicicletas = [
   {
     titulo: "E-VIBE ELITE FS PRO",
@@ -12,19 +14,19 @@ const bicicletas = [
   },
   {
     imagem:
-      "https://caloi.com/wp-content/uploads/2021/05/Caloi-City-Tour-Comp-lateral-1500x900.jpg",
+      "http://localhost:8080/bicicleta/bicicleta-imagem/" + 3,
     titulo: "E-VIBE ELITE FS PRO",
     preco: "R$ 5,00 por hora",
   },
   {
     imagem:
-      "https://caloi.com/wp-content/uploads/2021/05/Caloi-City-Tour-Comp-lateral-1500x900.jpg",
+      "http://localhost:8080/bicicleta/bicicleta-imagem/" + 4,
     titulo: "E-VIBE ELITE FS PRO",
     preco: "R$ 5,00 por hora",
   },
   {
     imagem:
-      "https://caloi.com/wp-content/uploads/2021/05/Caloi-City-Tour-Comp-lateral-1500x900.jpg",
+      "http://localhost:8080/bicicleta/bicicleta-imagem/" + 5,
     titulo: "E-VIBE ELITE FS PRO",
     preco: "R$ 5,00 por hora",
   },
@@ -33,7 +35,7 @@ const bicicletas = [
 const Locador = () => {
   const [bibicletas, setBicicletas] = React.useState();
 
-  useEffect(() => {});
+  useEffect(() => { });
 
   return (
     <>

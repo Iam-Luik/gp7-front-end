@@ -10,6 +10,8 @@ import { IMaskInput } from 'react-imask';
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpLocador() {
+
+
   const history = useHistory();
   /** Define os get e set dos valores */
   const [values, setValues] = React.useState({
@@ -59,6 +61,7 @@ export default function FormSingUpLocador() {
         })
           .then((response) => {
             console.log("cadastrado com sucesso: ", response);
+            sessionStorage.setItem("idLocador", response.data);
             history.push("/login");
             setValues({ ...values, loading: false });
           })

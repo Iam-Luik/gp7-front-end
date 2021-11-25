@@ -40,7 +40,6 @@ export default function FormSingUpBike() {
         link.download = "arquivo-bike.txt";
         link.click();
         window.URL.revokeObjectURL(link.href);
-        passou = true;
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
@@ -197,6 +196,7 @@ export default function FormSingUpBike() {
     setArquivo(event.target.value);
   };
 
+  const idLocador = sessionStorage.getItem("idLocador");
 
   const handleChange = (prop) => (event) => {
 
@@ -219,13 +219,16 @@ export default function FormSingUpBike() {
 
         }
       };
-      Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/1", data, config)
+      Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/" + idLocador, data, config)
         .then(function (res) {
           console.log(res.data); //Resposta HTTP
+          console.log(idLocador);
           history.push("/card");
+
         })
         .catch(function (err) {
           console.log(err.message); //Erro HTTP
+          console.log(idLocador);
           alert("Arquivo txt não preenchido corretamente ou inválido")
           window.location.href = "/bike"
         });
@@ -238,16 +241,17 @@ export default function FormSingUpBike() {
         tamanhoAro: aro,
         cor: cor,
         velocidade: velocidade,
-
-        usuario: { id: 1 }
+        usuario: { id: idLocador }
       })
         .then((response) => {
           console.log("cadastrado com sucesso: ", response);
           console.log(arquivo);
+          sessionStorage.setItem("idBike", response.data);
           history.push("/card");
         })
         .catch((err) => {
           console.log("Ocorreu um erro ao cadastrar o usuário", err);
+          console.log(idLocador);
           alert("Verifique se os dados do cadastro estão preenchidos corretamente")
           window.location.href = "/bike"
 

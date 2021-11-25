@@ -12,14 +12,11 @@ import {
   ButtonWrapper,
   InputContainer,
   RowBlocks,
-  TxtContainer
+  TxtContainer,
 } from "./style";
-
-
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpBike() {
-
   const Input = styled("input")({
     display: "none",
   });
@@ -63,50 +60,45 @@ export default function FormSingUpBike() {
     titulo: "categoria",
     valores: [
       {
-        value: "Clássicos",
+        value: "classicos",
         label: "Clássicos",
       },
       {
-        value: "Elétrica",
+        value: "eletrica",
         label: "Elétrica",
       },
       {
-        value: "Estrada",
+        value: "estrada",
         label: "Estrada",
       },
       {
-        value: "Infantil",
+        value: "infantil",
         label: "Infantil",
       },
       {
-        value: "Lazer",
+        value: "lazer",
         label: "Lazer",
       },
       {
-        value: "Mountain Bike",
+        value: "montain-bike",
         label: "Mountain Bike",
       },
       {
-        value: "Urbana",
+        value: "urbana",
         label: "Urbana",
       },
     ],
   };
-
   const aros = {
     titulo: "tamanho aro",
     valores: [
       {
-        value: "Aro 26",
+        value: "aro-26",
         label: "Aro 26",
       },
       {
-        value: "Aro 700",
-        label: "Aro 700",
-      },
-      {
-        value: "Aro 27.5",
-        label: "Aro 27.5",
+        value: "aro-29",
+        label: "Aro 29",
       },
     ],
   };
@@ -114,27 +106,27 @@ export default function FormSingUpBike() {
     titulo: "cor",
     valores: [
       {
-        value: "Preta",
+        value: "preta",
         label: "Preta",
       },
       {
-        value: "Cinza",
+        value: "cinza",
         label: "Cinza",
       },
       {
-        value: "Vinho",
+        value: "vinho",
         label: "Vinho",
       },
       {
-        value: "Verde",
+        value: "verde",
         label: "Verde",
       },
       {
-        value: "Azul",
+        value: "azul",
         label: "Azul",
       },
       {
-        value: "Grafite",
+        value: "grafite",
         label: "Grafite",
       },
     ],
@@ -143,28 +135,27 @@ export default function FormSingUpBike() {
     titulo: "velocidade",
     valores: [
       {
-        value: "7 velocidades",
+        value: "7-velocidades",
         label: "7 velocidades",
       },
       {
-        value: "9 velocidades",
+        value: "9-velocidades",
         label: "9 velocidades",
       },
       {
-        value: "21 velocidades",
+        value: "21-velocidades",
         label: "21 velocidades",
       },
       {
-        value: "24 velocidades",
+        value: "24-velocidades",
         label: "24 velocidades",
       },
       {
-        value: "18 velocidades",
+        value: "18-velocidades",
         label: "18 velocidades",
       },
     ],
   };
-
 
   /** Se caso algum item do campo for alterado, os valores do input são setados */
   const [categoria, setCategoria] = React.useState("");
@@ -197,9 +188,7 @@ export default function FormSingUpBike() {
     setArquivo(event.target.value);
   };
 
-
   const handleChange = (prop) => (event) => {
-
     setValues({ ...values, [prop]: event.target.value });
     console.log(values);
   };
@@ -208,29 +197,33 @@ export default function FormSingUpBike() {
     setValues({ ...values, loading: true });
     event.preventDefault();
 
-    if (document.getElementById('arquivo').files[0]) {
+    if (document.getElementById("arquivo").files[0]) {
       var data = new FormData();
-      data.append('file', document.getElementById('arquivo').files[0]);
+      data.append("file", document.getElementById("arquivo").files[0]);
       //Configura a barra de progresso
       var config = {
         onUploadProgress: function (progressEvent) {
-          var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          var percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
           console.log(percentCompleted);
-
-        }
+        },
       };
-      Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/1", data, config)
+      Api.post(
+        "http://localhost:8080/bicicleta/envio-arquivo/file/1",
+        data,
+        config
+      )
         .then(function (res) {
           console.log(res.data); //Resposta HTTP
           history.push("/card");
         })
         .catch(function (err) {
           console.log(err.message); //Erro HTTP
-          alert("Arquivo txt não preenchido corretamente ou inválido")
-          window.location.href = "/bike"
+          alert("Arquivo txt não preenchido corretamente ou inválido");
+          window.location.href = "/bike";
         });
-    }
-    else {
+    } else {
       Api.post("http://localhost:8080/bicicleta/cadastrar", {
         marca: values.marca,
         modelo: values.modelo,
@@ -239,7 +232,7 @@ export default function FormSingUpBike() {
         cor: cor,
         velocidade: velocidade,
 
-        usuario: { id: 1 }
+        usuario: { id: 1 },
       })
         .then((response) => {
           console.log("cadastrado com sucesso: ", response);
@@ -248,9 +241,10 @@ export default function FormSingUpBike() {
         })
         .catch((err) => {
           console.log("Ocorreu um erro ao cadastrar o usuário", err);
-          alert("Verifique se os dados do cadastro estão preenchidos corretamente")
-          window.location.href = "/bike"
-
+          alert(
+            "Verifique se os dados do cadastro estão preenchidos corretamente"
+          );
+          window.location.href = "/bike";
         });
     }
   };
@@ -340,11 +334,9 @@ export default function FormSingUpBike() {
 
         <RowBlocks>
           <TxtContainer>
-
             <div class="upload" id="myForm" name="myForm">
               <label htmlFor="arquivo">
-                <Input multiple type="file"
-                  name="arquivo" id="arquivo" />
+                <Input multiple type="file" name="arquivo" id="arquivo" />
                 <Button variant="contained" component="span" color="success">
                   Upload
                 </Button>
@@ -355,8 +347,6 @@ export default function FormSingUpBike() {
               Agora envie o arquivo preenchido, <br />
               clique no botão para fazer upload do arquivo.
             </h3>
-
-
 
             {/* <ButtonFile source={txtIcone} click={baixarArquivo} /> */}
           </TxtContainer>
@@ -373,6 +363,6 @@ export default function FormSingUpBike() {
           )}
         </ButtonWrapper>
       </div>
-    </Box >
+    </Box>
   );
 }

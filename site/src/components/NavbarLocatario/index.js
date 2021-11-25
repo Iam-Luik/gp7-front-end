@@ -18,13 +18,13 @@ function NavbarLocatario() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  useEffect(() => {
-    // Atualiza o titulo do documento usando a API do browser
-    const nome = sessionStorage.getItem("nome");
-    const img = sessionStorage.getItem("img");
-    setValues({ ...values, nome: nome, img: img });
-    console.log(values);
-  });
+  // useEffect(() => {
+  //   // Atualiza o titulo do documento usando a API do browser
+  //   const nome = sessionStorage.getItem("nome");
+  //   const img = sessionStorage.getItem("img");
+  //   setValues({ ...values, nome: nome, img: img });
+  //   console.log(values);
+  // });
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

@@ -148,14 +148,14 @@ const BicicletaFiltro = () => {
   const obterBicicletas = () => {
     console.log(categoria, aro, cor, velocidade);
     Api.get(
-      `bicicleta/filtrar/${categoria ? categoria : null}/${aro ? aro : null}/${
-        cor ? cor : null
+      `bicicleta/filtrar/${categoria ? categoria : null}/${aro ? aro : null}/${cor ? cor : null
       }/${velocidade ? velocidade : null}`
     )
       .then((response) => {
         setBicicletas(response.data);
       })
       .catch((err) => {
+        setBicicletas("");
         console.error("ops! ocorreu um erro" + err);
       });
   };

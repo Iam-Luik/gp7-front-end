@@ -40,27 +40,7 @@ function BicicletaLocatario(props) {
 
 
     function handleImagem(id) {
-
-        var data = new FormData();
-        data.append('file', document.getElementById('arquivo').files[0]);
-
-        //Configura a barra de progresso
-        var config = {
-            onUploadProgress: function (progressEvent) {
-                var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                console.log(percentCompleted);
-
-            }
-        };
-
-        Api.post("http://localhost:8080/bicicleta/bicicleta-imagem/" + id, data, config)
-            .then(function (res) {
-                console.log(res.data); //Resposta HTTP
-                window.location.href = "/cardLocatario"
-            })
-            .catch(function (err) {
-                console.log(err.message); //Erro HTTP
-            });
+        history.push("/comprovanteLocatario")
     }
     function handleRemover(id) {
         Api.delete("http://localhost:8080/bicicleta/remover/" + id)
@@ -132,20 +112,7 @@ function BicicletaLocatario(props) {
                                             </label>
                                         </>
                                     ) : (
-                                        <div class="upload" >
-                                            <label htmlFor="arquivo">
-                                                <Input accept="image/*" type="file" name="arquivo" id="arquivo" />
-                                                <IconButton
-                                                    color="primary"
-                                                    aria-label="upload picture"
-                                                    component="span"
-                                                    size="large"
-                                                >
-                                                    <PhotoCamera />
-                                                </IconButton>
-                                            </label>
-                                            adicionar imagem...
-                                        </div>
+                                        <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"></img>
                                     )}
 
                                 </div>
@@ -156,15 +123,9 @@ function BicicletaLocatario(props) {
 
                                 <div class="botoes">
                                     <Button onClick={() => handleImagem(item.id)}
-                                        variant="contained">
-                                        Editar Imagem
-                                    </Button>
-                                    <Button onClick={() => handleRemover(item.id)}
-                                        variant="outlined"
-                                        color="error"
-                                        startIcon={<DeleteIcon />}
-                                    >
-                                        Remover
+                                        variant="contained"
+                                        color="success">
+                                        Comprovante
                                     </Button>
                                 </div>
                             </CardStyle>

@@ -8,7 +8,7 @@ function BicicletaCard({ props }) {
       <CardStyle>
         <div class="imagem">
           {props.imagem ? (
-            <img src={props.imagem}></img>
+            <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + props.id}></img>
           ) : (
             <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"></img>
           )}

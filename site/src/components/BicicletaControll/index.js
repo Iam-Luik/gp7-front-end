@@ -2,16 +2,14 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
-import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
-import { useHistory } from "react-router";
-import { CardStyle } from "./style";
 import Tooltip from "@mui/material/Tooltip";
+import * as React from "react";
+import { useHistory } from "react-router";
 import Api from "../../services/api";
-import reactDom from "react-dom";
+import { CardStyle, Error } from "./style";
 
 const Input = styled("input")({
   display: "none",
@@ -111,64 +109,70 @@ function BicicletaControll(props) {
         Remover ultima
 
       </Button> */}
+      {bicicletas.length > 0 ? (
+        <>
+          {bicicletas.map((item) => {
+            return (
+              <CardStyle>
+                <div class="imagem">
+                  {item.imagem ? (
+                    <>
+                      <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + item.id}></img>
+                      <label htmlFor="arquivo">
+                        <Input accept="image/*" type="file" name="arquivo" id="arquivo" />
+                        <IconButton
+                          color="primary"
+                          aria-label="upload picture"
+                          component="span"
+                          size="large"
+                        >
+                          <PhotoCamera />
+                        </IconButton>
+                      </label>
+                    </>
+                  ) : (
+                    <div class="upload" >
+                      <label htmlFor="arquivo">
+                        <Input accept="image/*" type="file" name="arquivo" id="arquivo" />
+                        <IconButton
+                          color="primary"
+                          aria-label="upload picture"
+                          component="span"
+                          size="large"
+                        >
+                          <PhotoCamera />
+                        </IconButton>
+                      </label>
+                      adicionar imagem...
+                    </div>
+                  )}
 
-      {bicicletas.map((item) => {
-        return (
-          <CardStyle>
-            <div class="imagem">
-              {item.imagem ? (
-                <>
-                  <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + item.id}></img>
-                  <label htmlFor="arquivo">
-                    <Input accept="image/*" type="file" name="arquivo" id="arquivo" />
-                    <IconButton
-                      color="primary"
-                      aria-label="upload picture"
-                      component="span"
-                      size="large"
-                    >
-                      <PhotoCamera />
-                    </IconButton>
-                  </label>
-                </>
-              ) : (
-                <div class="upload" >
-                  <label htmlFor="arquivo">
-                    <Input accept="image/*" type="file" name="arquivo" id="arquivo" />
-                    <IconButton
-                      color="primary"
-                      aria-label="upload picture"
-                      component="span"
-                      size="large"
-                    >
-                      <PhotoCamera />
-                    </IconButton>
-                  </label>
-                  adicionar imagem...
                 </div>
-              )}
-            </div>
-            <div>
-              <h1>{item.marca}</h1>
-              <p>{item.preco}</p>
-            </div>
+                <div>
+                  <h1>{item.marca}</h1>
+                  <p>{item.preco}</p>
+                </div>
 
-            <div class="botoes">
-              <Button onClick={() => handleImagem(item.id)}
-                variant="contained">
-                Editar Imagem
-              </Button>
-              <Button onClick={() => handleRemover(item.id)}
-                variant="outlined"
-                color="error"
-                startIcon={<DeleteIcon />}
-              >
-                Remover
-              </Button>
-            </div>
-          </CardStyle>
-        );
-      })}
+                <div class="botoes">
+                  <Button onClick={() => handleImagem(item.id)}
+                    variant="contained">
+                    Editar Imagem
+                  </Button>
+                  <Button onClick={() => handleRemover(item.id)}
+                    variant="outlined"
+                    color="error"
+                    startIcon={<DeleteIcon />}
+                  >
+                    Remover
+                  </Button>
+                </div>
+              </CardStyle>
+            );
+          })}
+        </ >) : (
+        <Error>
+        </Error>
+      )}
 
       <Tooltip title="Clique aqui para cadastrar uma nova bicicleta">
         <Fab

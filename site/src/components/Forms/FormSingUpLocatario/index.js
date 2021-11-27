@@ -7,6 +7,7 @@ import { useHistory } from "react-router";
 import { mask, unMask } from "remask";
 import Api from "../../../services/api";
 import { ButtonWrapper, InputContainer } from "./style";
+import Alert from "@mui/material/Alert";
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpLocatario() {
@@ -29,9 +30,9 @@ export default function FormSingUpLocatario() {
     rua: "",
     numero: "",
     tipoUsuario: "locatario",
+    error: false,
   });
 
-  /** Se caso algum item do campo for alterado, os valores do input são setados */
   const handleChange = (prop) => (event) => {
     /**
      * exemplo de máscara, como aplicar ->
@@ -124,17 +125,24 @@ export default function FormSingUpLocatario() {
         })
           .then((response) => {
             console.log("cadastrado com sucesso: ", response);
+            sessionStorage.setItem("idLocador", response.data);
             history.push("/login");
             setValues({ ...values, loading: false });
-            sessionStorage.setItem("idLocatario", response.data.id);
           })
           .catch((err) => {
             console.log("Ocorreu um erro ao cadastrar o usuário", err);
-            setValues({ ...values, error: true, password: "", loading: false });
+            alert("Ocorreu um erro ao cadastrar o usuário", err);
+            setValues({
+              ...values,
+              error: true,
+              password: "",
+              loading: false,
+            });
           });
       })
       .catch((err) => {
         console.log("Ocorreu um erro ao cadastrar o usuário", err);
+        alert("Ocorreu um erro ao cadastrar o usuário", err);
         setValues({ ...values, error: true, password: "", loading: false });
       });
   };
@@ -297,18 +305,51 @@ export default function FormSingUpLocatario() {
             color="success"
             name="numero"
             onChange={handleChange("numero")}
-
           />
-
         </InputContainer>
 
+        {values.email.length === 0 ||
+        values.senha.length === 0 ||
+        values.nome.length === 0 ||
+        values.sobrenome.length === 0 ||
+        values.cpf.length === 0 ||
+        values.telefone.length === 0 ||
+        values.cep.length === 0 ||
+        values.estado.length === 0 ||
+        values.cidade.length === 0 ||
+        values.bairro.length === 0 ||
+        values.rua.length === 0 ||
+        values.numero.length === 0 ? (
+          <Alert severity="warning">
+            Preencha todos os campos para efetuar o cadastro!
+          </Alert>
+        ) : (
+          <Alert severity="success">Todos os campos foram preenchidos!</Alert>
+        )}
         <ButtonWrapper>
           {values.loading === true ? (
             <LoadingButton loading variant="contained">
               Submit
             </LoadingButton>
           ) : (
-            <Button variant="contained" type="submit">
+            <Button
+              disabled={
+                values.email.length === 0 ||
+                values.senha.length === 0 ||
+                values.nome.length === 0 ||
+                values.sobrenome.length === 0 ||
+                values.cpf.length === 0 ||
+                values.telefone.length === 0 ||
+                values.cep.length === 0 ||
+                values.estado.length === 0 ||
+                values.cidade.length === 0 ||
+                values.bairro.length === 0 ||
+                values.rua.length === 0 ||
+                values.numero.length === 0
+              }
+              variant="contained"
+              type="submit"
+            >
               Cadastrar
             </Button>
           )}

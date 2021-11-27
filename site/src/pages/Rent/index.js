@@ -97,7 +97,7 @@ const SignIn = () => {
         <h1>Tempo que irá alugar:</h1> <TimePicker setTime={setTimeAlugar} />
       </BlockTitle2>
       <BlockTitle2>
-        <h1>Tempo de reserva:</h1> <TimePicker setTime={setTimeReserva} />
+        {/* <h1>Tempo de reserva:</h1> <TimePicker setTime={setTimeReserva} /> */}
       </BlockTitle2>
       <ButtonStyle>
         {/* <form onSubmit={cadastrarHora}>

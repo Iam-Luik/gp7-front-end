@@ -6,7 +6,7 @@ import * as React from "react";
 import Api from "../../../services/api";
 import { ButtonWrapper, InputContainer } from "./style";
 import { useHistory } from "react-router";
-import { IMaskInput } from 'react-imask';
+import { mask, unMask } from "remask";
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpLocador() {
@@ -30,10 +30,71 @@ export default function FormSingUpLocador() {
     tipoUsuario: "locador",
   });
 
-  /** Se caso algum item do campo for alterado, os valores do input são setados */
   const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-    console.log(values);
+    /**
+     * exemplo de máscara, como aplicar ->
+     * [prop]: mask(event.target.value, ["(99) 9999-9999", "(99) 99999-9999"])
+     * Switch lógica ->
+     * Se o "prop" (valor do formulário) for = (determinado valor) aplico uma máscara de acordo com o valor,
+     * se não, apenas chamo o valor para setar na variável seu valor real (default).
+     */
+    switch (prop) {
+      case "telefone":
+        setValues({
+          ...values,
+          [prop]: mask(unMask(event.target.value), [
+            "(99) 9999-9999",
+            "(99) 99999-9999",
+          ]),
+        });
+        break;
+      case "cpf":
+        setValues({
+          ...values,
+          [prop]: mask(unMask(event.target.value), ["999.999.999-99"]),
+        });
+        break;
+      case "cep":
+        setValues({
+          ...values,
+          [prop]: mask(unMask(event.target.value), ["99999-999"]),
+        });
+        break;
+      case "estado":
+        setValues({
+          ...values,
+          [prop]: mask(unMask(event.target.value), ["AA"]),
+        });
+        break;
+      default:
+        setValues({ ...values, [prop]: event.target.value });
+        break;
+    }
+  };
+
+  const buscaCep = (e) => {
+    const cep = unMask(e.target.value);
+    console.log(cep);
+    if (cep.length === 8) {
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((response) => response.json())
+        .then((data) => {
+          setValues({
+            ...values,
+            estado: "",
+            cidade: "",
+            bairro: "",
+            rua: "",
+          });
+          setValues({
+            ...values,
+            estado: data.uf,
+            cidade: data.localidade,
+            bairro: data.bairro,
+            rua: data.logradouro,
+          });
+        });
+    }
   };
 
   const handleSubmit = (event) => {
@@ -41,7 +102,7 @@ export default function FormSingUpLocador() {
     event.preventDefault();
 
     Api.post("http://localhost:8080/endereco/cadastrar", {
-      cep: values.cep,
+      cep: unMask(values.cep),
       estado: values.estado,
       cidade: values.cidade,
       bairro: values.bairro,
@@ -54,8 +115,8 @@ export default function FormSingUpLocador() {
           senha: values.senha,
           nome: values.nome,
           sobrenome: values.sobrenome,
-          cpf: values.cpf,
-          telefone: values.telefone,
+          cpf: unMask(values.cpf),
+          telefone: unMask(values.telefone),
           tipoUsuario: values.tipoUsuario,
           endereco: { id: response.data },
         })
@@ -154,11 +215,7 @@ export default function FormSingUpLocador() {
             id="outlined-basic"
             label="Telefone"
             variant="outlined"
-            placeholder="(+00) 0000-0000"
-            mask="(+00) 0000-0000"
-            definitions={{
-              '#': /[1-9]/,
-            }}
+            placeholder="(00) 00000-0000"
             multiline
             type="text"
             value={values.telefone}
@@ -170,7 +227,8 @@ export default function FormSingUpLocador() {
             id="outlined-basic"
             label="Cep"
             variant="outlined"
-            placeholder="00000-00"
+            placeholder="00000-000"
+            onBlur={buscaCep}
             multiline
             type="text"
             value={values.cep}
@@ -182,7 +240,7 @@ export default function FormSingUpLocador() {
             id="outlined-basic"
             label="Estado"
             variant="outlined"
-            placeholder="São Paulo"
+            placeholder="SP"
             multiline
             type="text"
             value={values.estado}

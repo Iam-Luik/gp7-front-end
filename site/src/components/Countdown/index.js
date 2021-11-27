@@ -49,7 +49,7 @@ export default function Countdown() {
 
   return (
     <div>
-      <div class="date-time"><h2>{hour > 10 ? hour : "0" + hour}:{min > 10 ? min : "0" + min}:{seg > 10 ? seg : "0" + seg}</h2></div>
+      <div class="date-time"><h2>{hour > 10 ? hour : "0" + hour}:{min > 10 ? min : "0" + min}:{seg >= 10 ? seg : "0" + seg}</h2></div>
     </div>
   );
 }

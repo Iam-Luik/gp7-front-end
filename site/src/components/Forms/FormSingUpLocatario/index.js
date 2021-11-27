@@ -3,15 +3,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
-import Api from "../../../services/api";
-import InputMask from "react-input-mask";
-import { ButtonWrapper, InputContainer } from "./style";
 import { useHistory } from "react-router";
-<<<<<<< HEAD
-import { IMaskInput } from 'react-imask';
-=======
 import { mask, unMask } from "remask";
->>>>>>> 5a818444c873c6e074c6519e53b9bf1464167a08
+import Api from "../../../services/api";
+import { ButtonWrapper, InputContainer } from "./style";
 
 /** Padrão de formulários a ser seguidos no projeto */
 export default function FormSingUpLocatario() {
@@ -142,27 +137,6 @@ export default function FormSingUpLocatario() {
         console.log("Ocorreu um erro ao cadastrar o usuário", err);
         setValues({ ...values, error: true, password: "", loading: false });
       });
-  };
-
-  const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
-    const { onChange, ...other } = props;
-    return (
-      <IMaskInput
-        {...other}
-        mask="(#00) 000-0000"
-        definitions={{
-          '#': /[1-9]/,
-        }}
-        inputRef={ref}
-        onAccept={(value) => onChange({ target: { name: props.name, value } })}
-        overwrite
-      />
-    );
-  });
-
-  TextMaskCustom.propTypes = {
-    name: "numero",
-    onChange: "numero"
   };
 
   return (
@@ -323,7 +297,7 @@ export default function FormSingUpLocatario() {
             color="success"
             name="numero"
             onChange={handleChange("numero")}
-            inputComponent={TextMaskCustom}
+
           />
 
         </InputContainer>

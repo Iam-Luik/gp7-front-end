@@ -8,19 +8,19 @@ export default function Countdown() {
   const [min, setMin] = useState();
   const [seg, setSeg] = useState();
 
-  Api.get("http://localhost:8080/locacao/consultar-locacao/" + sessionStorage.getItem("idLocacao"))
+
+    Api.get("http://localhost:8080/locacao/consultar-locacao/" + sessionStorage.getItem("idLocacao"))
     .then((response) => {
       setHour(new Date(new Date(response.data.dataHoraDevolucao).getTime() - new Date(Date.now()).getTime()).getHours())
       setMin(new Date(new Date(response.data.dataHoraDevolucao).getTime() - new Date(Date.now()).getTime()).getMinutes())
       setSeg(new Date(new Date(response.data.dataHoraDevolucao).getTime() - new Date(Date.now()).getTime()).getSeconds())
       // new Date(new Date(response.data.dataHoraDevolucao).getTime() - new Date().getTime())
 
-      console.log(new Date(new Date(response.data.dataHoraDevolucao).getTime() - new Date().getTime()).toISOString())
+      // console.log(new Date(new Date(response.data.dataHoraDevolucao).getTime() - new Date().getTime()).toISOString())
     })
     .catch((err) => {
       console.error("ops! ocorreu um erro" + err);
     });
-
 
   let intervalRef = useRef();
 
@@ -49,7 +49,7 @@ export default function Countdown() {
 
   return (
     <div>
-      <div class="date-time"><h2>{hour > 10 ? hour : "0" + hour}:{min > 10 ? min : "0" + min}:{seg >= 10 ? seg : "0" + seg}</h2></div>
+      <div class="date-time"><h2>{hour >= 10 ? hour : "0" + hour}:{min >= 10 ? min : "0" + min}:{seg >= 10 ? seg : "0" + seg}</h2></div>
     </div>
   );
 }

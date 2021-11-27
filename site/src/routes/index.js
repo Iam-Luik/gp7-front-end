@@ -12,6 +12,7 @@ import ComprovanteLocador from "../pages/ComprovanteLocador";
 import ComprovanteLocatario from "../pages/ComprovanteLocatario";
 import BicicletaFiltro from "../pages/BicicletaFiltro";
 import Locador from "../pages/Locador";
+import Locatario from "../pages/Locatario";
 import NotFound from "../pages/NotFound";
 import Senha from "../pages/Senha";
 import Email from "../pages/Email";
@@ -82,7 +83,8 @@ const Routes = () => (
         exact
         component={BicicletaFiltro}
       />
-      <PrivateRoute path="/card" exact component={Locador} />
+      <PrivateRoute path="/cardLocador" exact component={Locador} />
+      <PrivateRoute path="/cardLocatario" exact component={Locatario} />
       <Route path="/*" exact component={NotFound} />
     </Switch>
   </BrowserRouter>

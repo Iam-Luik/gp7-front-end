@@ -48,7 +48,7 @@ const ComprovanteLocador = () => {
         <RowBlockRight>
           <img src={Bibi} alt="" />
           <Countdown />
-          <Link to="/card">
+          <Link to="/cardLocador">
             <GeneralButton button="CONFIRMAR DEVOLUÇÃO" />
           </Link>
         </RowBlockRight>

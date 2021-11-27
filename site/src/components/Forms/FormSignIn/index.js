@@ -57,9 +57,9 @@ export default function FormSingIn() {
       .then((response) => {
         console.log("autenticado com sucesso: ", response);
         if (response.data.tipoUsuario === "locador") {
-          history.push("/card");
+          history.push("/cardLocador");
         } else if (response.data.tipoUsuario === "locatario") {
-          history.push("/bicicleta-filtro");
+          history.push("/cardLocatario");
         }
 
         // sessionStorage.setItem("emai l", response.data.email);

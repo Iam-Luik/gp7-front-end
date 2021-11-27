@@ -25,8 +25,10 @@ function BicicletaControll(props) {
 
   const [bicicletas, setBicicletas] = React.useState([]);
 
+  const idUsuario = sessionStorage.getItem("idUsuario");
+
   React.useEffect(() => {
-    Api.get("bicicleta/todos")
+    Api.get("bicicleta/bicicleta-por-usuario/" + idUsuario)
       .then((res) => {
 
         setBicicletas(res.data)
@@ -55,7 +57,7 @@ function BicicletaControll(props) {
     Api.post("http://localhost:8080/bicicleta/bicicleta-imagem/" + id, data, config)
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.href = "/card"
+        window.location.href = "/cardLocador"
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP
@@ -65,7 +67,7 @@ function BicicletaControll(props) {
     Api.delete("http://localhost:8080/bicicleta/remover/" + id)
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.href = "/card"
+        window.location.href = "/cardLocador"
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP
@@ -76,7 +78,7 @@ function BicicletaControll(props) {
     Api.post("http://localhost:8080/bicicleta/adicionar-ultima")
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.href = "/card"
+        window.location.href = "/cardLocador"
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP
@@ -87,7 +89,7 @@ function BicicletaControll(props) {
     Api.delete("http://localhost:8080/bicicleta//remover-ultima")
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.href = "/card"
+        window.location.href = "/cardLocador"
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP

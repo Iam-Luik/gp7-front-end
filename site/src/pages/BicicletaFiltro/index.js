@@ -1,46 +1,41 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import BicicletaCard from "../../components/BicicletaCard";
 import Footer from "../../components/Footer";
 import NavbarLocatario from "../../components/NavbarLocatario";
 import Select from "../../components/Select";
-import { Section, SelectFilter } from "./style";
-
-const bicicleta = {
-  imagem:
-    "https://caloi.com/wp-content/uploads/2021/05/Caloi-City-Tour-Comp-lateral-1500x900.jpg",
-  titulo: "E-VIBE ELITE FS PRO",
-  preco: "R$ 5,00 por hora",
-};
+import Api from "../../services/api";
+import Button from "@mui/material/Button";
+import { Section, SelectFilter, Error } from "./style";
 
 const categorias = {
   titulo: "categoria",
   valores: [
     {
-      value: "Clássicos",
+      value: "classicos",
       label: "Clássicos",
     },
     {
-      value: "Elétrica",
+      value: "eletrica",
       label: "Elétrica",
     },
     {
-      value: "Estrada",
+      value: "estrada",
       label: "Estrada",
     },
     {
-      value: "Infantil",
+      value: "infantil",
       label: "Infantil",
     },
     {
-      value: "Lazer",
+      value: "lazer",
       label: "Lazer",
     },
     {
-      value: "Mountain Bike",
+      value: "montain-bike",
       label: "Mountain Bike",
     },
     {
-      value: "Urbana",
+      value: "urbana",
       label: "Urbana",
     },
   ],
@@ -49,16 +44,12 @@ const aros = {
   titulo: "tamanho aro",
   valores: [
     {
-      value: "Aro 26",
+      value: "aro-26",
       label: "Aro 26",
     },
     {
-      value: "Aro 700",
-      label: "Aro 700",
-    },
-    {
-      value: "Aro 27.5",
-      label: "Aro 27.5",
+      value: "aro-29",
+      label: "Aro 29",
     },
   ],
 };
@@ -66,27 +57,27 @@ const cores = {
   titulo: "cor",
   valores: [
     {
-      value: "Preta",
+      value: "preta",
       label: "Preta",
     },
     {
-      value: "Cinza",
+      value: "cinza",
       label: "Cinza",
     },
     {
-      value: "Vinho",
+      value: "vinho",
       label: "Vinho",
     },
     {
-      value: "Verde",
+      value: "verde",
       label: "Verde",
     },
     {
-      value: "Azul",
+      value: "azul",
       label: "Azul",
     },
     {
-      value: "Grafite",
+      value: "grafite",
       label: "Grafite",
     },
   ],
@@ -95,53 +86,41 @@ const velocidades = {
   titulo: "velocidade",
   valores: [
     {
-      value: "7 velocidades",
+      value: "7-velocidades",
       label: "7 velocidades",
     },
     {
-      value: "9 velocidades",
+      value: "9-velocidades",
       label: "9 velocidades",
     },
     {
-      value: "21 velocidades",
+      value: "21-velocidades",
       label: "21 velocidades",
     },
     {
-      value: "24 velocidades",
+      value: "24-velocidades",
       label: "24 velocidades",
     },
     {
-      value: "18 velocidades",
+      value: "18-velocidades",
       label: "18 velocidades",
     },
   ],
 };
-const precos = {
-  titulo: "preço por hora",
-  valores: [
-    {
-      value: "5,00R$",
-      label: "5,00R$",
-    },
-    {
-      value: "9,00R$",
-      label: "9,00R$",
-    },
-    {
-      value: "11,00R$",
-      label: "11,00R$",
-    },
-    {
-      value: "13,00R$",
-      label: "13,00R$",
-    },
-    {
-      value: "15,00R$",
-      label: "15,00R$",
-    },
-  ],
-};
+
 const BicicletaFiltro = () => {
+  const [bicicletas, setBicicletas] = React.useState([]);
+
+  useEffect(() => {
+    Api.get("bicicleta/todos")
+      .then((response) => {
+        setBicicletas(response.data);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+
   const [categoria, setCategoria] = React.useState("");
 
   const handleChangeCategoria = (event) => {
@@ -166,10 +145,19 @@ const BicicletaFiltro = () => {
     setVelocidade(event.target.value);
   };
 
-  const [preco, setPreco] = React.useState("");
-
-  const handleChangePreco = (event) => {
-    setPreco(event.target.value);
+  const obterBicicletas = () => {
+    console.log(categoria, aro, cor, velocidade);
+    Api.get(
+      `bicicleta/filtrar/${categoria ? categoria : null}/${aro ? aro : null}/${cor ? cor : null
+      }/${velocidade ? velocidade : null}`
+    )
+      .then((response) => {
+        setBicicletas(response.data);
+      })
+      .catch((err) => {
+        setBicicletas("");
+        console.error("ops! ocorreu um erro" + err);
+      });
   };
 
   return (
@@ -199,20 +187,22 @@ const BicicletaFiltro = () => {
           handleChange={handleChangeVelocidade}
           value={velocidade}
         ></Select>
-
-        <Select
-          props={precos}
-          handleChange={handleChangePreco}
-          value={preco}
-        ></Select>
+        <Button variant="contained" onClick={obterBicicletas}>
+          Pesquisar
+        </Button>
       </SelectFilter>
-      <Section>
-        <BicicletaCard props={bicicleta}></BicicletaCard>
-        <BicicletaCard props={bicicleta}></BicicletaCard>
-        <BicicletaCard props={bicicleta}></BicicletaCard>
-        <BicicletaCard props={bicicleta}></BicicletaCard>
-        <BicicletaCard props={bicicleta}></BicicletaCard>
-      </Section>
+      {bicicletas.length > 0 ? (
+        <Section>
+          {bicicletas.map((bicicleta) => {
+            return <BicicletaCard props={bicicleta}></BicicletaCard>;
+          })}
+        </Section>
+      ) : (
+        <Error>
+          <h1>Não existem bicicletas disponíveis no momento.</h1>
+        </Error>
+      )}
+
       <Footer />
     </>
   );

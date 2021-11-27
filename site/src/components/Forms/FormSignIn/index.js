@@ -62,10 +62,10 @@ export default function FormSingIn() {
           history.push("/bicicleta-filtro");
         }
 
-        sessionStorage.setItem("email", response.data.email);
-        sessionStorage.setItem("id", response.data.id);
-        sessionStorage.setItem("nome", response.data.nome);
-        sessionStorage.setItem("imagemPerfil", response.data.imagemPerfil);
+        // sessionStorage.setItem("emai l", response.data.email);
+        sessionStorage.setItem("idUsuario", response.data.id);
+        // sessionStorage.setItem("nome", response.data.nome);
+        // sessionStorage.setItem("imagemPerfil", response.data.imagemPerfil);
         setValues({ ...values, loading: false });
       })
       .catch((err) => {

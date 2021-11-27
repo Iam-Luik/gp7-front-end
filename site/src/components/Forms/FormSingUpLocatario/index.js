@@ -256,7 +256,6 @@ export default function FormSingUpLocatario() {
             inputComponent={TextMaskCustom}
           />
 
-          <InputMask mask="99999-999" value={values.numero} onChange={handleChange("numero")} />
         </InputContainer>
 
         <ButtonWrapper>

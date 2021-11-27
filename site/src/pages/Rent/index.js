@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as React from "react";
 import NavbarPadrao from "../../components/NavbarPadrao";
 import Footer from "../../components/Footer";
 import TabLayout from "../../components/TabLayout/index";
@@ -36,6 +37,20 @@ const tempo = {
   ],
 };
 const SignIn = () => {
+
+  const [bicicletas, setBicicleta] = React.useState({usuario: {}});
+
+  React.useEffect(() => {
+    Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
+      .then((res) => {
+        setBicicleta(res.data)
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+
+
   const history = useHistory();
   const [timeAlugar, setTimeAlugar] = useState("");
   const [timeReserva, setTimeReserva] = useState("");
@@ -50,10 +65,13 @@ const SignIn = () => {
     data.setHours(data.getHours() + Number(timeAlugar.substring(0, 2)));
     data.setMinutes(data.getMinutes() + Number(timeAlugar.substring(3, 5)) + 30);
 
+    console.log(bicicletas.id + "teste")
+
     Api.post("http://localhost:8080/locacao/cadastrar-locacao", {
       formaPagamento: "",
       dataHoraLocacao: new Date(Date.now()),
       dataHoraDevolucao: data,
+      bicicleta: {id:bicicletas.id}
     })
       .then((response) => {
         history.push("/comprovanteLocador");
@@ -73,13 +91,12 @@ const SignIn = () => {
       </BlockTitle>
       <ColBlocks>
         <RowBlockLeft>
-          <h2>Bicicleta Caloi Two Niner</h2>
-          <p>Aro 29</p>
-          <h1>R$ 00,00</h1>
+          <h2>{bicicletas.marca}</h2>
+          <p>{bicicletas.tamanhoAro}</p>
           <TabLayout />
         </RowBlockLeft>
         <RowBlockRight>
-          <img src={Bibi} alt="" />
+          <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id} alt="" width={"400px"}/>
         </RowBlockRight>
       </ColBlocks>
       <ColBlocks>
@@ -87,9 +104,10 @@ const SignIn = () => {
           <img src={Proprietaria} alt="" />
         </RowBlockLeft>
         <RowBlockRight>
-          <h2>Vitória</h2>
-          <p>Feminino</p>
-          <h1>(51) 2824-2466</h1>
+          <h2>{bicicletas.usuario.nome}</h2>
+          <p>{bicicletas.usuario.sobrenome}</p>
+          <h1>{bicicletas.usuario.telefone}</h1>
+          <p>{bicicletas.usuario.email}</p>
           <TabLayout />
         </RowBlockRight>
       </ColBlocks>

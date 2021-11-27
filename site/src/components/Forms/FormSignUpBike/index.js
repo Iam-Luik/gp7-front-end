@@ -37,7 +37,6 @@ export default function FormSingUpBike() {
         link.download = "arquivo-bike.txt";
         link.click();
         window.URL.revokeObjectURL(link.href);
-        passou = true;
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
@@ -188,6 +187,8 @@ export default function FormSingUpBike() {
     setArquivo(event.target.value);
   };
 
+  const idUsuario = sessionStorage.getItem("idUsuario");
+
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
     console.log(values);
@@ -209,19 +210,18 @@ export default function FormSingUpBike() {
           console.log(percentCompleted);
         },
       };
-      Api.post(
-        "http://localhost:8080/bicicleta/envio-arquivo/file/1",
-        data,
-        config
-      )
+      Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/" + idUsuario, data, config)
         .then(function (res) {
           console.log(res.data); //Resposta HTTP
+          console.log(idUsuario);
           history.push("/card");
+
         })
         .catch(function (err) {
           console.log(err.message); //Erro HTTP
-          alert("Arquivo txt não preenchido corretamente ou inválido");
-          window.location.href = "/bike";
+          console.log(idUsuario);
+          alert("Arquivo txt não preenchido corretamente ou inválido")
+          window.location.href = "/bike"
         });
     } else {
       Api.post("http://localhost:8080/bicicleta/cadastrar", {
@@ -231,20 +231,20 @@ export default function FormSingUpBike() {
         tamanhoAro: aro,
         cor: cor,
         velocidade: velocidade,
-
-        usuario: { id: 1 },
+        usuario: { id: idUsuario }
       })
         .then((response) => {
           console.log("cadastrado com sucesso: ", response);
           console.log(arquivo);
+          // sessionStorage.setItem("idBike", response.data);
           history.push("/card");
         })
         .catch((err) => {
           console.log("Ocorreu um erro ao cadastrar o usuário", err);
-          alert(
-            "Verifique se os dados do cadastro estão preenchidos corretamente"
-          );
-          window.location.href = "/bike";
+          console.log(idUsuario);
+          alert("Verifique se os dados do cadastro estão preenchidos corretamente")
+          window.location.href = "/bike"
+
         });
     }
   };

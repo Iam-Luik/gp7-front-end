@@ -36,7 +36,7 @@ const tempo = {
     },
   ],
 };
-const SignIn = () => {
+function SignIn({ props }) {
 
   const [bicicletas, setBicicleta] = React.useState({ usuario: {} });
 
@@ -89,7 +89,7 @@ const SignIn = () => {
 
   return (
     <>
-      <NavbarPadrao />
+      < NavbarPadrao />
       <BlockTitle>
         <h1>Contratação</h1>
       </BlockTitle>
@@ -100,7 +100,19 @@ const SignIn = () => {
           <TabLayout />
         </RowBlockLeft>
         <RowBlockRight>
-          <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id} alt="" width={"400px"} />
+
+          <div class="imagem">
+            {bicicletas.imagem ? (
+              <img
+                src={
+                  "http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id
+                }
+                width={"400px"}
+              ></img>
+            ) : (
+              <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width={"400px"}></img>
+            )}
+          </div>
         </RowBlockRight>
       </ColBlocks>
       <ColBlocks>
@@ -110,6 +122,7 @@ const SignIn = () => {
         <RowBlockRight>
           <h2>{bicicletas.usuario.nome}</h2>
           <p>{bicicletas.usuario.sobrenome}</p>
+
           <h1>{bicicletas.usuario.telefone}</h1>
           <p>{bicicletas.usuario.email}</p>
           <TabLayout />

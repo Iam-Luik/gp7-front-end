@@ -25,7 +25,7 @@ const ComprovanteLocador = () => {
   useEffect(() => {
     Api.get(
       "http://localhost:8080/locacao/consultar-locacao/" +
-        sessionStorage.getItem("idLocacao")
+      sessionStorage.getItem("idLocacao")
     )
       .then((response) => {
         setDados(response.data);

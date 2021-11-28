@@ -9,7 +9,7 @@ export default function Countdown() {
   const [seg, setSeg] = useState();
 
 
-    Api.get("http://localhost:8080/locacao/consultar-locacao/" + sessionStorage.getItem("idLocacao"))
+  Api.get("http://localhost:8080/locacao/consultar-locacao/" + sessionStorage.getItem("idLocacao"))
     .then((response) => {
       setHour(new Date(new Date(response.data.dataHoraDevolucao).getTime() - new Date(Date.now()).getTime()).getHours())
       setMin(new Date(new Date(response.data.dataHoraDevolucao).getTime() - new Date(Date.now()).getTime()).getMinutes())

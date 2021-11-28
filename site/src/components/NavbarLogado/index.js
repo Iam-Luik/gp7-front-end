@@ -37,6 +37,10 @@ function NavbarLogado() {
     history.push("/alterar-usuario");
   };
 
+  const handleSenha = () => {
+    history.push("/alterar-login");
+  };
+
   const handleLogoff = () => {
     Api.post("http://localhost:8080/usuario/sair", {
       email: sessionStorage.getItem("email"),
@@ -87,6 +91,7 @@ function NavbarLogado() {
                 }}
               >
                 <MenuItem onClick={handlePerfil}>Meu perfil</MenuItem>
+                <MenuItem onClick={handleSenha}>Alterar senha</MenuItem>
                 <MenuItem onClick={handleLogoff}>Sair</MenuItem>
               </Menu>
             </div>

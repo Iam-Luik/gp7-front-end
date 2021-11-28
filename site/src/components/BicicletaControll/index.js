@@ -151,13 +151,37 @@ function BicicletaControll(props) {
 
                 <div class="botoes">
                   {item.imagem !== null || item.imagem !== null ? (
-                    <Button variant="contained" startIcon={<PhotoCamera />}>
-                      Editar Imagem
-                    </Button>
+                    // <label htmlFor="arquivo">
+                    //   <Input
+                    //     accept="image/*"
+                    //     type="file"
+                    //     name="arquivo"
+                    //     id="arquivo"
+                    //     onChange={() => handleImagem(item.id)}
+                    //   />
+                    //   <Button variant="contained" startIcon={<PhotoCamera />}>
+                    //     Editar Imagem
+                    //   </Button>
+                    // </label>
+                    <label htmlFor="arquivo">
+                      <Input
+                        accept="image/*"
+                        type="file"
+                        name="arquivo"
+                        id="arquivo"
+                        onChange={() => handleImagem(item.id)}
+                      />
+                      <Button
+                        variant="contained"
+                        component="span"
+                        startIcon={<PhotoCamera />}
+                      >
+                        Editar Imagem
+                      </Button>
+                    </label>
                   ) : (
                     <span></span>
                   )}
-                  {/* <Button variant="contained">Editar Imagem</Button> */}
                   <Button
                     onClick={() => handleRemover(item.id)}
                     variant="outlined"

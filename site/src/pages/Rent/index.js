@@ -38,7 +38,8 @@ const tempo = {
 };
 const SignIn = () => {
 
-  const [bicicletas, setBicicleta] = React.useState({usuario: {}});
+  const [bicicletas, setBicicleta] = React.useState({ usuario: {} });
+
 
   React.useEffect(() => {
     Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
@@ -55,6 +56,7 @@ const SignIn = () => {
   const [timeAlugar, setTimeAlugar] = useState("");
   const [timeReserva, setTimeReserva] = useState("");
   const [dataValor, setDataValor] = useState("");
+  const idUsuario = sessionStorage.getItem("idUsuario");
 
   console.log("timeAlugar :", timeAlugar);
   console.log("timeReserva :", timeReserva);
@@ -71,7 +73,8 @@ const SignIn = () => {
       formaPagamento: "",
       dataHoraLocacao: new Date(Date.now()),
       dataHoraDevolucao: data,
-      bicicleta: {id:bicicletas.id}
+      bicicleta: { id: bicicletas.id },
+      usuarioLocatario: { id: idUsuario }
     })
       .then((response) => {
         history.push("/comprovanteLocador");
@@ -82,6 +85,7 @@ const SignIn = () => {
         alert(err);
       });
   }
+
 
   return (
     <>
@@ -96,7 +100,7 @@ const SignIn = () => {
           <TabLayout />
         </RowBlockLeft>
         <RowBlockRight>
-          <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id} alt="" width={"400px"}/>
+          <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id} alt="" width={"400px"} />
         </RowBlockRight>
       </ColBlocks>
       <ColBlocks>

@@ -6,6 +6,7 @@ import GeneralButton from "../../components/GeneralButton";
 import NavbarPadrao from "../../components/NavbarPadrao";
 import Api from "../../services/api";
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 import {
   ColBlocks,
@@ -15,18 +16,42 @@ import {
 } from "./style";
 
 const ComprovanteLocador = () => {
-  const [dados, setDados] = useState({bicicleta: {usuario: {endereco: {}}}});
+  const history = useHistory();
+  const [dados, setDados] = useState({ bicicleta: { usuario: { endereco: {} } } });
+  const [usuario, setUsuario] = React.useState({});
+  const idUsuario = sessionStorage.getItem("idUsuario");
 
   useEffect(() => {
     Api.get("http://localhost:8080/locacao/consultar-locacao/" + sessionStorage.getItem("idLocacao"))
-    .then((response) => {
-      // console.log(response.data)
-      setDados(response.data)
-    })
-    .catch((err) => {
-      console.error("ops! ocorreu um erro" + err);
-    });
+      .then((response) => {
+        // console.log(response.data)
+        setDados(response.data)
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
   }, []);
+
+  React.useEffect(() => {
+    Api.get("usuario/" + idUsuario)
+      .then((res) => {
+        setUsuario(res.data)
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+
+  function deletar(id) {
+    Api.delete("locacao/cancelar/" + id)
+      .then((res) => {
+        history.push("/cardLocatario")
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }
+
 
   return (
     <>
@@ -43,7 +68,7 @@ const ComprovanteLocador = () => {
             <b>LOCADOR:</b> <span>{dados.bicicleta.usuario.nome} {dados.bicicleta.usuario.sobrenome}</span>
           </h4>
           <h4>
-            <b>LOCATÁRIO:</b> <span>Julio Vitor Silveira</span>
+            <b>LOCATÁRIO:</b> <span>{usuario.nome} {usuario.sobrenome}</span>
           </h4>
           <h4>
             <b>BICICLETA:</b> <span>{dados.bicicleta.marca} {dados.bicicleta.modelo}</span>
@@ -59,10 +84,13 @@ const ComprovanteLocador = () => {
           </h4>
         </RowBlockLeft>
         <RowBlockRight>
-          <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + dados.bicicleta.id} alt="" width={"400px"}/>
+          <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + dados.bicicleta.id} alt="" width={"400px"} />
           <Countdown />
-          <Link to="/cardLocador">
-            <GeneralButton button="CONFIRMAR DEVOLUÇÃO" />
+
+          <GeneralButton click={() => deletar(dados.id)} button="CONFIRMAR DEVOLUÇÃO" />
+
+          <Link to="/cardLocatario">
+            <GeneralButton button="BICICLETAS" />
           </Link>
         </RowBlockRight>
       </ColBlocks>

@@ -85,6 +85,22 @@ function SignIn({ props }) {
       });
   }
 
+  // function maskTelefone(v) {
+  //   let r = v.replace(/\D/g, "");
+  //   r = r.replace(/^0/, "");
+
+  //   if (r.length > 11) {
+  //     r = r.replace(/^(\d\d)(\d{5})(\d{4})./, "($1) $2-$3");
+  //   } else if (r.length > 7) {
+  //     r = r.replace(/^(\d\d)(\d{5})(\d{0,4})./, "($1) $2-$2");
+  //   } else if (r.length > 2) {
+  //     r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+  //   } else if (v.trim() !== "") {
+  //     r = r.replace(/^(\d*)/, "($1");
+  //   }
+  //   return r;
+  // }
+
   return (
     <>
       <NavbarPadrao />
@@ -100,25 +116,16 @@ function SignIn({ props }) {
         <RowBlockRight>
           <div class="imagem">
             {bicicletas.imagem ? (
-              <img
-                src={
-                  "http://localhost:8080/bicicleta/bicicleta-imagem/" +
-                  bicicletas.id
-                }
-                width={"400px"}
-              ></img>
+              <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id} width={"400px"}></img>
             ) : (
-              <img
-                src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
-                width={"400px"}
-              ></img>
+              <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width={"400px"}></img>
             )}
           </div>
         </RowBlockRight>
       </ColBlocks>
       <ColBlocks>
         <RowBlockLeft>
-          <img src={Proprietaria} alt="" />
+          <img src={bicicletas.usuario.imagem ? "http://localhost:8080/usuario/imagem/" + bicicletas.usuario.id : "https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"} width={"400px"} alt="" />
         </RowBlockLeft>
         <RowBlockRight>
           <h2>{bicicletas.usuario.nome}</h2>

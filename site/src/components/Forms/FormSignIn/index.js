@@ -10,7 +10,7 @@ import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Api from "../../../services/api";
 import { ButtonWrapper, InputContainer } from "./style";
 import { useHistory } from "react-router";
@@ -56,17 +56,16 @@ export default function FormSingIn() {
     })
       .then((response) => {
         console.log("autenticado com sucesso: ", response);
-        if (response.data.tipoUsuario === "locador") {
-          history.push("/cardLocador");
-        } else if (response.data.tipoUsuario === "locatario") {
-          history.push("/cardLocatario");
-        }
-
         // sessionStorage.setItem("emai l", response.data.email);
         sessionStorage.setItem("idUsuario", response.data.id);
         // sessionStorage.setItem("nome", response.data.nome);
         // sessionStorage.setItem("imagemPerfil", response.data.imagemPerfil);
         setValues({ ...values, loading: false });
+        if (response.data.tipoUsuario === "locador") {
+          history.push("/cardLocador");
+        } else if (response.data.tipoUsuario === "locatario") {
+          history.push("/cardLocatario");
+        }
       })
       .catch((err) => {
         console.log("Ocorreu um erro ao obter dados de usuário", err);

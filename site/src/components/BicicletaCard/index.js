@@ -37,7 +37,7 @@ function BicicletaCard({ props }) {
           click={() => localizacao(props.id)}
         ></GeneralButton>
       </CardStyle>
-      : <h1>Não existem bicicletas disponíveis no momento.</h1>}</>
+      : <></>}</>
   );
 }
 

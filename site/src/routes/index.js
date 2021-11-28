@@ -17,6 +17,8 @@ import NotFound from "../pages/NotFound";
 import Senha from "../pages/Senha";
 import Email from "../pages/Email";
 import Codigo from "../pages/Codigo";
+import UpdateUser from "../pages/UpdateUser";
+import UpdateLogin from "../pages/UpdateLogin";
 
 async function isAuthenticated() {
   return true;
@@ -60,6 +62,9 @@ const Routes = () => (
       />
       <Route path="/direcionamento" exact component={Direcionamento} />
       <PrivateRoute path="/bike" exact component={SignUpBike} />
+      <PrivateRoute path="/alterar-usuario" exact component={UpdateUser} />
+      <PrivateRoute path="/alterar-login" exact component={UpdateLogin} />
+
       <PrivateRoute
         path="/bicicleta-filtro"
         exact

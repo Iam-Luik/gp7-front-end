@@ -56,10 +56,9 @@ export default function FormSingIn() {
     })
       .then((response) => {
         console.log("autenticado com sucesso: ", response);
-        // sessionStorage.setItem("emai l", response.data.email);
+        sessionStorage.setItem("email", response.data.email);
         sessionStorage.setItem("idUsuario", response.data.id);
-        // sessionStorage.setItem("nome", response.data.nome);
-        // sessionStorage.setItem("imagemPerfil", response.data.imagemPerfil);
+        sessionStorage.setItem("idEndereco", response.data.endereco.id);
         setValues({ ...values, loading: false });
         if (response.data.tipoUsuario === "locador") {
           history.push("/cardLocador");

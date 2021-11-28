@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import BicicletaCard from "../../components/BicicletaCard";
 import Footer from "../../components/Footer";
-import NavbarLocatario from "../../components/NavbarLocatario";
+import NavbarLogado from "../../components/NavbarLogado";
 import Select from "../../components/Select";
 import Api from "../../services/api";
 import Button from "@mui/material/Button";
@@ -148,7 +148,8 @@ const BicicletaFiltro = () => {
   const obterBicicletas = () => {
     console.log(categoria, aro, cor, velocidade);
     Api.get(
-      `bicicleta/filtrar/${categoria ? categoria : null}/${aro ? aro : null}/${cor ? cor : null
+      `bicicleta/filtrar/${categoria ? categoria : null}/${aro ? aro : null}/${
+        cor ? cor : null
       }/${velocidade ? velocidade : null}`
     )
       .then((response) => {
@@ -163,15 +164,14 @@ const BicicletaFiltro = () => {
   function bicicletasFunc() {
     var dados = [];
     for (let index = 0; index < bicicletas.length; index++) {
-      if (!bicicletas[index].alocada)
-        dados.push(bicicletas[index])
+      if (!bicicletas[index].alocada) dados.push(bicicletas[index]);
     }
     return dados;
   }
 
   return (
     <>
-      <NavbarLocatario />
+      <NavbarLogado />
       <SelectFilter>
         <Select
           props={categorias}

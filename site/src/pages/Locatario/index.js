@@ -1,26 +1,24 @@
 import React from "react";
 import BicicletaLocatario from "../../components/BicicletaLocatario";
 import Footer from "../../components/Footer";
-import NavbarPadrao from "../../components/NavbarPadrao";
+import NavbarLogado from "../../components/NavbarLogado";
 import { Container } from "./style";
 
 function Locador() {
+  return (
+    <>
+      <NavbarLogado />
 
-    return (
-        <>
-            <NavbarPadrao />
+      <Container>
+        <BicicletaLocatario></BicicletaLocatario>
+      </Container>
 
-            <Container>
-
-                <BicicletaLocatario></BicicletaLocatario>
-            </Container>
-
-            {/* <Link to="/bike">
+      {/* <Link to="/bike">
         <GeneralButton button="ADICIONAR" />
         </Link> */}
-            <Footer />
-        </>
-    );
-};
+      <Footer />
+    </>
+  );
+}
 
 export default Locador;

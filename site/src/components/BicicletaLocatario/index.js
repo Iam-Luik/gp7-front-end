@@ -37,8 +37,8 @@ function BicicletaLocatario(props) {
   }, []);
 
   function verComprovante(id) {
-    history.push("/comprovanteLocador");
     sessionStorage.setItem("idLocacao", id);
+    history.push("/comprovanteLocador");
   }
 
   return (

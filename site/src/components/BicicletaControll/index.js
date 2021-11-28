@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import * as React from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import Api from "../../services/api";
 import { CardStyle, Error } from "./style";
 
@@ -96,6 +97,18 @@ function BicicletaControll(props) {
       });
   }
 
+  function locadorTela(id) {
+    Api.get("locacao/consultar-locacao-locador/" + idUsuario)
+      .then((res) => {
+        setBicicletas(res.data);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+    sessionStorage.setItem("idLocacao", id);
+    history.push("/comprovanteLocador")
+  }
+
   return (
     <>
       {/* <Button onClick={() => ultimaAdd()}
@@ -152,8 +165,7 @@ function BicicletaControll(props) {
                   <h1>{item.marca}</h1>
                   <p>{item.preco}</p>
                 </div>
-
-                <div class="botoes">
+                {!item.alocada ? <div class="botoes">
                   {item.imagem !== null || item.imagem !== null ? (
                     <Button variant="contained" startIcon={<PhotoCamera />}>
                       Editar Imagem
@@ -170,14 +182,24 @@ function BicicletaControll(props) {
                   >
                     Remover bicicleta
                   </Button>
-                </div>
+                </div> : <>
+                  <Button
+                    onClick={() => locadorTela(item.id)}
+                    variant="contained"
+                    color="success"
+                  >
+                    Comprovante
+                  </Button>
+                </>}
+
               </CardStyle>
             );
           })}
         </>
       ) : (
         <Error></Error>
-      )}
+      )
+      }
 
       <Tooltip title="Clique aqui para cadastrar uma nova bicicleta">
         <Fab

@@ -1,4 +1,4 @@
-import NavbarPadrao from "../../components/NavbarPadrao";
+import NavbarLogado from "../../components/NavbarLogado";
 import Footer from "../../components/Footer";
 import BicicletaControll from "../../components/BicicletaControll";
 import { Container } from "./style";
@@ -6,13 +6,11 @@ import Api from "../../services/api";
 import React, { useState, useEffect } from "react";
 
 function Locador() {
-
   return (
     <>
-      <NavbarPadrao />
+      <NavbarLogado />
 
       <Container>
-
         <BicicletaControll></BicicletaControll>
       </Container>
 
@@ -22,6 +20,6 @@ function Locador() {
       <Footer />
     </>
   );
-};
+}
 
 export default Locador;

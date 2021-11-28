@@ -1,10 +1,21 @@
 import styled from "styled-components";
-
+export const Avatar = styled.div`
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+  }
+`;
 export const InputContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 28px;
+  grid-gap: 28px;
   width: 100%;
+  margin-top: 28px;
   justify-content: space-between;
 
   .css-kw4yk8-MuiInputBase-root-MuiFilledInput-root:after {

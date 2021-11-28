@@ -1,6 +1,6 @@
 import Footer from "../../components/Footer";
 import FormSingUpBike from "../../components/Forms/FormSignUpBike/index";
-import NavbarPadrao from "../../components/NavbarPadrao";
+import NavbarLogado from "../../components/NavbarLogado";
 import Api from "../../services/api";
 import { Container, RowBlock } from "./style";
 
@@ -12,7 +12,7 @@ const SignUpBike = () => {
   // }
   return (
     <>
-      <NavbarPadrao />
+      <NavbarLogado />
       <Container>
         <RowBlock>
           <FormSingUpBike />

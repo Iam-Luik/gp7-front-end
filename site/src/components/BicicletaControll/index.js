@@ -11,10 +11,6 @@ import { useHistory } from "react-router";
 import Api from "../../services/api";
 import { CardStyle, Error } from "./style";
 
-const Input = styled("input")({
-  display: "none",
-});
-
 function BicicletaControll(props) {
   var numero = Math.random() * (2 - 1);
   const Input = styled("input")({

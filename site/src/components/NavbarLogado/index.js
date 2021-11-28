@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Api from "../../services/api";
 import { Header } from "./style";
 
-function NavbarLocatario() {
+function NavbarLogado() {
   const history = useHistory();
 
   const [values, setValues] = React.useState({
@@ -31,6 +31,10 @@ function NavbarLocatario() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handlePerfil = () => {
+    history.push("/alterar-usuario");
   };
 
   const handleLogoff = () => {
@@ -63,7 +67,10 @@ function NavbarLocatario() {
             <div>
               <Avatar
                 alt={values.nome}
-                src={values.img}
+                src={
+                  "http://localhost:8080/usuario/imagem/" +
+                  sessionStorage.getItem("idUsuario")
+                }
                 sx={{ width: 45, height: 45 }}
                 aria-controls="basic-menu"
                 aria-haspopup="true"
@@ -79,8 +86,7 @@ function NavbarLocatario() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <MenuItem onClick={handleClose}>Default</MenuItem>
-                <MenuItem onClick={handleClose}>Meu perfil</MenuItem>
+                <MenuItem onClick={handlePerfil}>Meu perfil</MenuItem>
                 <MenuItem onClick={handleLogoff}>Sair</MenuItem>
               </Menu>
             </div>
@@ -91,4 +97,4 @@ function NavbarLocatario() {
   );
 }
 
-export default NavbarLocatario;
+export default NavbarLogado;

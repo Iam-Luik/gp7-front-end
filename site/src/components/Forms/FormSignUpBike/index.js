@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import * as React from "react";
 import { useHistory } from "react-router";
 import Select from "../../../components/Select";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
 import Api from "../../../services/api";
 import {
   ButtonWrapper,
@@ -210,18 +211,21 @@ export default function FormSingUpBike() {
           console.log(percentCompleted);
         },
       };
-      Api.post("http://localhost:8080/bicicleta/envio-arquivo/file/" + idUsuario, data, config)
+      Api.post(
+        "http://localhost:8080/bicicleta/envio-arquivo/file/" + idUsuario,
+        data,
+        config
+      )
         .then(function (res) {
           console.log(res.data); //Resposta HTTP
           console.log(idUsuario);
           history.push("/cardLocador");
-
         })
         .catch(function (err) {
           console.log(err.message); //Erro HTTP
           console.log(idUsuario);
-          alert("Arquivo txt não preenchido corretamente ou inválido")
-          window.location.href = "/bike"
+          alert("Arquivo txt não preenchido corretamente ou inválido");
+          window.location.href = "/bike";
         });
     } else {
       Api.post("http://localhost:8080/bicicleta/cadastrar", {
@@ -231,7 +235,7 @@ export default function FormSingUpBike() {
         tamanhoAro: aro,
         cor: cor,
         velocidade: velocidade,
-        usuario: { id: idUsuario }
+        usuario: { id: idUsuario },
       })
         .then((response) => {
           console.log("cadastrado com sucesso: ", response);
@@ -242,9 +246,10 @@ export default function FormSingUpBike() {
         .catch((err) => {
           console.log("Ocorreu um erro ao cadastrar o usuário", err);
           console.log(idUsuario);
-          alert("Verifique se os dados do cadastro estão preenchidos corretamente")
-          window.location.href = "/bike"
-
+          alert(
+            "Verifique se os dados do cadastro estão preenchidos corretamente"
+          );
+          window.location.href = "/bike";
         });
     }
   };
@@ -294,6 +299,8 @@ export default function FormSingUpBike() {
           ></Select>
 
           <Select
+            labelId="demo-simple-select-required-label"
+            id="demo-simple-select-required"
             props={aros}
             handleChange={handleChangeAro}
             value={aro}
@@ -318,6 +325,7 @@ export default function FormSingUpBike() {
               <Button
                 variant="contained"
                 onClick={baixarArquivo}
+                color="success"
                 endIcon={<DownloadIcon />}
               >
                 download
@@ -337,7 +345,12 @@ export default function FormSingUpBike() {
             <div class="upload" id="myForm" name="myForm">
               <label htmlFor="arquivo">
                 <Input multiple type="file" name="arquivo" id="arquivo" />
-                <Button variant="contained" component="span" color="success">
+                <Button
+                  variant="contained"
+                  component="span"
+                  color="success"
+                  endIcon={<FileUploadIcon />}
+                >
                   Upload
                 </Button>
               </label>
@@ -357,7 +370,7 @@ export default function FormSingUpBike() {
               Submit
             </LoadingButton>
           ) : (
-            <Button variant="contained" type="submit">
+            <Button variant="contained" type="submit" color="success">
               Cadastrar
             </Button>
           )}

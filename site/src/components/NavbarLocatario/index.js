@@ -80,11 +80,10 @@ function NavbarLocatario() {
                 }}
               >
                 <MenuItem onClick={handleClose}>Default</MenuItem>
+                <MenuItem onClick={handleClose}>Meu perfil</MenuItem>
                 <MenuItem onClick={handleLogoff}>Sair</MenuItem>
               </Menu>
             </div>
-            <Link to="/">Home</Link>
-            <Link to="/ajuda">Controle</Link>
           </ul>
         </Header>
       </nav>

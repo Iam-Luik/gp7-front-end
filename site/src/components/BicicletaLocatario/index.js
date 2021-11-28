@@ -22,9 +22,6 @@ function BicicletaLocatario(props) {
   });
   const history = useHistory();
 
-  const [hour, setHour] = useState();
-  const [min, setMin] = useState();
-  const [seg, setSeg] = useState();
   const [bicicletas, setBicicletas] = React.useState([]);
 
   const idUsuario = sessionStorage.getItem("idUsuario");
@@ -39,9 +36,9 @@ function BicicletaLocatario(props) {
       });
   }, []);
 
-  function handleImagem(id) {
-    sessionStorage.setItem("idLocacao", id);
+  function verComprovante(id) {
     history.push("/comprovanteLocador");
+    sessionStorage.setItem("idLocacao", id);
   }
 
   return (
@@ -84,7 +81,7 @@ function BicicletaLocatario(props) {
 
                 <div class="botoes">
                   <Button
-                    onClick={() => handleImagem(item.bicicleta.id)}
+                    onClick={() => verComprovante(item.bicicleta.id)}
                     variant="contained"
                     color="success"
                   >

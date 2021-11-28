@@ -37,20 +37,17 @@ const tempo = {
   ],
 };
 function SignIn({ props }) {
-
   const [bicicletas, setBicicleta] = React.useState({ usuario: {} });
-
 
   React.useEffect(() => {
     Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
       .then((res) => {
-        setBicicleta(res.data)
+        setBicicleta(res.data);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
   }, []);
-
 
   const history = useHistory();
   const [timeAlugar, setTimeAlugar] = useState("");
@@ -65,16 +62,18 @@ function SignIn({ props }) {
     var data = new Date(Date.now());
     //  new Date(data).setMinutes(Number(timeAlugar.substring(3, 5)) + 30);
     data.setHours(data.getHours() + Number(timeAlugar.substring(0, 2)));
-    data.setMinutes(data.getMinutes() + Number(timeAlugar.substring(3, 5)) + 30);
+    data.setMinutes(
+      data.getMinutes() + Number(timeAlugar.substring(3, 5)) + 30
+    );
 
-    console.log(bicicletas.id + "teste")
+    console.log(bicicletas.id + "teste");
 
     Api.post("http://localhost:8080/locacao/cadastrar-locacao", {
       formaPagamento: "",
       dataHoraLocacao: new Date(Date.now()),
       dataHoraDevolucao: data,
       bicicleta: { id: bicicletas.id },
-      usuarioLocatario: { id: idUsuario }
+      usuarioLocatario: { id: idUsuario },
     })
       .then((response) => {
         history.push("/comprovanteLocador");
@@ -86,10 +85,9 @@ function SignIn({ props }) {
       });
   }
 
-
   return (
     <>
-      < NavbarPadrao />
+      <NavbarPadrao />
       <BlockTitle>
         <h1>Contratação</h1>
       </BlockTitle>
@@ -100,17 +98,20 @@ function SignIn({ props }) {
           <TabLayout />
         </RowBlockLeft>
         <RowBlockRight>
-
           <div class="imagem">
             {bicicletas.imagem ? (
               <img
                 src={
-                  "http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id
+                  "http://localhost:8080/bicicleta/bicicleta-imagem/" +
+                  bicicletas.id
                 }
                 width={"400px"}
               ></img>
             ) : (
-              <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width={"400px"}></img>
+              <img
+                src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
+                width={"400px"}
+              ></img>
             )}
           </div>
         </RowBlockRight>
@@ -131,18 +132,13 @@ function SignIn({ props }) {
       <BlockTitle2>
         <h1>Tempo que irá alugar:</h1> <TimePicker setTime={setTimeAlugar} />
       </BlockTitle2>
-      <BlockTitle2>
-        {/* <h1>Tempo de reserva:</h1> <TimePicker setTime={setTimeReserva} /> */}
-      </BlockTitle2>
+      <BlockTitle2></BlockTitle2>
       <ButtonStyle>
-        {/* <form onSubmit={cadastrarHora}>
-      <GeneralButton type="submit" button="Reservar" />
-        </form> */}
         <GeneralButton button="Cadastrar" click={cadastrarHora} />
       </ButtonStyle>
       <Footer />
     </>
   );
-};
+}
 
 export default SignIn;

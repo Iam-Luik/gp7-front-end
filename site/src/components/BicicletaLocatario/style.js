@@ -16,7 +16,7 @@ export const CardStyle = styled.div`
   justify-content: space-evenly;
   img {
     width: 250px;
-    height: 150px;
+    height: 200px;
   }
   .upload {
     width: 250px;

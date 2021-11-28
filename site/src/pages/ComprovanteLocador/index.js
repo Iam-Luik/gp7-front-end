@@ -1,13 +1,11 @@
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import Bibi from "../../assets/bibi.png";
-import Footer from "../../components/Footer";
 import Countdown from "../../components/Countdown";
+import Footer from "../../components/Footer";
 import GeneralButton from "../../components/GeneralButton";
 import NavbarPadrao from "../../components/NavbarPadrao";
 import Api from "../../services/api";
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
-
 import {
   ColBlocks,
   RowBlockLeft,
@@ -17,6 +15,7 @@ import {
 
 const ComprovanteLocador = () => {
   const history = useHistory();
+
   const [dados, setDados] = useState({
     bicicleta: { usuario: { endereco: {} } },
   });

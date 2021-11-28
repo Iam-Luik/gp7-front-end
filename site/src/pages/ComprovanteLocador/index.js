@@ -17,15 +17,19 @@ import {
 
 const ComprovanteLocador = () => {
   const history = useHistory();
-  const [dados, setDados] = useState({ bicicleta: { usuario: { endereco: {} } } });
+  const [dados, setDados] = useState({
+    bicicleta: { usuario: { endereco: {} } },
+  });
   const [usuario, setUsuario] = React.useState({});
   const idUsuario = sessionStorage.getItem("idUsuario");
 
   useEffect(() => {
-    Api.get("http://localhost:8080/locacao/consultar-locacao/" + sessionStorage.getItem("idLocacao"))
+    Api.get(
+      "http://localhost:8080/locacao/consultar-locacao/" +
+        sessionStorage.getItem("idLocacao")
+    )
       .then((response) => {
-        // console.log(response.data)
-        setDados(response.data)
+        setDados(response.data);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
@@ -35,7 +39,7 @@ const ComprovanteLocador = () => {
   React.useEffect(() => {
     Api.get("usuario/" + idUsuario)
       .then((res) => {
-        setUsuario(res.data)
+        setUsuario(res.data);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
@@ -45,13 +49,12 @@ const ComprovanteLocador = () => {
   function deletar(id) {
     Api.delete("locacao/cancelar/" + id)
       .then((res) => {
-        history.push("/cardLocatario")
+        history.push("/cardLocatario");
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
   }
-
 
   return (
     <>
@@ -65,36 +68,61 @@ const ComprovanteLocador = () => {
           <h2>{dados.bicicleta.tamanhoAro}</h2>
 
           <h4>
-            <b>LOCADOR:</b> <span>{dados.bicicleta.usuario.nome} {dados.bicicleta.usuario.sobrenome}</span>
+            <b>LOCADOR:</b>{" "}
+            <span>
+              {dados.bicicleta.usuario.nome} {dados.bicicleta.usuario.sobrenome}
+            </span>
           </h4>
           <h4>
-            <b>LOCATÁRIO:</b> <span>{usuario.nome} {usuario.sobrenome}</span>
+            <b>LOCATÁRIO:</b>{" "}
+            <span>
+              {usuario.nome} {usuario.sobrenome}
+            </span>
           </h4>
           <h4>
-            <b>BICICLETA:</b> <span>{dados.bicicleta.marca} {dados.bicicleta.modelo}</span>
+            <b>BICICLETA:</b>{" "}
+            <span>
+              {dados.bicicleta.marca} {dados.bicicleta.modelo}
+            </span>
           </h4>
           <h4>
             <b>CEP:</b> <span>{dados.bicicleta.usuario.endereco.cep}</span>
           </h4>
           <h4>
-            <b>ENDEREÇO:</b> <span>{dados.bicicleta.usuario.endereco.rua} - {dados.bicicleta.usuario.endereco.numero}</span>
+            <b>ENDEREÇO:</b>{" "}
+            <span>
+              {dados.bicicleta.usuario.endereco.rua} -{" "}
+              {dados.bicicleta.usuario.endereco.numero}
+            </span>
           </h4>
           <h4>
-            <b>BAIRRO:</b> <span>{dados.bicicleta.usuario.endereco.bairro}</span>
+            <b>BAIRRO:</b>{" "}
+            <span>{dados.bicicleta.usuario.endereco.bairro}</span>
           </h4>
         </RowBlockLeft>
         <RowBlockRight>
-
           <div class="imagem">
             {dados.bicicleta.imagem ? (
-              <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + dados.bicicleta.id} width={"400px"}></img>
+              <img
+                src={
+                  "http://localhost:8080/bicicleta/bicicleta-imagem/" +
+                  dados.bicicleta.id
+                }
+                width={"400px"}
+              ></img>
             ) : (
-              <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width={"400px"}></img>
+              <img
+                src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
+                width={"400px"}
+              ></img>
             )}
           </div>
           <Countdown />
 
-          <GeneralButton click={() => deletar(dados.id)} button="CONFIRMAR DEVOLUÇÃO" />
+          <GeneralButton
+            click={() => deletar(dados.id)}
+            button="CONFIRMAR DEVOLUÇÃO"
+          />
 
           <Link to="/cardLocatario">
             <GeneralButton button="BICICLETAS" />

@@ -22,7 +22,6 @@ function BicicletaControll(props) {
   });
   const history = useHistory();
 
-
   const [bicicletas, setBicicletas] = React.useState([]);
 
   const idUsuario = sessionStorage.getItem("idUsuario");
@@ -30,34 +29,35 @@ function BicicletaControll(props) {
   React.useEffect(() => {
     Api.get("bicicleta/bicicleta-por-usuario/" + idUsuario)
       .then((res) => {
-
-        setBicicletas(res.data)
-
+        setBicicletas(res.data);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
   }, []);
 
-
   function handleImagem(id) {
-
     var data = new FormData();
-    data.append('file', document.getElementById('arquivo').files[0]);
+    data.append("file", document.getElementById("arquivo").files[0]);
 
     //Configura a barra de progresso
     var config = {
       onUploadProgress: function (progressEvent) {
-        var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+        var percentCompleted = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
         console.log(percentCompleted);
-
-      }
+      },
     };
 
-    Api.post("http://localhost:8080/bicicleta/bicicleta-imagem/" + id, data, config)
+    Api.post(
+      "http://localhost:8080/bicicleta/bicicleta-imagem/" + id,
+      data,
+      config
+    )
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.href = "/cardLocador"
+        window.location.reload(true);
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP
@@ -67,7 +67,7 @@ function BicicletaControll(props) {
     Api.delete("http://localhost:8080/bicicleta/remover/" + id)
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.href = "/cardLocador"
+        window.location.reload(true);
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP
@@ -78,7 +78,7 @@ function BicicletaControll(props) {
     Api.post("http://localhost:8080/bicicleta/adicionar-ultima")
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.href = "/cardLocador"
+        window.location.href = "/cardLocador";
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP
@@ -89,13 +89,12 @@ function BicicletaControll(props) {
     Api.delete("http://localhost:8080/bicicleta//remover-ultima")
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.href = "/cardLocador"
+        window.location.href = "/cardLocador";
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP
       });
   }
-
 
   return (
     <>
@@ -119,23 +118,23 @@ function BicicletaControll(props) {
                 <div class="imagem">
                   {item.imagem ? (
                     <>
-                      <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + item.id}></img>
-                      <label htmlFor="arquivo">
-                        <Input accept="image/*" type="file" name="arquivo" id="arquivo" />
-                        <IconButton
-                          color="primary"
-                          aria-label="upload picture"
-                          component="span"
-                          size="large"
-                        >
-                          <PhotoCamera />
-                        </IconButton>
-                      </label>
+                      <img
+                        src={
+                          "http://localhost:8080/bicicleta/bicicleta-imagem/" +
+                          item.id
+                        }
+                      ></img>
                     </>
                   ) : (
-                    <div class="upload" >
+                    <div class="upload">
                       <label htmlFor="arquivo">
-                        <Input accept="image/*" type="file" name="arquivo" id="arquivo" />
+                        <Input
+                          accept="image/*"
+                          type="file"
+                          name="arquivo"
+                          id="arquivo"
+                          onChange={() => handleImagem(item.id)}
+                        />
                         <IconButton
                           color="primary"
                           aria-label="upload picture"
@@ -148,7 +147,6 @@ function BicicletaControll(props) {
                       adicionar imagem...
                     </div>
                   )}
-
                 </div>
                 <div>
                   <h1>{item.marca}</h1>
@@ -156,24 +154,29 @@ function BicicletaControll(props) {
                 </div>
 
                 <div class="botoes">
-                  <Button onClick={() => handleImagem(item.id)}
-                    variant="contained">
-                    Editar Imagem
-                  </Button>
-                  <Button onClick={() => handleRemover(item.id)}
+                  {item.imagem !== null || item.imagem !== null ? (
+                    <Button variant="contained" startIcon={<PhotoCamera />}>
+                      Editar Imagem
+                    </Button>
+                  ) : (
+                    <span></span>
+                  )}
+                  {/* <Button variant="contained">Editar Imagem</Button> */}
+                  <Button
+                    onClick={() => handleRemover(item.id)}
                     variant="outlined"
                     color="error"
                     startIcon={<DeleteIcon />}
                   >
-                    Remover
+                    Remover bicicleta
                   </Button>
                 </div>
               </CardStyle>
             );
           })}
-        </ >) : (
-        <Error>
-        </Error>
+        </>
+      ) : (
+        <Error></Error>
       )}
 
       <Tooltip title="Clique aqui para cadastrar uma nova bicicleta">
@@ -187,7 +190,7 @@ function BicicletaControll(props) {
           <AddIcon />
         </Fab>
       </Tooltip>
-    </ >
+    </>
   );
 }
 

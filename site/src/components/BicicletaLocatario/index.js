@@ -13,45 +13,40 @@ import Api from "../../services/api";
 import { CardStyle, Error } from "./style";
 
 const Input = styled("input")({
-    display: "none",
+  display: "none",
 });
 
-
-
 function BicicletaLocatario(props) {
-    const Input = styled("input")({
-        display: "none",
-    });
-    const history = useHistory();
+  const Input = styled("input")({
+    display: "none",
+  });
+  const history = useHistory();
 
-    const [hour, setHour] = useState();
-    const [min, setMin] = useState();
-    const [seg, setSeg] = useState();
-    const [bicicletas, setBicicletas] = React.useState([]);
+  const [hour, setHour] = useState();
+  const [min, setMin] = useState();
+  const [seg, setSeg] = useState();
+  const [bicicletas, setBicicletas] = React.useState([]);
 
-    const idUsuario = sessionStorage.getItem("idUsuario");
+  const idUsuario = sessionStorage.getItem("idUsuario");
 
-    React.useEffect(() => {
-        Api.get("locacao/consultar-locacao-uso/" + idUsuario)
-            .then((res) => {
+  React.useEffect(() => {
+    Api.get("locacao/consultar-locacao-uso/" + idUsuario)
+      .then((res) => {
+        setBicicletas(res.data);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
 
-                setBicicletas(res.data)
+  function handleImagem(id) {
+    sessionStorage.setItem("idLocacao", id);
+    history.push("/comprovanteLocador");
+  }
 
-            })
-            .catch((err) => {
-                console.error("ops! ocorreu um erro" + err);
-            });
-    }, []);
-
-
-    function handleImagem(id) {
-        sessionStorage.setItem("idLocacao", id);
-        history.push("/comprovanteLocador")
-    }
-
-    return (
-        <>
-            {/* <Button onClick={() => ultimaAdd()}
+  return (
+    <>
+      {/* <Button onClick={() => ultimaAdd()}
         variant="contained">
         Adicionar ultima
       </Button>
@@ -63,54 +58,60 @@ function BicicletaLocatario(props) {
         Remover ultima
 
       </Button> */}
-            {bicicletas.length > 0 ? (
-                <>
-                    {bicicletas.map((item) => {
-                        return (
-                            <CardStyle>
-                                <div class="imagem">
-                                    {item.bicicleta.imagem ? (
-                                        <>
-                                            <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + item.bicicleta.id}></img>
-                                        </>
-                                    ) : (
-                                        <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"></img>
-                                    )}
+      {bicicletas.length > 0 ? (
+        <>
+          {bicicletas.map((item) => {
+            return (
+              <CardStyle>
+                <div class="imagem">
+                  {item.bicicleta.imagem ? (
+                    <>
+                      <img
+                        src={
+                          "http://localhost:8080/bicicleta/bicicleta-imagem/" +
+                          item.bicicleta.id
+                        }
+                      ></img>
+                    </>
+                  ) : (
+                    <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"></img>
+                  )}
+                </div>
+                <div>
+                  <h1>{item.bicicleta.marca}</h1>
+                  <p>{item.bicicleta.modelo}</p>
+                </div>
 
-                                </div>
-                                <div>
-                                    <h1>{item.bicicleta.marca}</h1>
-                                    <p>{item.bicicleta.modelo}</p>
-                                </div>
+                <div class="botoes">
+                  <Button
+                    onClick={() => handleImagem(item.bicicleta.id)}
+                    variant="contained"
+                    color="success"
+                  >
+                    Comprovante
+                  </Button>
+                </div>
+              </CardStyle>
+            );
+          })}
+        </>
+      ) : (
+        <Error></Error>
+      )}
 
-                                <div class="botoes">
-                                    <Button onClick={() => handleImagem(item.bicicleta.id)}
-                                        variant="contained"
-                                        color="success">
-                                        Comprovante
-                                    </Button>
-                                </div>
-                            </CardStyle>
-                        );
-                    })}
-                </ >) : (
-                <Error>
-                </Error>
-            )}
-
-            <Tooltip title="Clique aqui para cadastrar uma nova bicicleta">
-                <Fab
-                    color="primary"
-                    aria-label="add"
-                    onClick={() => {
-                        history.push("/bicicleta-filtro");
-                    }}
-                >
-                    <AddIcon />
-                </Fab>
-            </Tooltip>
-        </ >
-    );
+      <Tooltip title="Clique aqui para alugar uma nova bicicleta">
+        <Fab
+          color="primary"
+          aria-label="add"
+          onClick={() => {
+            history.push("/bicicleta-filtro");
+          }}
+        >
+          <AddIcon />
+        </Fab>
+      </Tooltip>
+    </>
+  );
 }
 
 export default BicicletaLocatario;

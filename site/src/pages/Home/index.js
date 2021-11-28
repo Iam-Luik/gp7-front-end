@@ -9,6 +9,8 @@ import NavbarHome from "../../components/NavbarHome";
 import Api from "../../services/api";
 import LocacatarioImg from "../../assets/bike-ilustracao-1.svg";
 import LocadorImg from "../../assets/bike-ilustracao-2.svg";
+import Button from "@mui/material/Button";
+import { useHistory } from "react-router";
 import {
   Banner,
   ColItens,
@@ -22,6 +24,7 @@ import {
 } from "./style";
 
 const Home = () => {
+  const history = useHistory();
   useEffect(() => {
     Api.get("usuario/todos")
       .then((response) => console.log(response.data))
@@ -29,6 +32,15 @@ const Home = () => {
         console.error("ops! ocorreu um erro" + err);
       });
   }, []);
+
+  const irParaCadastroLocatario = () => {
+    history.push("/locatario");
+  };
+
+  const irParaCadastroLocador = () => {
+    history.push("/locador");
+  };
+
   return (
     <>
       <NavbarHome />
@@ -103,6 +115,13 @@ const Home = () => {
               Você precisa realizar um cadastro no nosso site para conseguir ter
               acesso a várias bicicletas e escolher a que mais te agradar.
             </p>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={irParaCadastroLocatario}
+            >
+              iniciar cadastro
+            </Button>
           </div>
         </RowBlock2>
       </RowBlocks2>
@@ -117,6 +136,13 @@ const Home = () => {
               bicicletas você quiser e expor elas ao público, sem precisar sair
               de casa.
             </p>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={irParaCadastroLocador}
+            >
+              iniciar cadastro
+            </Button>
           </div>
           <img alt="Ilustração locador" src={LocadorImg} />
         </RowBlock3>

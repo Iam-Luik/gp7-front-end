@@ -86,6 +86,7 @@ export const RowBlock2 = styled.div`
     p {
       width: 100%;
       color: white;
+      margin-bottom: 16px;
     }
   }
 `;
@@ -127,6 +128,7 @@ export const RowBlock3 = styled.div`
     p {
       width: 100%;
       color: black;
+      margin-bottom: 16px;
     }
   }
 `;

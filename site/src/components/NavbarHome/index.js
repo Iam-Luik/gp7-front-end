@@ -13,7 +13,6 @@ function NavbarHome() {
           </div>
           <ul>
             <Link to="/">Home</Link>
-            <Link to="/ajuda">Ajuda</Link>
             <span>|</span>
             <Link to="/direcionamento">Cadastre-se</Link>
             <Link to="/login">Entrar</Link>

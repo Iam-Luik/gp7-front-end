@@ -6,7 +6,7 @@ import SignUpLocatario from "../pages/SignUpLocatario";
 import SignIn from "../pages/SignIn";
 import Rent from "../pages/Rent";
 import Localization from "../pages/Localization";
-import Direcionamento from "../pages/direcionamento";
+import Direcionamento from "../pages/Direcionamento";
 import SignUpBike from "../pages/SignUpBike";
 import ComprovanteLocador from "../pages/ComprovanteLocador";
 import ComprovanteLocatario from "../pages/ComprovanteLocatario";
@@ -17,27 +17,9 @@ import NotFound from "../pages/NotFound";
 import Senha from "../pages/Senha";
 import Email from "../pages/Email";
 import Codigo from "../pages/Codigo";
-import Api from "../services/api";
 
 async function isAuthenticated() {
   return true;
-  // Api.post("http://localhost:8080/usuario/autenticar", {
-  //   email: sessionStorage.getItem("email"),
-  //   senha: sessionStorage.getItem("senha"),
-  // })
-  //   .then(
-  //     (response) => {
-  //       console.log("Autenticado: ", response);
-  //       return true;
-  //     },
-  //     (err) => {
-  //       console.log("Não autenticado: ", err);
-  //       return false;
-  //     }
-  //   )
-  //   .catch(() => {
-  //     return await false;
-  //   });
 }
 
 const PrivateRoute = ({ component: Component, ...rest }) => (

@@ -214,7 +214,7 @@ export default function FormSingUpBike() {
         .then(function (res) {
           console.log(res.data); //Resposta HTTP
           console.log(idUsuario);
-          history.push("/card");
+          history.push("/cardLocador");
 
         })
         .catch(function (err) {
@@ -237,7 +237,7 @@ export default function FormSingUpBike() {
           console.log("cadastrado com sucesso: ", response);
           console.log(arquivo);
           // sessionStorage.setItem("idBike", response.data);
-          history.push("/card");
+          history.push("/cardLocador");
         })
         .catch((err) => {
           console.log("Ocorreu um erro ao cadastrar o usuário", err);

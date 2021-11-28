@@ -48,7 +48,7 @@ const ComprovanteLocatario = () => {
         <RowBlockRight>
           <img src={Bibi} alt="" />
           <Countdown />
-          <Link to="/card">
+          <Link to="/cardLocatario">
             <GeneralButton button="Devolver" />
           </Link>
         </RowBlockRight>

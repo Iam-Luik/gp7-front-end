@@ -160,6 +160,15 @@ const BicicletaFiltro = () => {
       });
   };
 
+  function bicicletasFunc() {
+    var dados = [];
+    for (let index = 0; index < bicicletas.length; index++) {
+      if (!bicicletas[index].alocada)
+        dados.push(bicicletas[index])
+    }
+    return dados;
+  }
+
   return (
     <>
       <NavbarLocatario />
@@ -191,9 +200,9 @@ const BicicletaFiltro = () => {
           Pesquisar
         </Button>
       </SelectFilter>
-      {bicicletas.length > 0 ? (
+      {bicicletasFunc().length > 0 ? (
         <Section>
-          {bicicletas.map((bicicleta) => {
+          {bicicletasFunc().map((bicicleta) => {
             return <BicicletaCard props={bicicleta}></BicicletaCard>;
           })}
         </Section>

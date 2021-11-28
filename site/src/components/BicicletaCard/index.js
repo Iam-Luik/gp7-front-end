@@ -14,7 +14,8 @@ function BicicletaCard({ props }) {
   }
 
   return (
-    <>
+    <>{props ?
+
       <CardStyle>
         <div class="imagem">
           {props.imagem ? (
@@ -36,7 +37,7 @@ function BicicletaCard({ props }) {
           click={() => localizacao(props.id)}
         ></GeneralButton>
       </CardStyle>
-    </>
+      : <h1>Não existem bicicletas disponíveis no momento.</h1>}</>
   );
 }
 

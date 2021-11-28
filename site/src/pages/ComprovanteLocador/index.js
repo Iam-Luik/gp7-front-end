@@ -84,7 +84,14 @@ const ComprovanteLocador = () => {
           </h4>
         </RowBlockLeft>
         <RowBlockRight>
-          <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + dados.bicicleta.id} alt="" width={"400px"} />
+
+          <div class="imagem">
+            {dados.bicicleta.imagem ? (
+              <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + dados.bicicleta.id} width={"400px"}></img>
+            ) : (
+              <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width={"400px"}></img>
+            )}
+          </div>
           <Countdown />
 
           <GeneralButton click={() => deletar(dados.id)} button="CONFIRMAR DEVOLUÇÃO" />

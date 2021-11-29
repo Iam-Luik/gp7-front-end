@@ -49,7 +49,11 @@ const ComprovanteLocador = () => {
   function deletar(id) {
     Api.delete("locacao/cancelar/" + id)
       .then((res) => {
-        history.push("/cardLocatario");
+        if (usuario.tipoUsuario === "locatario") {
+          history.push("/cardLocatario");
+        } else {
+          history.push("/cardLocador");
+        }
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
@@ -125,9 +129,12 @@ const ComprovanteLocador = () => {
             button="CONFIRMAR DEVOLUÇÃO"
           />
 
-          <Link to="/cardLocatario">
-            <GeneralButton button="BICICLETAS" />
-          </Link>
+          {usuario.tipoUsuario === "locatario" ?
+            <Link to="/cardLocatario">
+              <GeneralButton button="BICICLETAS" />
+            </Link> : <Link to="/cardLocador">
+              <GeneralButton button="BICICLETAS" />
+            </Link>}
         </RowBlockRight>
       </ColBlocks>
 

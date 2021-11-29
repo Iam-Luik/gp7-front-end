@@ -17,6 +17,7 @@ const ComprovanteLocador = () => {
   const history = useHistory();
 
   const [dados, setDados] = useState({
+    usuarioLocatario: {},
     bicicleta: { usuario: { endereco: {} } },
   });
   const [usuario, setUsuario] = React.useState({});
@@ -48,7 +49,11 @@ const ComprovanteLocador = () => {
   function deletar(id) {
     Api.delete("locacao/cancelar/" + id)
       .then((res) => {
-        history.push("/cardLocatario");
+        if (usuario.tipoUsuario === "locatario") {
+          history.push("/cardLocatario");
+        } else {
+          history.push("/cardLocador");
+        }
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
@@ -75,7 +80,8 @@ const ComprovanteLocador = () => {
           <h4>
             <b>LOCATÁRIO:</b>{" "}
             <span>
-              {usuario.nome} {usuario.sobrenome}
+              {/* {usuario.nome} {usuario.sobrenome} */}
+              {dados.usuarioLocatario.nome} {dados.usuarioLocatario.sobrenome}
             </span>
           </h4>
           <h4>
@@ -123,9 +129,12 @@ const ComprovanteLocador = () => {
             button="CONFIRMAR DEVOLUÇÃO"
           />
 
-          <Link to="/cardLocatario">
-            <GeneralButton button="BICICLETAS" />
-          </Link>
+          {usuario.tipoUsuario === "locatario" ?
+            <Link to="/cardLocatario">
+              <GeneralButton button="BICICLETAS" />
+            </Link> : <Link to="/cardLocador">
+              <GeneralButton button="BICICLETAS" />
+            </Link>}
         </RowBlockRight>
       </ColBlocks>
 

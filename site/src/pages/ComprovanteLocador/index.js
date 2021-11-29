@@ -17,6 +17,7 @@ const ComprovanteLocador = () => {
   const history = useHistory();
 
   const [dados, setDados] = useState({
+    usuarioLocatario: {},
     bicicleta: { usuario: { endereco: {} } },
   });
   const [usuario, setUsuario] = React.useState({});
@@ -75,7 +76,8 @@ const ComprovanteLocador = () => {
           <h4>
             <b>LOCATÁRIO:</b>{" "}
             <span>
-              {usuario.nome} {usuario.sobrenome}
+              {/* {usuario.nome} {usuario.sobrenome} */}
+              {dados.usuarioLocatario.nome} {dados.usuarioLocatario.sobrenome}
             </span>
           </h4>
           <h4>

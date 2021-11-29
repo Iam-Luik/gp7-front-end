@@ -26,6 +26,7 @@ function BicicletaControll(props) {
   React.useEffect(() => {
     Api.get("bicicleta/bicicleta-por-usuario/" + idUsuario)
       .then((res) => {
+        console.log("aqui", res.data);
         setBicicletas(res.data);
       })
       .catch((err) => {
@@ -34,6 +35,7 @@ function BicicletaControll(props) {
   }, []);
 
   function handleImagem(id) {
+    console.log("id aqui", id);
     var data = new FormData();
     data.append("file", document.getElementById("arquivo").files[0]);
 
@@ -54,7 +56,7 @@ function BicicletaControll(props) {
     )
       .then(function (res) {
         console.log(res.data); //Resposta HTTP
-        window.location.reload(true);
+        // window.location.reload(true);
       })
       .catch(function (err) {
         console.log(err.message); //Erro HTTP
@@ -127,6 +129,7 @@ function BicicletaControll(props) {
                 <div class="imagem">
                   {item.imagem ? (
                     <>
+                      <p>{item.id}</p>
                       <img
                         src={
                           "http://localhost:8080/bicicleta/bicicleta-imagem/" +
@@ -137,6 +140,7 @@ function BicicletaControll(props) {
                   ) : (
                     <div class="upload">
                       <label htmlFor="arquivo">
+                        <p>{item.id}</p>
                         <Input
                           accept="image/*"
                           type="file"
@@ -159,7 +163,6 @@ function BicicletaControll(props) {
                 </div>
                 <div>
                   <h1>{item.marca}</h1>
-                  <p>{item.preco}</p>
                 </div>
                 {!item.alocada ? <div class="botoes">
                   {item.imagem !== null || item.imagem !== null ? (

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RowBlockLeft = styled.div`
+  border-right: 1px solid black;
   display: block;
   @media (min-width: 1025px) {
     display: flex;
@@ -73,7 +74,6 @@ export const BlockTitle2 = styled.div`
 
 export const RowBlockRight = styled.div`
   display: block;
-  border-left: 1px solid black;
   @media (min-width: 1025px) {
     display: flex;
     align-items: center;

@@ -38,6 +38,23 @@ const tempo = {
 };
 function SignIn({ props }) {
   const [bicicletas, setBicicleta] = React.useState({ usuario: {} });
+  
+  const [dados, setDados] = useState({
+    bicicleta: { usuario: { endereco: {} } },
+  });
+
+  React.useEffect(() => {
+    Api.get(
+      "http://localhost:8080/locacao/consultar-locacao/" +
+      sessionStorage.getItem("idLocacao")
+    )
+      .then((response) => {
+        setDados(response.data);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
 
   React.useEffect(() => {
     Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
@@ -84,23 +101,7 @@ function SignIn({ props }) {
         alert(err);
       });
   }
-
-  // function maskTelefone(v) {
-  //   let r = v.replace(/\D/g, "");
-  //   r = r.replace(/^0/, "");
-
-  //   if (r.length > 11) {
-  //     r = r.replace(/^(\d\d)(\d{5})(\d{4})./, "($1) $2-$3");
-  //   } else if (r.length > 7) {
-  //     r = r.replace(/^(\d\d)(\d{5})(\d{0,4})./, "($1) $2-$2");
-  //   } else if (r.length > 2) {
-  //     r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
-  //   } else if (v.trim() !== "") {
-  //     r = r.replace(/^(\d*)/, "($1");
-  //   }
-  //   return r;
-  // }
-
+  
   return (
     <>
       <NavbarPadrao />
@@ -111,7 +112,9 @@ function SignIn({ props }) {
         <RowBlockLeft>
           <h2>{bicicletas.marca}</h2>
           <p>{bicicletas.tamanhoAro}</p>
-          <TabLayout />
+          <h1>teste</h1>
+          <p>{dados.bicicleta.usuario.endereco.rua}</p>
+          <TabLayout cep={(dados.bicicleta.usuario.endereco.rua)} endereco='teste' bairro='bairro'/>
         </RowBlockLeft>
         <RowBlockRight>
           <div class="imagem">
@@ -133,7 +136,7 @@ function SignIn({ props }) {
 
           <h1>{bicicletas.usuario.telefone}</h1>
           <p>{bicicletas.usuario.email}</p>
-          <TabLayout />
+
         </RowBlockRight>
       </ColBlocks>
       <BlockTitle2>

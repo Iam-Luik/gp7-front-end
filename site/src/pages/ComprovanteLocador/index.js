@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import GeneralButton from "../../components/GeneralButton";
 import NavbarLogado from "../../components/NavbarLogado";
 import Api from "../../services/api";
+import { mask } from "remask";
 import {
   ColBlocks,
   RowBlockLeft,
@@ -29,6 +30,7 @@ const ComprovanteLocador = () => {
       sessionStorage.getItem("idLocacao")
     )
       .then((response) => {
+        response.data.bicicleta.usuario.endereco.cep = mask(response.data.bicicleta.usuario.endereco.cep, ['99999-999'])
         setDados(response.data);
       })
       .catch((err) => {

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import DownloadIcon from "@mui/icons-material/Download";
 import BicicletaCard from "../../components/BicicletaCard";
 import Footer from "../../components/Footer";
 import NavbarLogado from "../../components/NavbarLogado";
@@ -145,11 +146,26 @@ const BicicletaFiltro = () => {
     setVelocidade(event.target.value);
   };
 
+  const baixarArquivo = () => {
+    Api.get("http://localhost:8080/bicicleta/exportar-arquivo-total-bicicletas")
+      .then((response) => {
+        let data = response.data;
+        let blob = new Blob([data], { type: "text/plain;charset=utf-8;" });
+        const link = window.document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "todas-bicicletas.txt";
+        link.click();
+        window.URL.revokeObjectURL(link.href);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  };
+
   const obterBicicletas = () => {
     console.log(categoria, aro, cor, velocidade);
     Api.get(
-      `bicicleta/filtrar/${categoria ? categoria : null}/${aro ? aro : null}/${
-        cor ? cor : null
+      `bicicleta/filtrar/${categoria ? categoria : null}/${aro ? aro : null}/${cor ? cor : null
       }/${velocidade ? velocidade : null}`
     )
       .then((response) => {
@@ -200,11 +216,20 @@ const BicicletaFiltro = () => {
           Pesquisar
         </Button>
       </SelectFilter>
+
       {bicicletasFunc().length > 0 ? (
         <Section>
           {bicicletasFunc().map((bicicleta) => {
             return <BicicletaCard props={bicicleta}></BicicletaCard>;
           })}
+          <Button
+            variant="contained"
+            onClick={baixarArquivo}
+            color="success"
+            endIcon={<DownloadIcon />}
+          >
+            download
+          </Button>
         </Section>
       ) : (
         <Error>

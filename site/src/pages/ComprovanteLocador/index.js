@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Countdown from "../../components/Countdown";
 import Footer from "../../components/Footer";
 import GeneralButton from "../../components/GeneralButton";
-import NavbarPadrao from "../../components/NavbarPadrao";
+import NavbarLogado from "../../components/NavbarLogado";
 import Api from "../../services/api";
 import {
   ColBlocks,
@@ -62,7 +62,7 @@ const ComprovanteLocador = () => {
 
   return (
     <>
-      <NavbarPadrao />
+      <NavbarLogado />
       <TitleComprovante>
         <h1>Comprovante</h1>
       </TitleComprovante>

@@ -8,6 +8,7 @@ import Proprietaria from "../../assets/proprietaria.png";
 import GeneralButton from "../../components/GeneralButton";
 import Api from "../../services/api";
 import { useHistory } from "react-router";
+import { mask } from "remask";
 
 import TimePicker from "../../components/TimePicker";
 
@@ -42,6 +43,7 @@ function SignIn({ props }) {
   React.useEffect(() => {
     Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
       .then((res) => {
+        res.data.usuario.telefone = mask(res.data.usuario.telefone, ['(99) 99999-9999', '(99) 9999-9999'])
         setBicicleta(res.data);
       })
       .catch((err) => {
@@ -84,22 +86,6 @@ function SignIn({ props }) {
         alert(err);
       });
   }
-
-  // function maskTelefone(v) {
-  //   let r = v.replace(/\D/g, "");
-  //   r = r.replace(/^0/, "");
-
-  //   if (r.length > 11) {
-  //     r = r.replace(/^(\d\d)(\d{5})(\d{4})./, "($1) $2-$3");
-  //   } else if (r.length > 7) {
-  //     r = r.replace(/^(\d\d)(\d{5})(\d{0,4})./, "($1) $2-$2");
-  //   } else if (r.length > 2) {
-  //     r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
-  //   } else if (v.trim() !== "") {
-  //     r = r.replace(/^(\d*)/, "($1");
-  //   }
-  //   return r;
-  // }
 
   return (
     <>

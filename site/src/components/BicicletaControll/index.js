@@ -35,7 +35,7 @@ function BicicletaControll(props) {
 
   function handleImagem(id) {
     var data = new FormData();
-    data.append("file", document.getElementById("arquivo").files[0]);
+    data.append("file", document.getElementById("arquivo" + id).files[0]);
 
     //Configura a barra de progresso
     var config = {
@@ -94,20 +94,20 @@ function BicicletaControll(props) {
   }
 
   function locadorTela(id) {
-    Api.get("locacao/consultar-locacao-locador/" + idUsuario)
+    Api.get("locacao/consultar-locacao-bicicleta/" + id)
       .then((res) => {
-        setBicicletas(res.data);
+        sessionStorage.setItem("idLocacao", res.data.id);
+        history.push("/comprovanteLocador")
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
-    sessionStorage.setItem("idLocacao", id);
-    history.push("/comprovanteLocador")
+
   }
 
   return (
     <>
-      {/* <Button onClick={() => ultimaAdd()}
+      <Button onClick={() => ultimaAdd()}
         variant="contained">
         Adicionar ultima
       </Button>
@@ -118,7 +118,7 @@ function BicicletaControll(props) {
       >
         Remover ultima
 
-      </Button> */}
+      </Button>
       {bicicletas.length > 0 ? (
         <>
           {bicicletas.map((item) => {
@@ -136,12 +136,12 @@ function BicicletaControll(props) {
                     </>
                   ) : (
                     <div class="upload">
-                      <label htmlFor="arquivo">
+                      <label htmlFor={"arquivo" + item.id}>
                         <Input
                           accept="image/*"
                           type="file"
                           name="arquivo"
-                          id="arquivo"
+                          id={"arquivo" + item.id}
                           onChange={() => handleImagem(item.id)}
                         />
                         <IconButton
@@ -175,12 +175,12 @@ function BicicletaControll(props) {
                     //     Editar Imagem
                     //   </Button>
                     // </label>
-                    <label htmlFor="arquivo">
+                    <label htmlFor={"arquivo" + item.id}>
                       <Input
                         accept="image/*"
                         type="file"
                         name="arquivo"
-                        id="arquivo"
+                        id={"arquivo" + item.id}
                         onChange={() => handleImagem(item.id)}
                       />
                       <Button

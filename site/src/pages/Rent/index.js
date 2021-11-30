@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as React from "react";
-import NavbarPadrao from "../../components/NavbarPadrao";
+import NavbarLogado from "../../components/NavbarLogado";
 import Footer from "../../components/Footer";
 import TabLayout from "../../components/TabLayout/index";
 import Bibi from "../../assets/bibi.png";
@@ -38,13 +38,28 @@ const tempo = {
   ],
 };
 function SignIn({ props }) {
+
+
   const [bicicletas, setBicicleta] = React.useState({ usuario: {} });
   
   const [dados, setDados] = useState({
     bicicleta: { usuario: { endereco: {} } },
   });
 
+
+
   React.useEffect(() => {
+
+    Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
+    .then((res) => {
+      res.data.usuario.telefone = mask(res.data.usuario.telefone, ['(99) 99999-9999', '(99) 9999-9999'])
+      setBicicleta(res.data);
+    })
+    .catch((err) => {
+      console.error("ops! ocorreu um erro" + err);
+    });
+
+
     Api.get(
       "http://localhost:8080/locacao/consultar-locacao/" +
       sessionStorage.getItem("idLocacao")
@@ -55,18 +70,9 @@ function SignIn({ props }) {
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
+
   }, []);
 
-  React.useEffect(() => {
-    Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
-      .then((res) => {
-        res.data.usuario.telefone = mask(res.data.usuario.telefone, ['(99) 99999-9999', '(99) 9999-9999'])
-        setBicicleta(res.data);
-      })
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }, []);
 
   const history = useHistory();
   const [timeAlugar, setTimeAlugar] = useState("");
@@ -76,6 +82,7 @@ function SignIn({ props }) {
 
   console.log("timeAlugar :", timeAlugar);
   console.log("timeReserva :", timeReserva);
+  console.log(dados)
 
   function cadastrarHora(e) {
     var data = new Date(Date.now());
@@ -107,7 +114,7 @@ function SignIn({ props }) {
 
   return (
     <>
-      <NavbarPadrao />
+      <NavbarLogado />
       <BlockTitle>
         <h1>Contratação</h1>
       </BlockTitle>
@@ -115,9 +122,16 @@ function SignIn({ props }) {
         <RowBlockLeft>
           <h2>{bicicletas.marca}</h2>
           <p>{bicicletas.tamanhoAro}</p>
+          <h1>{bicicletas.marca} {bicicletas.modelo}</h1>
           <h1>teste</h1>
-          <p>{dados.bicicleta.usuario.endereco.rua}</p>
-          <TabLayout cep={(dados.bicicleta.usuario.endereco.rua)} endereco='teste' bairro='bairro'/>
+
+
+          {/* <p><b>CEP:</b>{dados.bicicleta.usuario.endereco.cep}</p>
+          <p><b>ENDEREÇO:</b> {dados.bicicleta.usuario.endereco.rua} {dados.bicicleta.usuario.endereco.numero} </p>
+          <p><b>BAIRRO:</b> {dados.bicicleta.usuario.endereco.bairro} </p> */}
+
+
+
         </RowBlockLeft>
         <RowBlockRight>
           <div class="imagem">

@@ -55,10 +55,10 @@ export default function BasicTabs({cep, endereco, bairro}) {
           aria-label="basic tabs example"
         >
           <Tab label="DESCRIÇÃO" {...a11yProps(0)} />
-          <Tab label="DETALHES" {...a11yProps(1)} />
+          {/* <Tab label="DETALHES" {...a11yProps(1)} /> */}
         </Tabs>
       </Box>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={0}>
         <b>CEP:</b> {cep}
         <br /> 
         <b>RUA:</b> {endereco}

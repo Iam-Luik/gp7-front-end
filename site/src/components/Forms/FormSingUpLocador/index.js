@@ -22,6 +22,7 @@ export default function FormSingUpLocador() {
     cpf: "",
     telefone: "",
     cep: "",
+    cepError: false,
     estado: "",
     cidade: "",
     bairro: "",
@@ -94,6 +95,9 @@ export default function FormSingUpLocador() {
             bairro: data.bairro,
             rua: data.logradouro,
           });
+        })
+        .catch((err) => {
+          console.error("Ocorreu um erro ao localizar cep", err);
         });
     }
   };
@@ -241,6 +245,7 @@ export default function FormSingUpLocador() {
             multiline
             type="text"
             value={values.cep}
+            error={values.cepError}
             color="success"
             onChange={handleChange("cep")}
           />

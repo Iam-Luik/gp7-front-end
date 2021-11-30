@@ -8,6 +8,9 @@ export const Header = styled.header`
   align-items: center;
   height: 10vh;
 
+  .MuiAvatar-circular {
+    border: 2px solid white;
+  }
   .logo {
     span {
       font-size: 40px;

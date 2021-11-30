@@ -81,7 +81,7 @@ function BicicletaLocatario(props) {
 
                 <div class="botoes">
                   <Button
-                    onClick={() => verComprovante(item.bicicleta.id)}
+                    onClick={() => verComprovante(item.id)}
                     variant="contained"
                     color="success"
                   >

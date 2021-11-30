@@ -15,7 +15,7 @@ export const InputContainer = styled.div`
     color: #2e7d32;
   }
 
-  .button-wrapper{
+  .button-wrapper {
     width: 100%;
     height: 100px;
     display: flex;

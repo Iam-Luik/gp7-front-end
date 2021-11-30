@@ -12,10 +12,6 @@ import { Link } from "react-router-dom";
 import Api from "../../services/api";
 import { CardStyle, Error } from "./style";
 
-const Input = styled("input")({
-  display: "none",
-});
-
 function BicicletaControll(props) {
   var numero = Math.random() * (2 - 1);
   const Input = styled("input")({
@@ -167,13 +163,37 @@ function BicicletaControll(props) {
                 </div>
                 {!item.alocada ? <div class="botoes">
                   {item.imagem !== null || item.imagem !== null ? (
-                    <Button variant="contained" startIcon={<PhotoCamera />}>
-                      Editar Imagem
-                    </Button>
+                    // <label htmlFor="arquivo">
+                    //   <Input
+                    //     accept="image/*"
+                    //     type="file"
+                    //     name="arquivo"
+                    //     id="arquivo"
+                    //     onChange={() => handleImagem(item.id)}
+                    //   />
+                    //   <Button variant="contained" startIcon={<PhotoCamera />}>
+                    //     Editar Imagem
+                    //   </Button>
+                    // </label>
+                    <label htmlFor="arquivo">
+                      <Input
+                        accept="image/*"
+                        type="file"
+                        name="arquivo"
+                        id="arquivo"
+                        onChange={() => handleImagem(item.id)}
+                      />
+                      <Button
+                        variant="contained"
+                        component="span"
+                        startIcon={<PhotoCamera />}
+                      >
+                        Editar Imagem
+                      </Button>
+                    </label>
                   ) : (
                     <span></span>
                   )}
-                  {/* <Button variant="contained">Editar Imagem</Button> */}
                   <Button
                     onClick={() => handleRemover(item.id)}
                     variant="outlined"

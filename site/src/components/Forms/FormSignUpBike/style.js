@@ -20,6 +20,11 @@ export const InputContainer = styled.div`
     margin: 0px;
     margin-bottom: 16px;
   }
+
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+    .MuiOutlinedInput-notchedOutline {
+    border-color: #2e7d32;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -28,6 +33,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   button {
     width: 100%;
     background-color: #054107;

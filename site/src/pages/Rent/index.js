@@ -8,6 +8,7 @@ import Proprietaria from "../../assets/proprietaria.png";
 import GeneralButton from "../../components/GeneralButton";
 import Api from "../../services/api";
 import { useHistory } from "react-router";
+import { mask } from "remask";
 
 import TimePicker from "../../components/TimePicker";
 
@@ -59,6 +60,7 @@ function SignIn({ props }) {
   React.useEffect(() => {
     Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
       .then((res) => {
+        res.data.usuario.telefone = mask(res.data.usuario.telefone, ['(99) 99999-9999', '(99) 9999-9999'])
         setBicicleta(res.data);
       })
       .catch((err) => {
@@ -102,6 +104,7 @@ function SignIn({ props }) {
       });
   }
   
+
   return (
     <>
       <NavbarPadrao />

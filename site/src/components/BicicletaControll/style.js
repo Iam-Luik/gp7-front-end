@@ -60,3 +60,10 @@ export const Error = styled.div`
   min-height: 80vh;
   margin: auto;
 `;
+
+export const FloatButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-evenly;
+`;

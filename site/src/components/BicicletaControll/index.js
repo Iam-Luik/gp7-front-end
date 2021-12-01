@@ -5,12 +5,13 @@ import Button from "@mui/material/Button";
 import Fab from "@mui/material/Fab";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
+import RedoIcon from "@mui/icons-material/Redo";
 import Tooltip from "@mui/material/Tooltip";
+import UndoIcon from "@mui/icons-material/Undo";
 import * as React from "react";
 import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
 import Api from "../../services/api";
-import { CardStyle, Error } from "./style";
+import { CardStyle, Error, FloatButtons } from "./style";
 
 function BicicletaControll(props) {
   var numero = Math.random() * (2 - 1);
@@ -97,28 +98,15 @@ function BicicletaControll(props) {
     Api.get("locacao/consultar-locacao-bicicleta/" + id)
       .then((res) => {
         sessionStorage.setItem("idLocacao", res.data.id);
-        history.push("/comprovanteLocador")
+        history.push("/comprovanteLocador");
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
-
   }
 
   return (
     <>
-      <Button onClick={() => ultimaAdd()}
-        variant="contained">
-        Adicionar ultima
-      </Button>
-      <Button onClick={() => ultimaRemover()}
-        variant="outlined"
-        color="error"
-        startIcon={<DeleteIcon />}
-      >
-        Remover ultima
-
-      </Button>
       {bicicletas.length > 0 ? (
         <>
           {bicicletas.map((item) => {
@@ -158,80 +146,86 @@ function BicicletaControll(props) {
                   )}
                 </div>
                 <div>
-                  <h1>{item.marca}</h1>
+                  <h1>{item.marca + " - " + item.modelo}</h1>
                   <p>{item.preco}</p>
                 </div>
-                {!item.alocada ? <div class="botoes">
-                  {item.imagem !== null || item.imagem !== null ? (
-                    // <label htmlFor="arquivo">
-                    //   <Input
-                    //     accept="image/*"
-                    //     type="file"
-                    //     name="arquivo"
-                    //     id="arquivo"
-                    //     onChange={() => handleImagem(item.id)}
-                    //   />
-                    //   <Button variant="contained" startIcon={<PhotoCamera />}>
-                    //     Editar Imagem
-                    //   </Button>
-                    // </label>
-                    <label htmlFor={"arquivo" + item.id}>
-                      <Input
-                        accept="image/*"
-                        type="file"
-                        name="arquivo"
-                        id={"arquivo" + item.id}
-                        onChange={() => handleImagem(item.id)}
-                      />
-                      <Button
-                        variant="contained"
-                        component="span"
-                        startIcon={<PhotoCamera />}
-                      >
-                        Editar Imagem
-                      </Button>
-                    </label>
-                  ) : (
-                    <span></span>
-                  )}
-                  <Button
-                    onClick={() => handleRemover(item.id)}
-                    variant="outlined"
-                    color="error"
-                    startIcon={<DeleteIcon />}
-                  >
-                    Remover bicicleta
-                  </Button>
-                </div> : <>
-                  <Button
-                    onClick={() => locadorTela(item.id)}
-                    variant="contained"
-                    color="success"
-                  >
-                    Comprovante
-                  </Button>
-                </>}
-
+                {!item.alocada ? (
+                  <div class="botoes">
+                    {item.imagem !== null || item.imagem !== null ? (
+                      <label htmlFor={"arquivo" + item.id}>
+                        <Input
+                          accept="image/*"
+                          type="file"
+                          name="arquivo"
+                          id={"arquivo" + item.id}
+                          onChange={() => handleImagem(item.id)}
+                        />
+                        <Button
+                          variant="contained"
+                          component="span"
+                          startIcon={<PhotoCamera />}
+                        >
+                          Editar Imagem
+                        </Button>
+                      </label>
+                    ) : (
+                      <span></span>
+                    )}
+                    <Button
+                      onClick={() => handleRemover(item.id)}
+                      variant="outlined"
+                      color="error"
+                      startIcon={<DeleteIcon />}
+                    >
+                      Remover bicicleta
+                    </Button>
+                  </div>
+                ) : (
+                  <>
+                    <Button
+                      onClick={() => locadorTela(item.id)}
+                      variant="contained"
+                      color="success"
+                    >
+                      Comprovante
+                    </Button>
+                  </>
+                )}
               </CardStyle>
             );
           })}
         </>
       ) : (
         <Error></Error>
-      )
-      }
+      )}
 
-      <Tooltip title="Clique aqui para cadastrar uma nova bicicleta">
-        <Fab
-          color="primary"
-          aria-label="add"
-          onClick={() => {
-            history.push("/bike");
-          }}
-        >
-          <AddIcon />
-        </Fab>
-      </Tooltip>
+      <FloatButtons>
+        <Tooltip title="Clique aqui para cadastrar uma nova bicicleta">
+          <Fab
+            color=""
+            aria-label="add"
+            onClick={() => {
+              history.push("/bike");
+            }}
+          >
+            <AddIcon />
+          </Fab>
+        </Tooltip>
+        <Tooltip title="Clique aqui para remover última bicicleta cadastrada">
+          <Fab
+            color="secondary"
+            aria-label="add"
+            onClick={() => ultimaRemover()}
+          >
+            <UndoIcon />
+          </Fab>
+        </Tooltip>
+        <Tooltip title="Clique aqui para desfazer última remoção">
+          <Fab color="primary" aria-label="add" onClick={() => ultimaAdd()}>
+            <RedoIcon />
+          </Fab>
+        </Tooltip>
+      </FloatButtons>
     </>
   );
 }

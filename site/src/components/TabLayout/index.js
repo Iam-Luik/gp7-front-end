@@ -39,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs({cep, endereco, bairro}) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -55,18 +55,23 @@ export default function BasicTabs() {
           aria-label="basic tabs example"
         >
           <Tab label="DESCRIÇÃO" {...a11yProps(0)} />
-          <Tab label="DETALHES" {...a11yProps(1)} />
+          {/* <Tab label="DETALHES" {...a11yProps(1)} /> */}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Ideal para quem curte os passeios em parques ou ciclofaixas, ela possui
-        pneus mais largos, que proporcionam maior conforto ao usuário. São 21
-        marchas, suspensão dianteira, freio V-brake de aço, quadro de 17
-        polegadas.
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        CEP: 03447-170 <br /> ENDEREÇO: Rua Camilo Mazza <br />  BAIRRO: Vila Carrão
+        <b>CEP:</b> {cep}
+        <br /> 
+        <b>RUA:</b> {endereco}
+        <br />  
+        <b>BAIRRO:</b> {bairro}
       </TabPanel>
     </Box>
   );
 }
+
+
+// CEP: 03447-170 
+// <br /> 
+// ENDEREÇO: Rua Camilo Mazza 
+// <br />  
+// BAIRRO: Vila Carrão

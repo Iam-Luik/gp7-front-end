@@ -1,6 +1,6 @@
 /* Card first block */
 .css-1ri6ub7-MuiPaper-root-MuiCard-root {
-  background-color: #00ab30 !important;
+  background-color: #8b0303 !important;
   border-radius: 50px 15px 50px 15px !important;
   width: 337px;
   height: 350px;
@@ -23,7 +23,7 @@
 }
 
 .css-1t6e9jv-MuiCardActions-root {
-  background-color: #008625;
+  background-color: #1d0086;
   height: 200px;
   padding: 5px 40px !important;
 }

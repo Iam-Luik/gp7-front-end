@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RowBlockLeft = styled.div`
+  border-right: 1px solid black;
   display: block;
   @media (min-width: 1025px) {
     display: flex;
@@ -67,13 +68,12 @@ export const BlockTitle2 = styled.div`
     margin: auto;
     letter-spacing: 0.07em;
     font-size: 30px;
-    margin: 23px 0px;
+    margin: 60px 0px 10px 0px;
   }
 `;
 
 export const RowBlockRight = styled.div`
   display: block;
-  border-left: 1px solid black;
   @media (min-width: 1025px) {
     display: flex;
     align-items: center;
@@ -108,7 +108,7 @@ export const ColBlocks = styled.div`
   @media (min-width: 1025px) {
     display: flex;
     flex-direction: initial;
-    padding: 5% 0;
+    padding: 3% 0;
   }
 `;
 

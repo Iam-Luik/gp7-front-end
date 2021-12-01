@@ -33,7 +33,7 @@ export const CardStyle = styled.div`
         margin-top: 10px;
         height: 3px;
         width: 0%;
-        background-color: green;
+        background-color: white;
     } 
 `;  
 

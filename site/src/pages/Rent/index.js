@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as React from "react";
-import NavbarPadrao from "../../components/NavbarPadrao";
+import NavbarLogado from "../../components/NavbarLogado";
 import Footer from "../../components/Footer";
 import TabLayout from "../../components/TabLayout/index";
 import Bibi from "../../assets/bibi.png";
@@ -38,12 +38,17 @@ const tempo = {
   ],
 };
 function SignIn({ props }) {
-  const [bicicletas, setBicicleta] = React.useState({ usuario: {} });
+  const [bicicletas, setBicicleta] = React.useState({
+    usuario: { endereco: {} },
+  });
 
   React.useEffect(() => {
     Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
       .then((res) => {
-        res.data.usuario.telefone = mask(res.data.usuario.telefone, ['(99) 99999-9999', '(99) 9999-9999'])
+        res.data.usuario.telefone = mask(res.data.usuario.telefone, [
+          "(99) 99999-9999",
+          "(99) 9999-9999",
+        ]);
         setBicicleta(res.data);
       })
       .catch((err) => {
@@ -67,7 +72,6 @@ function SignIn({ props }) {
     data.setMinutes(
       data.getMinutes() + Number(timeAlugar.substring(3, 5)) + 30
     );
-
     console.log(bicicletas.id + "teste");
 
     Api.post("http://localhost:8080/locacao/cadastrar-locacao", {
@@ -89,29 +93,62 @@ function SignIn({ props }) {
 
   return (
     <>
-      <NavbarPadrao />
+      <NavbarLogado />
       <BlockTitle>
         <h1>Contratação</h1>
       </BlockTitle>
       <ColBlocks>
         <RowBlockLeft>
-          <h2>{bicicletas.marca}</h2>
+          {/* <h2>{bicicletas.marca}</h2> */}
+          <h2>Bicicleta:</h2>
           <p>{bicicletas.tamanhoAro}</p>
-          <TabLayout />
+          <h1>
+            {bicicletas.marca} {bicicletas.modelo}
+          </h1>
+
+          <p>
+            <b>CEP: </b>
+            {bicicletas.usuario.endereco.cep}
+          </p>
+          <p>
+            <b>ENDEREÇO:</b> {bicicletas.usuario.endereco.rua}{" "}
+            {bicicletas.usuario.endereco.numero}{" "}
+          </p>
+          <p>
+            <b>BAIRRO:</b> {bicicletas.usuario.endereco.bairro}{" "}
+          </p>
         </RowBlockLeft>
         <RowBlockRight>
           <div class="imagem">
             {bicicletas.imagem ? (
-              <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id} width={"400px"}></img>
+              <img
+                src={
+                  "http://localhost:8080/bicicleta/bicicleta-imagem/" +
+                  bicicletas.id
+                }
+                width={"400px"}
+              ></img>
             ) : (
-              <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width={"400px"}></img>
+              <img
+                src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
+                width={"400px"}
+              ></img>
             )}
           </div>
         </RowBlockRight>
       </ColBlocks>
       <ColBlocks>
         <RowBlockLeft>
-          <img src={bicicletas.usuario.imagem ? "http://localhost:8080/usuario/imagem/" + bicicletas.usuario.id : "https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"} width={"400px"} alt="" />
+          <img
+            src={
+              bicicletas.usuario.imagem
+                ? "http://localhost:8080/usuario/imagem/" +
+                  bicicletas.usuario.id
+                : "https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
+            }
+            width={"400px"}
+            alt=""
+          />
         </RowBlockLeft>
         <RowBlockRight>
           <h2>{bicicletas.usuario.nome}</h2>
@@ -119,7 +156,6 @@ function SignIn({ props }) {
 
           <h1>{bicicletas.usuario.telefone}</h1>
           <p>{bicicletas.usuario.email}</p>
-          <TabLayout />
         </RowBlockRight>
       </ColBlocks>
       <BlockTitle2>

@@ -38,41 +38,23 @@ const tempo = {
   ],
 };
 function SignIn({ props }) {
-
-
-  const [bicicletas, setBicicleta] = React.useState({ usuario: {} });
-  
-  const [dados, setDados] = useState({
-    bicicleta: { usuario: { endereco: {} } },
+  const [bicicletas, setBicicleta] = React.useState({
+    usuario: { endereco: {} },
   });
 
-
-
   React.useEffect(() => {
-
     Api.get("bicicleta/bicicleta/" + sessionStorage.getItem("idBicicleta"))
-    .then((res) => {
-      res.data.usuario.telefone = mask(res.data.usuario.telefone, ['(99) 99999-9999', '(99) 9999-9999'])
-      setBicicleta(res.data);
-    })
-    .catch((err) => {
-      console.error("ops! ocorreu um erro" + err);
-    });
-
-
-    Api.get(
-      "http://localhost:8080/locacao/consultar-locacao/" +
-      sessionStorage.getItem("idLocacao")
-    )
-      .then((response) => {
-        setDados(response.data);
+      .then((res) => {
+        res.data.usuario.telefone = mask(res.data.usuario.telefone, [
+          "(99) 99999-9999",
+          "(99) 9999-9999",
+        ]);
+        setBicicleta(res.data);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
-
   }, []);
-
 
   const history = useHistory();
   const [timeAlugar, setTimeAlugar] = useState("");
@@ -82,7 +64,6 @@ function SignIn({ props }) {
 
   console.log("timeAlugar :", timeAlugar);
   console.log("timeReserva :", timeReserva);
-  console.log(dados)
 
   function cadastrarHora(e) {
     var data = new Date(Date.now());
@@ -91,7 +72,6 @@ function SignIn({ props }) {
     data.setMinutes(
       data.getMinutes() + Number(timeAlugar.substring(3, 5)) + 30
     );
-
     console.log(bicicletas.id + "teste");
 
     Api.post("http://localhost:8080/locacao/cadastrar-locacao", {
@@ -110,7 +90,6 @@ function SignIn({ props }) {
         alert(err);
       });
   }
-  
 
   return (
     <>
@@ -120,32 +99,56 @@ function SignIn({ props }) {
       </BlockTitle>
       <ColBlocks>
         <RowBlockLeft>
-          <h2>{bicicletas.marca}</h2>
+          {/* <h2>{bicicletas.marca}</h2> */}
+          <h2>Bicicleta:</h2>
           <p>{bicicletas.tamanhoAro}</p>
-          <h1>{bicicletas.marca} {bicicletas.modelo}</h1>
-          <h1>teste</h1>
+          <h1>
+            {bicicletas.marca} {bicicletas.modelo}
+          </h1>
 
-
-          {/* <p><b>CEP:</b>{dados.bicicleta.usuario.endereco.cep}</p>
-          <p><b>ENDEREÇO:</b> {dados.bicicleta.usuario.endereco.rua} {dados.bicicleta.usuario.endereco.numero} </p>
-          <p><b>BAIRRO:</b> {dados.bicicleta.usuario.endereco.bairro} </p> */}
-
-
-
+          <p>
+            <b>CEP: </b>
+            {bicicletas.usuario.endereco.cep}
+          </p>
+          <p>
+            <b>ENDEREÇO:</b> {bicicletas.usuario.endereco.rua}{" "}
+            {bicicletas.usuario.endereco.numero}{" "}
+          </p>
+          <p>
+            <b>BAIRRO:</b> {bicicletas.usuario.endereco.bairro}{" "}
+          </p>
         </RowBlockLeft>
         <RowBlockRight>
           <div class="imagem">
             {bicicletas.imagem ? (
-              <img src={"http://localhost:8080/bicicleta/bicicleta-imagem/" + bicicletas.id} width={"400px"}></img>
+              <img
+                src={
+                  "http://localhost:8080/bicicleta/bicicleta-imagem/" +
+                  bicicletas.id
+                }
+                width={"400px"}
+              ></img>
             ) : (
-              <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width={"400px"}></img>
+              <img
+                src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
+                width={"400px"}
+              ></img>
             )}
           </div>
         </RowBlockRight>
       </ColBlocks>
       <ColBlocks>
         <RowBlockLeft>
-          <img src={bicicletas.usuario.imagem ? "http://localhost:8080/usuario/imagem/" + bicicletas.usuario.id : "https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"} width={"400px"} alt="" />
+          <img
+            src={
+              bicicletas.usuario.imagem
+                ? "http://localhost:8080/usuario/imagem/" +
+                  bicicletas.usuario.id
+                : "https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
+            }
+            width={"400px"}
+            alt=""
+          />
         </RowBlockLeft>
         <RowBlockRight>
           <h2>{bicicletas.usuario.nome}</h2>
@@ -153,7 +156,6 @@ function SignIn({ props }) {
 
           <h1>{bicicletas.usuario.telefone}</h1>
           <p>{bicicletas.usuario.email}</p>
-
         </RowBlockRight>
       </ColBlocks>
       <BlockTitle2>

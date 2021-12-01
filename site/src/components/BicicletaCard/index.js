@@ -1,4 +1,5 @@
 import { CardStyle, CardStyleTxt } from "./style";
+import "./style.css";
 import GeneralButton from "../GeneralButton/index";
 import { Link } from "react-router-dom";
 import Api from "../../services/api";

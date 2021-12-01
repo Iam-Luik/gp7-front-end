@@ -68,7 +68,7 @@ export const BlockTitle2 = styled.div`
     margin: auto;
     letter-spacing: 0.07em;
     font-size: 30px;
-    margin: 23px 0px;
+    margin: 60px 0px 10px 0px;
   }
 `;
 
@@ -108,7 +108,7 @@ export const ColBlocks = styled.div`
   @media (min-width: 1025px) {
     display: flex;
     flex-direction: initial;
-    padding: 5% 0;
+    padding: 3% 0;
   }
 `;
 

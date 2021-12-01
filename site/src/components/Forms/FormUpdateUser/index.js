@@ -174,7 +174,7 @@ export default function FormUpdateUser() {
     console.log(sessionStorage.getItem("idEndereco"));
     event.preventDefault();
     Api.put("usuario/alterar-cadastro", {
-      id: 1,
+      id: sessionStorage.getItem("idUsuario"),
       nome: values.nome,
       sobrenome: values.sobrenome,
       cpf: unMask(values.cpf),

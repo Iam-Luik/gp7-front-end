@@ -126,7 +126,7 @@ const Home = () => {
         </RowBlock2>
       </RowBlocks2>
 
-      <RowBlocks3>
+      {/* <RowBlocks3>
         <RowBlock3>
           <div>
             <h1>Alocar</h1>
@@ -146,7 +146,7 @@ const Home = () => {
           </div>
           <img alt="Ilustração locador" src={LocadorImg} />
         </RowBlock3>
-      </RowBlocks3>
+      </RowBlocks3> */}
 
       {/* SECTION 2 */}
       {/* <RowBlocks2>

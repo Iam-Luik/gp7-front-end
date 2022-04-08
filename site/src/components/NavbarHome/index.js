@@ -14,7 +14,8 @@ function NavbarHome() {
           <ul>
             <Link to="/">Home</Link>
             <span>|</span>
-            <Link to="/direcionamento">Cadastre-se</Link>
+            {/* <Link to="/direcionamento">Cadastre-se</Link> */}
+            <Link to="/locatario">Cadastre-se</Link>
             <Link to="/login">Entrar</Link>
           </ul>
         </Header>

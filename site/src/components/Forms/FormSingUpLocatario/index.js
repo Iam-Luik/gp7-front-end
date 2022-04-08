@@ -158,7 +158,8 @@ export default function FormSingUpLocatario() {
       autoComplete="off"
     >
       <div>
-        <h1>Cadastro locatario</h1>
+        <h1>Faça aqui seu cadastro</h1>
+        {/* <h1>Cadastro Locatario</h1> */}
         <p>Digite aqui seus dados cadastrais para entrar em nosso site</p>
         <InputContainer>
           <TextField
@@ -309,17 +310,17 @@ export default function FormSingUpLocatario() {
         </InputContainer>
 
         {values.email.length === 0 ||
-        values.senha.length === 0 ||
-        values.nome.length === 0 ||
-        values.sobrenome.length === 0 ||
-        values.cpf.length === 0 ||
-        values.telefone.length === 0 ||
-        values.cep.length === 0 ||
-        values.estado.length === 0 ||
-        values.cidade.length === 0 ||
-        values.bairro.length === 0 ||
-        values.rua.length === 0 ||
-        values.numero.length === 0 ? (
+          values.senha.length === 0 ||
+          values.nome.length === 0 ||
+          values.sobrenome.length === 0 ||
+          values.cpf.length === 0 ||
+          values.telefone.length === 0 ||
+          values.cep.length === 0 ||
+          values.estado.length === 0 ||
+          values.cidade.length === 0 ||
+          values.bairro.length === 0 ||
+          values.rua.length === 0 ||
+          values.numero.length === 0 ? (
           <Alert severity="warning">
             Preencha todos os campos para efetuar o cadastro!
           </Alert>
